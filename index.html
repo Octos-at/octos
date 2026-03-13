@@ -150,25 +150,36 @@ https://templatemo.com/tm-612-parallax-starter
         </div>
     </section>
 
-    <!-- Section 5: Contact -->
-    <section id="contact" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-05.jpg')"></div>
-        <div class="parallax-overlay overlay-medium"></div>
-        <div class="section-content">
-            <h2 class="section-title">GET IN TOUCH</h2>
-            <p class="section-subtitle caps">LET'S START SOMETHING GREAT TOGETHER</p>
-            <div class="contact-form-wrap">
-               <form id="contactForm" class="contact-form">
-                    <div class="form-row">
-                        <input type="text" placeholder="Your name" required>
-                        <input type="email" placeholder="Your email" required>
-                    </div>
-                    <textarea placeholder="Your message" rows="5" required></textarea>
-                    <button type="submit" class="btn-submit">SEND MESSAGE</button>
-                </form>
-            </div>
+
+<!-- Section 5: Contact -->
+<section id="contact" class="parallax-section">
+    <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-05.jpg')"></div>
+    <div class="parallax-overlay overlay-medium"></div>
+
+    <div class="section-content">
+        <h2 class="section-title">GET IN TOUCH</h2>
+        <p class="section-subtitle caps">LET'S START SOMETHING GREAT TOGETHER</p>
+
+        <div class="contact-form-wrap">
+
+            <!-- UPDATED FORM -->
+            <form id="contactForm" class="contact-form" action="sendmail.php" method="POST">
+
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                </div>
+
+                <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+
+                <button type="submit" class="btn-submit">SEND MESSAGE</button>
+            </form>
+            <!-- END UPDATED FORM -->
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer id="templatemo-footer">
@@ -178,4 +189,5 @@ https://templatemo.com/tm-612-parallax-starter
 </body>
 
 </html>
+
 
