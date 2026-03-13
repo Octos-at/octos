@@ -1,7 +1,8 @@
-// Contact form submission
-var contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function () {
-        alert('Thank you! Your message has been sent.');
-    });
-}
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+   (function(){
+      emailjs.init("pEt0L5IFostMcoXno"); // Your EmailJS Public Key
+   })();
+</script>
+``
