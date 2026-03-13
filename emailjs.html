@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EmailJS Diagnostics</title>
+<style>body{font-family:Arial,Helvetica,sans-serif;margin:24px}code,pre{background:#111;color:#0f0;padding:8px;display:block;white-space:pre-wrap}button{padding:10px 16px}</style>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://unpkg.com/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  window.addEventListener('DOMContentLoaded', function(){
+    var out = document.getElementById('out');
+    function log(){ out.textContent += Array.from(arguments).join(' ') + "
+"; }
+    if (typeof emailjs !== 'undefined') { log('SDK loaded'); emailjs.init('pEt0L5IFostMcoXn'); log('init OK with PUBLIC_KEY'); }
+    else { log('SDK NOT LOADED'); }
+    document.getElementById('send').addEventListener('click', function(){
+      var params = { name:'Diag Test', email:'diag@example.com', message:'Hello from diagnostics', to_email:'info@octos.at' };
+      emailjs.send('service_3kflnuh', 'template_un57291', params)
+        .then(function(r){ log('SUCCESS', JSON.stringify(r)); })
+        .catch(function(e){ log('ERROR status=', e && e.status, ' text=', e && e.text); console.error(e); });
+    });
+  });
+})();
+</script>
+</head><body>
+<h1>EmailJS Diagnostics</h1>
+<p>Click the button to send a test email via EmailJS. Watch the output area for status and details.</p>
+<button id="send">Send diagnostic email</button>
+<pre id="out"></pre>
+</body></html>
