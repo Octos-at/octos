@@ -65,10 +65,9 @@ img{max-width:100%;display:block}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media (max-width:991px){.services-grid{grid-template-columns:repeat(2,1fr);gap:40px}.stats-row{gap:40px}}
 @media (max-width:768px){.nav-toggle{display:flex}.nav-links{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.95);flex-direction:column;align-items:center;justify-content:flex-start;gap:30px;padding:100px 30px 60px;overflow-y:auto;opacity:0;visibility:hidden;transition:all .4s ease}.nav-links.open{opacity:1;visibility:visible}.nav-links a{font-size:16px;letter-spacing:4px}.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.nav-toggle.active span:nth-child(2){opacity:0}.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.parallax-bg{top:0;height:100%}.section-title{letter-spacing:4px}.hero-title{letter-spacing:6px}.section-subtitle{letter-spacing:2px}.services-grid{grid-template-columns:1fr;gap:35px}.about-cols{grid-template-columns:1fr;gap:30px;text-align:center}.stats-row{flex-direction:column;gap:30px}.form-row{flex-direction:column}.btn-submit{align-self:stretch}}
-
-#about .section-content {#about . pulls everything even further up */
+@media (max-width:480px){.nav-container{padding:0 20px}.section-content{padding:80px 20px}.section-title{letter-spacing:3px}.content-block p{font-size:15px}.stat-number{font-size:34px}}
+#about .section-content {
+    position: absolute;
+    bottom: 0;
 }
 ``
-    padding-top: 40px;        /* decrease this value to move content higher */
-
-@media (max-width:480px){.nav-container{padding:0 20px}.section-content{padding:80px 20px}.section-title{letter-spacing:3px}.content-block p{font-size:15px}.stat-number{font-size:34px}}
