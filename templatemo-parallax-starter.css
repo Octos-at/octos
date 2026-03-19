@@ -54,9 +54,9 @@ img{max-width:100%;display:block}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--white-40)}
 .contact-form input:focus,.contact-form textarea:focus{border-color:var(--white-70)}
 .contact-form textarea{resize:vertical;min-height:120px}
-.btn-submit{font-family:var(--font-heading);font-size:20px;font-weight:400;letter-spacing:4px;color:var(--white);background:transparent;border:1px solid var(--white-40);padding:16px 45px;cursor:pointer;transition:all var(--transition-smooth);align-self:flex-start;text-transform:uppercase}
+.btn-submit{font-family:var(--font-heading);font-size:16px;font-weight:400;letter-spacing:2px;color:var(--white);background:transparent;border:1px solid var(--white-40);padding:16px 45px;cursor:pointer;transition:all var(--transition-smooth);align-self:flex-start;text-transform:uppercase}
 .btn-submit:hover{background:var(--white);color:#111;border-color:var(--white)}
-#templatemo-footer{background:#111;text-align:center;padding:30px 20px;font-size:14px;color:var(--white-40);letter-spacing:1px}
+#templatemo-footer{background:#111;text-align:center;padding:30px 20px;font-size:20px;color:var(--white-40);letter-spacing:1px}
 #templatemo-footer a{color:var(--white-70);transition:color var(--transition-smooth)}
 #templatemo-footer a:hover{color:var(--white)}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
