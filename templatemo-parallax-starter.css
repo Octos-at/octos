@@ -25,8 +25,8 @@ img{max-width:100%;display:block}
 .section-subtitle{font-family:var(--font-body);font-size:clamp(18px,2vw,26px);letter-spacing:4px;color:var(--white-70);margin-bottom:40px}
 .caps{text-transform:uppercase}
 .content-block{max-width:680px;margin:0 auto}
-.content-block p{font-size:20px;color:var(--white-90);margin-bottom:20px;line-height:1.85}
-.btn-scroll{display:inline-block;font-family:var(--font-heading);font-size:20px;font-weight:400;letter-spacing:4px;color:var(--white);border:1px solid var(--white-40);padding:14px 45px;transition:all var(--transition-smooth)}
+.content-block p{font-size:26px;color:var(--white-90);margin-bottom:26px;line-height:1.85}
+.btn-scroll{display:inline-block;font-family:var(--font-heading);font-size:26px;font-weight:400;letter-spacing:4px;color:var(--white);border:1px solid var(--white-40);padding:14px 45px;transition:all var(--transition-smooth)}
 .btn-scroll:hover{background:var(--white);color:#111;border-color:var(--white)}
 .unsplash-credit{font-size:14px;color:var(--white-40);margin-top:25px;letter-spacing:1px}
 .unsplash-credit a{color:var(--white-70);text-decoration:underline;text-underline-offset:3px}
