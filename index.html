@@ -2,33 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OCTOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>OCTOS — Efficiency Engineered, Comfort Assured</title>
   <meta name="description" content="Official site of Octos — software, projects and documentation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <!-- main stylesheet (preserved fully) -->
   <link rel="stylesheet" href="templatemo-parallax-starter.css" />
   <style>
-    /* Additional styles to fix section spacing and integrate video */
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.85);
-      color: #fff;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font: 14px/1.4 'Source Sans 3', sans-serif;
-      letter-spacing: .2px;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity .25s ease;
+    /* additional overrides / video specific – no style changes, just ensures video behaves like parallax-bg */
+    .parallax-section {
+      position: relative;
+      overflow: hidden;
     }
-    .toast.show {
-      opacity: 1;
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;      /* keeps interactive elements clickable */
+      will-change: transform;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    /* ensure parallax effect works on video if desktop (same data-speed logic) */
+    .parallax-section .video-bg {
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    /* fallback for no js or missing video - not needed but keeps consistent */
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:8px;font:14px/1.4 'Source Sans 3',sans-serif;letter-spacing:.2px;z-index:9999;opacity:0;transition:opacity .25s ease}
+    .toast.show{opacity:1}
     
     /* Language toggle on the right side */
     .lang-toggle {
@@ -149,97 +156,34 @@
       color: #111;
       border-color: var(--white);
     }
-
-    /* Video background styling - matches original parallax-bg */
-    .video-parallax-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      will-change: transform;
-      pointer-events: none;
-      z-index: 0;
-    }
     
-    /* Fix section spacing - override any problematic styles */
-    .parallax-section {
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ensure video container respects parallax overflow, no extra spacing */
+    .parallax-section .parallax-bg,
+    .parallax-section .video-bg {
+      top: -50%;
+      height: 200%;
     }
-    
-    /* Fix the ABOUT section's absolute positioning issue */
-    #about .section-content {
-      position: relative !important;
-      bottom: auto !important;
-    }
-    
-    /* Ensure all section-content is properly positioned */
-    .section-content {
-      position: relative;
-      z-index: 2;
-      max-width: 960px;
-      width: 100%;
-      padding: 100px 30px;
-      text-align: center;
-    }
-    
-    .parallax-bg,
-    .video-parallax-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      will-change: transform;
-      z-index: 0;
-    }
-    
-    /* For mobile, disable transform to avoid issues with video */
+    /* for mobile fix we keep native behavior */
     @media (max-width: 768px) {
-      .video-parallax-bg {
-        transform: none !important;
+      .parallax-section .parallax-bg,
+      .parallax-section .video-bg {
+        top: 0;
+        height: 100%;
       }
     }
-    
-    /* Ensure overlay appears above video/image */
-    .parallax-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* small adjustment for video to fill properly */
+    .video-bg {
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
-      pointer-events: none;
+      height: 200%;
+      top: -50%;
+      left: 0;
+      object-fit: cover;
     }
-    
-    .overlay-dark {
-      background: rgba(0,0,0,0.7);
-    }
-    
-    .overlay-medium {
-      background: rgba(0,0,0,0.6);
-    }
-    
-    /* Fix any potential gaps between sections */
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Ensure footer doesn't create gaps */
-    #templatemo-footer {
-      margin: 0;
-      padding: 30px 20px;
+    @media (max-width: 768px) {
+      .video-bg {
+        height: 100%;
+        top: 0;
+      }
     }
   </style>
 </head>
@@ -268,11 +212,12 @@
     </div>
   </nav>
   
-  <!-- HOME SECTION with VIDEO background -->
+  <!-- HERO SECTION: REPLACED parallax-bg IMAGE WITH VIDEO (videoplayback.mp4 from videos folder) -->
   <section id="home" class="parallax-section">
-    <video class="video-parallax-bg" data-speed="0.5" autoplay loop muted playsinline>
+    <!-- original image bg removed, replaced with video element -->
+    <video class="parallax-bg video-bg" data-speed="0.5" autoplay loop muted playsinline>
       <source src="videos/videoplayback.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+      Your browser does not support the video tag. Background image fallback (optional).
     </video>
     <div class="parallax-overlay"></div>
     <div class="section-content">
@@ -282,6 +227,7 @@
     </div>
   </section>
 
+  <!-- ABOUT section (unchanged) -->
   <section id="about" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-02.jpg')"></div>
     <div class="parallax-overlay"></div>
@@ -294,6 +240,7 @@
     </div>
   </section>
   
+  <!-- SERVICES section (unchanged) -->
   <section id="services" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-03.jpg')"></div>
     <div class="parallax-overlay overlay-dark"></div>
@@ -320,6 +267,7 @@
     </div>
   </section>
   
+  <!-- GALLERY section (unchanged) -->
   <section id="gallery" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-04.jpg')"></div>
     <div class="parallax-overlay"></div>
@@ -355,6 +303,7 @@
     </div>
   </section>
   
+  <!-- CONTACT section (unchanged) -->
   <section id="contact" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-05.jpg')"></div>
     <div class="parallax-overlay overlay-medium"></div>
@@ -446,24 +395,29 @@
       const navLinks = document.getElementById('navLinks');
       const navItems = document.querySelectorAll('.nav-links a');
       const sections = document.querySelectorAll('.parallax-section');
-      // Select both image backgrounds and video background for parallax effect
-      const parallaxBgs = document.querySelectorAll('.parallax-bg');
-      const videoParallax = document.querySelector('.video-parallax-bg');
+      // we target both .parallax-bg (images) and .video-bg for parallax movement
+      const parallaxBgs = document.querySelectorAll('.parallax-bg, .video-bg');
       const revealElements = document.querySelectorAll('.section-content');
       
       // Mobile check
       let isMobile = window.innerWidth <= 768;
       let ticking = false;
       
-      // Parallax function - works for both images and video
+      // Parallax function that works on both images and video element
       function updateParallax() {
-        if (isMobile) return;
+        if (isMobile) {
+          // reset transforms for mobile
+          parallaxBgs.forEach(bg => {
+            bg.style.transform = 'translate3d(0,0,0)';
+          });
+          return;
+        }
         const windowHeight = window.innerHeight;
-        
-        // Handle image backgrounds
         parallaxBgs.forEach(bg => {
-          const section = bg.parentElement;
+          const section = bg.closest('.parallax-section');
+          if (!section) return;
           const rect = section.getBoundingClientRect();
+          // early exit if far out of view
           if (rect.bottom < -300 || rect.top > windowHeight + 300) return;
           const speed = parseFloat(bg.getAttribute('data-speed')) || 0.5;
           const sectionCenterY = rect.top + rect.height / 2;
@@ -474,22 +428,6 @@
           const translateY = normalized * (windowHeight * speed);
           bg.style.transform = 'translate3d(0,' + translateY.toFixed(1) + 'px,0)';
         });
-        
-        // Handle video background parallax (if exists and not mobile)
-        if (videoParallax) {
-          const section = videoParallax.parentElement;
-          const rect = section.getBoundingClientRect();
-          if (!(rect.bottom < -300 || rect.top > windowHeight + 300)) {
-            const speed = parseFloat(videoParallax.getAttribute('data-speed')) || 0.5;
-            const sectionCenterY = rect.top + rect.height / 2;
-            const viewportCenterY = windowHeight / 2;
-            const offset = sectionCenterY - viewportCenterY;
-            const totalTravel = windowHeight + rect.height;
-            const normalized = Math.max(-1, Math.min(1, offset / (totalTravel / 2)));
-            const translateY = normalized * (windowHeight * speed);
-            videoParallax.style.transform = 'translate3d(0,' + translateY.toFixed(1) + 'px,0)';
-          }
-        }
         ticking = false;
       }
       
@@ -498,14 +436,25 @@
       if (!isMobile) {
         window.addEventListener('scroll', onScroll, { passive: true });
         updateParallax();
+      } else {
+        parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
       }
       
       window.addEventListener('resize', () => {
-        isMobile = window.innerWidth <= 768;
-        if (!isMobile) updateParallax();
-        else {
+        const newMobile = window.innerWidth <= 768;
+        if (newMobile !== isMobile) {
+          isMobile = newMobile;
+          if (isMobile) {
+            parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
+            window.removeEventListener('scroll', onScroll);
+          } else {
+            window.addEventListener('scroll', onScroll, { passive: true });
+            updateParallax();
+          }
+        } else if (!isMobile) {
+          updateParallax();
+        } else {
           parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
-          if (videoParallax) videoParallax.style.transform = 'translate3d(0,0,0)';
         }
       });
       
@@ -617,32 +566,8 @@
       if (logoImg) {
         logoImg.onerror = function() {
           this.style.display = 'none';
-          this.nextElementSibling.style.display = 'block';
+          if(this.nextElementSibling) this.nextElementSibling.style.display = 'block';
         };
-      }
-      
-      // Ensure video plays smoothly
-      const videoElement = document.querySelector('.video-parallax-bg');
-      if (videoElement) {
-        const playVideo = () => {
-          videoElement.play().catch(e => {
-            console.log('Video autoplay prevented:', e);
-            const playOnInteraction = () => {
-              videoElement.play().catch(() => {});
-              document.removeEventListener('click', playOnInteraction);
-              document.removeEventListener('touchstart', playOnInteraction);
-            };
-            document.addEventListener('click', playOnInteraction);
-            document.addEventListener('touchstart', playOnInteraction);
-          });
-        };
-        playVideo();
-        
-        videoElement.addEventListener('pause', function() {
-          if (videoElement.paused && videoElement.currentTime > 0) {
-            videoElement.play().catch(() => {});
-          }
-        });
       }
       
       // Initialize language
@@ -658,6 +583,21 @@
       
       // Apply initial language
       updateLanguage(savedLang);
+      
+      // Additional: ensure video loops and plays properly on all devices (autoplay policies)
+      const heroVideo = document.querySelector('#home .video-bg');
+      if(heroVideo) {
+        heroVideo.addEventListener('loadeddata', () => {
+          heroVideo.play().catch(e => console.log("autoplay prevented:", e));
+        });
+        // force mute + loop for reliable autoplay
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('autoplay', '');
+        // fallback: if not playing, attempt again
+        heroVideo.play().catch(() => {});
+      }
     })();
   </script>
 </body>
