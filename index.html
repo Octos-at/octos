@@ -133,7 +133,7 @@
       border-color: var(--white);
     }
 
-    /* Video background styling - replaces parallax-bg for home section */
+    /* Video background styling - matches original parallax-bg behavior */
     .video-parallax-bg {
       position: absolute;
       top: 0;
@@ -145,11 +145,15 @@
       pointer-events: none;
       z-index: 0;
     }
-    /* Ensure the video container respects parallax positioning */
+    
+    /* Ensure section has proper positioning and no gaps */
     .parallax-section {
       position: relative;
       overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
+    
     .parallax-bg,
     .video-parallax-bg {
       position: absolute;
@@ -163,13 +167,15 @@
       will-change: transform;
       z-index: 0;
     }
+    
     /* For mobile, disable transform to avoid issues with video */
     @media (max-width: 768px) {
       .video-parallax-bg {
         transform: none !important;
       }
     }
-    /* Ensure overlay appears above video */
+    
+    /* Ensure overlay appears above video/image */
     .parallax-overlay {
       position: absolute;
       top: 0;
@@ -180,9 +186,24 @@
       z-index: 1;
       pointer-events: none;
     }
+    
+    .overlay-dark {
+      background: rgba(0,0,0,0.7);
+    }
+    
+    .overlay-medium {
+      background: rgba(0,0,0,0.6);
+    }
+    
     .section-content {
       position: relative;
       z-index: 2;
+    }
+    
+    /* Ensure no extra spacing between sections */
+    body {
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
@@ -213,7 +234,7 @@
   
   <!-- HOME SECTION with VIDEO background instead of image -->
   <section id="home" class="parallax-section">
-    <!-- Video background element - replaces parallax-bg image -->
+    <!-- Video background element -->
     <video class="video-parallax-bg" data-speed="0.5" autoplay loop muted playsinline>
       <source src="videos/videoplayback.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -565,14 +586,30 @@
         };
       }
       
-      // Ensure video plays smoothly (some browsers need a kick)
+      // Ensure video plays smoothly and handles autoplay policies
       const videoElement = document.querySelector('.video-parallax-bg');
       if (videoElement) {
-        videoElement.play().catch(e => console.log('Video autoplay prevented:', e));
-        // Prevent video from being paused by user interaction (since it's background)
+        // Attempt to play and handle any autoplay restrictions
+        const playVideo = () => {
+          videoElement.play().catch(e => {
+            console.log('Video autoplay prevented:', e);
+            // Add a click listener to play video on first user interaction
+            const playOnInteraction = () => {
+              videoElement.play().catch(() => {});
+              document.removeEventListener('click', playOnInteraction);
+              document.removeEventListener('touchstart', playOnInteraction);
+            };
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
+          });
+        };
+        playVideo();
+        
+        // Prevent video from being paused
         videoElement.addEventListener('pause', function() {
-          if (!videoElement.paused) return;
-          videoElement.play().catch(() => {});
+          if (videoElement.paused && videoElement.currentTime > 0) {
+            videoElement.play().catch(() => {});
+          }
         });
       }
       
