@@ -10,8 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="templatemo-parallax-starter.css" />
   <style>
-    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:8px;font:14px/1.4 'Source Sans 3',sans-serif;letter-spacing:.2px;z-index:9999;opacity:0;transition:opacity .25s ease}
-    .toast.show{opacity:1}
+    /* Additional styles to fix section spacing and integrate video */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.85);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font: 14px/1.4 'Source Sans 3', sans-serif;
+      letter-spacing: .2px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .toast.show {
+      opacity: 1;
+    }
     
     /* Language toggle on the right side */
     .lang-toggle {
@@ -133,7 +150,7 @@
       border-color: var(--white);
     }
 
-    /* Video background styling - matches original parallax-bg behavior */
+    /* Video background styling - matches original parallax-bg */
     .video-parallax-bg {
       position: absolute;
       top: 0;
@@ -146,12 +163,30 @@
       z-index: 0;
     }
     
-    /* Ensure section has proper positioning and no gaps */
+    /* Fix section spacing - override any problematic styles */
     .parallax-section {
       position: relative;
       overflow: hidden;
-      margin: 0;
-      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Fix the ABOUT section's absolute positioning issue */
+    #about .section-content {
+      position: relative !important;
+      bottom: auto !important;
+    }
+    
+    /* Ensure all section-content is properly positioned */
+    .section-content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      width: 100%;
+      padding: 100px 30px;
+      text-align: center;
     }
     
     .parallax-bg,
@@ -195,15 +230,16 @@
       background: rgba(0,0,0,0.6);
     }
     
-    .section-content {
-      position: relative;
-      z-index: 2;
-    }
-    
-    /* Ensure no extra spacing between sections */
+    /* Fix any potential gaps between sections */
     body {
       margin: 0;
       padding: 0;
+    }
+    
+    /* Ensure footer doesn't create gaps */
+    #templatemo-footer {
+      margin: 0;
+      padding: 30px 20px;
     }
   </style>
 </head>
@@ -232,9 +268,8 @@
     </div>
   </nav>
   
-  <!-- HOME SECTION with VIDEO background instead of image -->
+  <!-- HOME SECTION with VIDEO background -->
   <section id="home" class="parallax-section">
-    <!-- Video background element -->
     <video class="video-parallax-bg" data-speed="0.5" autoplay loop muted playsinline>
       <source src="videos/videoplayback.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -586,14 +621,12 @@
         };
       }
       
-      // Ensure video plays smoothly and handles autoplay policies
+      // Ensure video plays smoothly
       const videoElement = document.querySelector('.video-parallax-bg');
       if (videoElement) {
-        // Attempt to play and handle any autoplay restrictions
         const playVideo = () => {
           videoElement.play().catch(e => {
             console.log('Video autoplay prevented:', e);
-            // Add a click listener to play video on first user interaction
             const playOnInteraction = () => {
               videoElement.play().catch(() => {});
               document.removeEventListener('click', playOnInteraction);
@@ -605,7 +638,6 @@
         };
         playVideo();
         
-        // Prevent video from being paused
         videoElement.addEventListener('pause', function() {
           if (videoElement.paused && videoElement.currentTime > 0) {
             videoElement.play().catch(() => {});
