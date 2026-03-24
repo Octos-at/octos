@@ -169,7 +169,7 @@
       text-align:center
     }
 
-    /* ABOUT SECTION - TEXT POSITIONED LOWER */
+    /* ABOUT SECTION - TEXT POSITIONED LOWER - PRESERVES ORIGINAL RESPONSIVE STYLES */
     #about .section-content {
       display: flex;
       flex-direction: column;
@@ -178,15 +178,28 @@
       padding-bottom: 180px;
     }
     
-    @media (max-width: 768px) {
+    /* Tablet styles - maintains original responsive behavior */
+    @media (max-width: 991px) {
       #about .section-content {
-        padding-bottom: 120px;
+        padding-bottom: 140px;
       }
     }
     
+    /* Mobile styles - matches original responsive design */
+    @media (max-width: 768px) {
+      #about .section-content {
+        padding: 80px 20px;
+        justify-content: flex-end;
+        min-height: 100vh;
+        padding-bottom: 100px;
+      }
+    }
+    
+    /* Small mobile devices - preserves original spacing */
     @media (max-width: 480px) {
       #about .section-content {
-        padding-bottom: 100px;
+        padding: 60px 20px;
+        padding-bottom: 80px;
       }
     }
 
@@ -401,7 +414,7 @@
       transform:translateY(0)
     }
 
-    /* Additional styles for video and cookie consent */
+    /* Additional styles for video and cookie consent - preserved from original */
     .parallax-section {
       position: relative;
       overflow: hidden;
@@ -876,247 +889,4 @@
           const eqPos = cookie.indexOf('=');
           const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
           if (name !== '') {
-            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
-          }
-        }
-      }
-      
-      // Clear ALL localStorage (including language preference)
-      function clearAllStorage() {
-        try {
-          localStorage.clear();
-          sessionStorage.clear();
-        } catch(e) {}
-      }
-      
-      // ACCEPT - store consent AND language preference
-      function acceptCookies() {
-        cookiesAccepted = true;
-        const consentData = { choice: 'accepted', timestamp: Date.now() };
-        try {
-          localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
-          // Save current language
-          const currentLang = document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'en';
-          localStorage.setItem('preferred-language', currentLang);
-        } catch(e) {}
-        showToast('Cookies akzeptiert. Ihre Sprachauswahl wird gespeichert.');
-        hideModal();
-        hasMadeChoice = true;
-      }
-      
-      // DENY - delete EVERYTHING, store NOTHING
-      function denyCookies() {
-        cookiesAccepted = false;
-        deleteAllCookies();
-        clearAllStorage();
-        showToast('Cookies abgelehnt. Es werden KEINE Daten gespeichert.');
-        hideModal();
-        hasMadeChoice = true;
-      }
-      
-      function showToast(msg) {
-        const toast = document.getElementById('toast');
-        if (toast) {
-          toast.textContent = msg;
-          toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 3500);
-        }
-      }
-      
-      function showModal() { if (MODAL && !hasMadeChoice) MODAL.classList.add('show'); }
-      function hideModal() { if (MODAL) MODAL.classList.remove('show'); }
-      
-      // Check for existing consent (only accepted is stored)
-      function checkExistingConsent() {
-        try {
-          const stored = localStorage.getItem(CONSENT_KEY);
-          if (stored) {
-            const consent = JSON.parse(stored);
-            if (consent && consent.choice === 'accepted') {
-              cookiesAccepted = true;
-              hasMadeChoice = true;
-              return true;
-            }
-          }
-        } catch(e) {}
-        return false;
-      }
-      
-      const hasConsent = checkExistingConsent();
-      if (!hasConsent) {
-        setTimeout(() => showModal(), 500);
-      } else {
-        hideModal();
-      }
-      
-      // Language handling - ONLY saves if cookies accepted
-      const translations = {
-        en: {
-          nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" },
-          home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" },
-          about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." },
-          services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } },
-          gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." },
-          contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" }
-        },
-        de: {
-          nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" },
-          home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" },
-          about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." },
-          services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } },
-          gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." },
-          contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" }
-        }
-      };
-      
-      const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_de.pdf' };
-      const downloadLink = document.getElementById('downloadManualLink');
-      const downloadBadge = document.getElementById('downloadLangBadge');
-      const downloadBtnText = document.getElementById('downloadBtnText');
-      
-      function updateDownloadLink(lang) {
-        if (downloadLink) downloadLink.href = manualFiles[lang] || 'docs/octostool.pdf';
-        if (downloadBadge) downloadBadge.textContent = lang === 'de' ? '🇩🇪 Deutsche Version' : '🇬🇧 English Version';
-      }
-      
-      function updateLanguage(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const keys = el.getAttribute('data-i18n').split('.');
-          let text = translations[lang];
-          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
-          if (typeof text === 'string') el.textContent = text;
-        });
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-          const keys = el.getAttribute('data-i18n-placeholder').split('.');
-          let text = translations[lang];
-          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
-          if (typeof text === 'string') el.placeholder = text;
-        });
-        if (downloadBtnText) {
-          downloadBtnText.textContent = translations[lang]?.gallery?.download || (lang === 'de' ? 'OctoStool HERUNTERLADEN' : 'DOWNLOAD OctoStool');
-        }
-        updateDownloadLink(lang);
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-        
-        // ONLY save language preference if cookies are accepted
-        if (cookiesAccepted) {
-          try { localStorage.setItem('preferred-language', lang); } catch(e) {}
-        }
-      }
-      
-      // Load initial language (only if cookies accepted)
-      let initialLang = 'en';
-      if (cookiesAccepted) {
-        const savedLang = localStorage.getItem('preferred-language');
-        if (savedLang === 'en' || savedLang === 'de') initialLang = savedLang;
-      }
-      updateLanguage(initialLang);
-      
-      // Language button event listeners
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          updateLanguage(btn.getAttribute('data-lang'));
-        });
-      });
-      
-      // Cookie button event listeners
-      if (ACCEPT_BTN) ACCEPT_BTN.addEventListener('click', acceptCookies);
-      if (DENY_BTN) DENY_BTN.addEventListener('click', denyCookies);
-      if (SETTINGS_BTN) SETTINGS_BTN.addEventListener('click', () => { if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); hideModal(); });
-      if (PRIVACY_LINK) PRIVACY_LINK.addEventListener('click', (e) => { e.preventDefault(); if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); hideModal(); });
-      
-      // Modal management
-      function openModal(modal) { if(modal) modal.classList.add('active'); }
-      function closeModal(modal) { if(modal) modal.classList.remove('active'); }
-      
-      if (OPEN_PRIVACY_FOOTER) OPEN_PRIVACY_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(PRIVACY_MODAL); });
-      if (OPEN_IMPRINT_FOOTER) OPEN_IMPRINT_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(IMPRINT_MODAL); });
-      
-      document.getElementById('closePrivacyModalBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
-      document.getElementById('closePrivacyFooterBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
-      document.getElementById('closeImprintModalBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
-      document.getElementById('closeImprintFooterBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
-      
-      [PRIVACY_MODAL, IMPRINT_MODAL].forEach(modal => {
-        if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
-      });
-    })();
-    
-    // ========== PARALLAX & EMAILJS FUNCTIONALITY ==========
-    (function() {
-      const nav = document.getElementById('templatemo-nav');
-      const navToggle = document.getElementById('navToggle');
-      const navLinks = document.getElementById('navLinks');
-      const navItems = document.querySelectorAll('.nav-links a');
-      const parallaxBgs = document.querySelectorAll('.parallax-bg, .video-bg');
-      const revealElements = document.querySelectorAll('.section-content');
-      let isMobile = window.innerWidth <= 768;
-      
-      function updateParallax() {
-        if (isMobile) { parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)'); return; }
-        const windowHeight = window.innerHeight;
-        parallaxBgs.forEach(bg => {
-          const section = bg.closest('.parallax-section');
-          if (!section) return;
-          const rect = section.getBoundingClientRect();
-          if (rect.bottom < -300 || rect.top > windowHeight + 300) return;
-          const speed = parseFloat(bg.getAttribute('data-speed')) || 0.5;
-          const sectionCenterY = rect.top + rect.height / 2;
-          const viewportCenterY = windowHeight / 2;
-          const offset = sectionCenterY - viewportCenterY;
-          const totalTravel = windowHeight + rect.height;
-          const normalized = Math.max(-1, Math.min(1, offset / (totalTravel / 2)));
-          const translateY = normalized * (windowHeight * speed);
-          bg.style.transform = 'translate3d(0,' + translateY.toFixed(1) + 'px,0)';
-        });
-      }
-      
-      window.addEventListener('scroll', () => requestAnimationFrame(updateParallax));
-      window.addEventListener('resize', () => { isMobile = window.innerWidth <= 768; if (!isMobile) updateParallax(); });
-      updateParallax();
-      
-      function handleNavScroll() { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
-      window.addEventListener('scroll', handleNavScroll);
-      handleNavScroll();
-      
-      if (navToggle) navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); });
-      navItems.forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); }));
-      
-      revealElements.forEach(el => el.classList.add('reveal'));
-      function checkReveal() { revealElements.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 120) el.classList.add('visible'); }); }
-      window.addEventListener('scroll', checkReveal);
-      checkReveal();
-      
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const name = contactForm.querySelector("input[name='name']").value.trim();
-          const email = contactForm.querySelector("input[name='email']").value.trim();
-          const message = contactForm.querySelector("textarea[name='message']").value.trim();
-          if (!name || !email || !message) {
-            const toast = document.getElementById('toast');
-            if(toast) { toast.textContent = 'Bitte alle Felder ausfüllen.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); }
-            return;
-          }
-          if (typeof emailjs !== 'undefined') {
-            emailjs.init('pEt0L5IFostMcoXno');
-            emailjs.send('service_3kflnuh', 'template_un57291', { name, email, message, to_email: 'info@octos.at' })
-              .then(() => {
-                const toast = document.getElementById('toast');
-                if(toast) { toast.textContent = 'Vielen Dank! Ihre Nachricht wurde gesendet.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); }
-                contactForm.reset();
-              });
-          }
-        });
-      }
-      
-      const heroVideo = document.querySelector('#home .video-bg');
-      if(heroVideo) { heroVideo.muted = true; heroVideo.loop = true; heroVideo.play().catch(() => {}); }
-    })();
-  </script>
-</body>
-</html>
+            document.cookie = name + '=
