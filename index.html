@@ -201,6 +201,194 @@
         top: 0;
       }
     }
+    
+    /* COOKIE CONSENT MODAL - Austrian DSGVO / GDPR compliant */
+    .cookie-consent {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 15, 0.98);
+      backdrop-filter: blur(12px);
+      z-index: 10000;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border-top: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+      font-family: var(--font-body);
+    }
+    .cookie-consent.show {
+      transform: translateY(0);
+    }
+    .cookie-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .cookie-text {
+      flex: 3;
+      min-width: 240px;
+    }
+    .cookie-text p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #eee;
+      letter-spacing: 0.3px;
+    }
+    .cookie-text a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .cookie-text a:hover {
+      color: #ccc;
+    }
+    .cookie-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cookie-btn {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .cookie-btn-accept {
+      background: white;
+      color: #111;
+      border: 1px solid white;
+    }
+    .cookie-btn-accept:hover {
+      background: #e0e0e0;
+      transform: scale(0.98);
+    }
+    .cookie-btn-deny {
+      background: transparent;
+      color: #ddd;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    .cookie-btn-deny:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .cookie-btn-settings {
+      background: transparent;
+      color: #ccc;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .cookie-btn-settings:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    /* Privacy policy modal overlay (detailed) */
+    .privacy-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 11000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity 0.2s;
+    }
+    .privacy-modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .privacy-modal-content {
+      background: #1a1a1f;
+      max-width: 650px;
+      width: 90%;
+      max-height: 85vh;
+      border-radius: 20px;
+      padding: 28px 30px;
+      position: relative;
+      overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #f0f0f0;
+      font-family: var(--font-body);
+      box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+    }
+    .privacy-modal-content h3 {
+      font-family: var(--font-heading);
+      letter-spacing: 2px;
+      font-size: 26px;
+      margin-bottom: 20px;
+      border-left: 4px solid white;
+      padding-left: 18px;
+    }
+    .privacy-modal-content h4 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin: 20px 0 8px 0;
+      letter-spacing: 1px;
+    }
+    .privacy-modal-content p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #ddd;
+    }
+    .privacy-modal-content ul {
+      margin: 8px 0 12px 24px;
+      font-size: 14px;
+    }
+    .close-privacy {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+    .close-privacy:hover {
+      color: white;
+    }
+    .privacy-btn-close {
+      margin-top: 24px;
+      background: white;
+      color: #111;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-family: var(--font-heading);
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    @media (max-width: 680px) {
+      .cookie-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+      .cookie-buttons {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -228,12 +416,11 @@
     </div>
   </nav>
   
-  <!-- HERO SECTION: REPLACED parallax-bg IMAGE WITH VIDEO (videoplayback.mp4 from videos folder) -->
+  <!-- HERO SECTION: video background -->
   <section id="home" class="parallax-section">
-    <!-- original image bg removed, replaced with video element -->
     <video class="parallax-bg video-bg" data-speed="0.5" autoplay loop muted playsinline>
       <source src="videos/videoplayback.mp4" type="video/mp4">
-      Your browser does not support the video tag. Background image fallback (optional).
+      Your browser does not support the video tag.
     </video>
     <div class="parallax-overlay"></div>
     <div class="section-content">
@@ -243,7 +430,7 @@
     </div>
   </section>
 
-  <!-- ABOUT section - text now positioned lower on the page -->
+  <!-- ABOUT section -->
   <section id="about" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-02.jpg')"></div>
     <div class="parallax-overlay"></div>
@@ -256,7 +443,7 @@
     </div>
   </section>
   
-  <!-- SERVICES section (unchanged) -->
+  <!-- SERVICES section -->
   <section id="services" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-03.jpg')"></div>
     <div class="parallax-overlay overlay-dark"></div>
@@ -283,7 +470,7 @@
     </div>
   </section>
   
-  <!-- GALLERY section (unchanged) -->
+  <!-- GALLERY section -->
   <section id="gallery" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-04.jpg')"></div>
     <div class="parallax-overlay"></div>
@@ -293,7 +480,6 @@
         <p style="font-size: 20px;" data-i18n="gallery.subtitle">The future of barbering comfort and control.</p>
         <b style="font-size: 20px;" data-i18n="gallery.tagline">Move like you're standing feel like you're not!</b>
         
-        <!-- Download button with image -->
         <div style="margin: 30px 0;">
           <a href="docs/octostool.pdf" download class="download-btn">
             <img src="images/octostool-01.jpg" alt="OctoStool" class="download-btn-image">
@@ -319,7 +505,7 @@
     </div>
   </section>
   
-  <!-- CONTACT section (unchanged) -->
+  <!-- CONTACT section -->
   <section id="contact" class="parallax-section">
     <div class="parallax-bg" data-speed="0.5" style="background-image:url('images/parallax-bg-05.jpg')"></div>
     <div class="parallax-overlay overlay-medium"></div>
@@ -341,13 +527,161 @@
   </section>
   
   <footer id="templatemo-footer">
-    <p>Copyright © 2026 OCTOS</p>
+    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Data Privacy</a></p>
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   
+  <!-- COOKIE CONSENT MODAL (Austrian DSGVO compliant) -->
+  <div id="cookieConsentModal" class="cookie-consent">
+    <div class="cookie-container">
+      <div class="cookie-text">
+        <p><strong>🍪 Datenschutz & Cookies</strong> — Wir verwessen auf Ihre Privatsphäre. Gemäß der österreichischen DSGVO (Datenschutz-Grundverordnung) bitten wir um Ihre Zustimmung zur Verwendung von technisch notwendigen Cookies und optionalen Analyse-Tools. Sie können die Einwilligung jederzeit widerrufen. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">AKZEPTIEREN</button>
+        <button id="cookieDenyBtn" class="cookie-btn cookie-btn-deny">ABLEHNEN</button>
+        <button id="cookieSettingsBtn" class="cookie-btn cookie-btn-settings">EINSTELLUNGEN</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- PRIVACY POLICY MODAL (Full details) -->
+  <div id="privacyModal" class="privacy-modal">
+    <div class="privacy-modal-content">
+      <button class="close-privacy" id="closePrivacyModalBtn">&times;</button>
+      <h3>DATENSCHUTZERKLÄRUNG (Österreich)</h3>
+      <p>Diese Website wird betrieben von OCTOS, Innsbruck. Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie gemäß Art 13 DSGVO über die Verarbeitung Ihrer Daten.</p>
+      <h4>1. Verantwortlicher</h4>
+      <p>OCTOS, Technikerstraße 12, 6020 Innsbruck, Österreich | E-Mail: info@octos.at</p>
+      <h4>2. Verarbeitete Daten</h4>
+      <p>Beim Besuch unserer Website werden technisch notwendige Cookies (Session-Cookies) gespeichert. Bei Nutzung des Kontaktformulars verarbeiten wir Name, E-Mail und Nachricht zur Bearbeitung Ihrer Anfrage.</p>
+      <h4>3. Rechtsgrundlage</h4>
+      <p>Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art 6 Abs 1 lit a DSGVO) sowie zur Vertragserfüllung oder vorvertraglicher Maßnahmen (Art 6 Abs 1 lit b DSGVO).</p>
+      <h4>4. Cookies & Tracking</h4>
+      <p>Wir setzen ausschließlich technisch notwendige Cookies ein, die für den Betrieb der Seite erforderlich sind. Zusätzliche Analyse-Cookies werden nur nach Ihrer aktiven Einwilligung gesetzt. Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen widerrufen.</p>
+      <h4>5. Ihre Rechte</h4>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie Datenübertragbarkeit. Beschwerden können Sie bei der österreichischen Datenschutzbehörde einreichen.</p>
+      <h4>6. Speicherdauer</h4>
+      <p>Ihre Daten werden nur so lange gespeichert, wie für die jeweilige Zweckerreichung erforderlich oder gesetzliche Aufbewahrungspflichten bestehen.</p>
+      <button id="closePrivacyFooterBtn" class="privacy-btn-close">SCHLIESSEN</button>
+    </div>
+  </div>
+  
   <script>
+    // ========== COOKIE CONSENT MANAGER (Austrian Law / DSGVO) ==========
+    (function() {
+      const CONSENT_KEY = 'octos_cookie_consent';
+      const MODAL = document.getElementById('cookieConsentModal');
+      const ACCEPT_BTN = document.getElementById('cookieAcceptBtn');
+      const DENY_BTN = document.getElementById('cookieDenyBtn');
+      const SETTINGS_BTN = document.getElementById('cookieSettingsBtn');
+      const PRIVACY_LINK = document.getElementById('privacyDetailsLink');
+      const OPEN_PRIVACY_FOOTER = document.getElementById('openPrivacyLink');
+      const PRIVACY_MODAL = document.getElementById('privacyModal');
+      const CLOSE_PRIVACY_BTN = document.getElementById('closePrivacyModalBtn');
+      const CLOSE_PRIVACY_FOOTER_BTN = document.getElementById('closePrivacyFooterBtn');
+      
+      let currentConsent = null;
+      
+      function setConsent(choice) {
+        // choice: 'accepted', 'denied', or 'partial' (we treat partial as denied for simplicity / only necessary cookies)
+        if (choice === 'accepted') {
+          currentConsent = { analytics: true, necessary: true, timestamp: Date.now() };
+          localStorage.setItem(CONSENT_KEY, JSON.stringify(currentConsent));
+          enableAnalyticsCookies(true);
+        } else if (choice === 'denied') {
+          currentConsent = { analytics: false, necessary: true, timestamp: Date.now() };
+          localStorage.setItem(CONSENT_KEY, JSON.stringify(currentConsent));
+          enableAnalyticsCookies(false);
+        } else if (choice === 'settings') {
+          // For simplicity: show privacy modal + optional detailed choice; fallback to deny if no explicit accept
+          showPrivacyModal();
+        }
+        hideModal();
+      }
+      
+      function enableAnalyticsCookies(enabled) {
+        // dummy function: if in future you add google analytics, use this flag.
+        // Currently no external trackers, just placeholder for compliance.
+        console.log('[Octos DSGVO] Analytics consent:', enabled ? 'enabled' : 'disabled (only necessary cookies)');
+        if (!enabled) {
+          // remove any analytic cookies if existing (placeholder)
+        }
+      }
+      
+      function hideModal() {
+        if (MODAL) MODAL.classList.remove('show');
+      }
+      
+      function showModal() {
+        if (MODAL) MODAL.classList.add('show');
+      }
+      
+      function checkExistingConsent() {
+        const stored = localStorage.getItem(CONSENT_KEY);
+        if (stored) {
+          try {
+            const parsed = JSON.parse(stored);
+            if (parsed && parsed.timestamp) {
+              currentConsent = parsed;
+              if (parsed.analytics === true) {
+                enableAnalyticsCookies(true);
+              } else {
+                enableAnalyticsCookies(false);
+              }
+              return true;
+            }
+          } catch(e) {}
+        }
+        return false;
+      }
+      
+      function showPrivacyModal() {
+        if (PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active');
+      }
+      function closePrivacyModal() {
+        if (PRIVACY_MODAL) PRIVACY_MODAL.classList.remove('active');
+      }
+      
+      // Initialize consent flow
+      const hasConsent = checkExistingConsent();
+      if (!hasConsent) {
+        // show cookie banner (Austrian law requires active opt-in or clear option)
+        setTimeout(() => { showModal(); }, 400);
+      } else {
+        hideModal();
+      }
+      
+      if (ACCEPT_BTN) {
+        ACCEPT_BTN.addEventListener('click', () => { setConsent('accepted'); });
+      }
+      if (DENY_BTN) {
+        DENY_BTN.addEventListener('click', () => { setConsent('denied'); });
+      }
+      if (SETTINGS_BTN) {
+        SETTINGS_BTN.addEventListener('click', () => { 
+          showPrivacyModal(); 
+          hideModal();
+        });
+      }
+      if (PRIVACY_LINK) {
+        PRIVACY_LINK.addEventListener('click', (e) => { e.preventDefault(); showPrivacyModal(); hideModal(); });
+      }
+      if (OPEN_PRIVACY_FOOTER) {
+        OPEN_PRIVACY_FOOTER.addEventListener('click', (e) => { e.preventDefault(); showPrivacyModal(); });
+      }
+      if (CLOSE_PRIVACY_BTN) CLOSE_PRIVACY_BTN.addEventListener('click', closePrivacyModal);
+      if (CLOSE_PRIVACY_FOOTER_BTN) CLOSE_PRIVACY_FOOTER_BTN.addEventListener('click', closePrivacyModal);
+      // close modal when clicking overlay background
+      if (PRIVACY_MODAL) {
+        PRIVACY_MODAL.addEventListener('click', (e) => {
+          if (e.target === PRIVACY_MODAL) closePrivacyModal();
+        });
+      }
+    })();
+    
     // ========== TRANSLATIONS ==========
     const translations = {
       en: {
@@ -367,73 +701,44 @@
         contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" }
       }
     };
-
-    // ========== LANGUAGE TOGGLE FUNCTION ==========
+    
     function updateLanguage(lang) {
-      console.log('Switching to:', lang);
-      
-      // Update all text elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const keys = el.getAttribute('data-i18n').split('.');
         let text = translations[lang];
-        for (let key of keys) {
-          if (text && text[key] !== undefined) text = text[key];
-        }
+        for (let key of keys) if (text && text[key] !== undefined) text = text[key];
         if (typeof text === 'string') el.textContent = text;
       });
-      
-      // Update placeholders
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const keys = el.getAttribute('data-i18n-placeholder').split('.');
         let text = translations[lang];
-        for (let key of keys) {
-          if (text && text[key] !== undefined) text = text[key];
-        }
+        for (let key of keys) if (text && text[key] !== undefined) text = text[key];
         if (typeof text === 'string') el.placeholder = text;
       });
-      
-      // Update button states
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-      });
-      
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
       localStorage.setItem('preferred-language', lang);
     }
-
-    // ========== PARALLAX + EMAILJS ==========
+    
+    // ========== EXISTING PARALLAX + EMAILJS ==========
     (function() {
-      'use strict';
-      
-      // Navigation
       const nav = document.getElementById('templatemo-nav');
       const navToggle = document.getElementById('navToggle');
       const navLinks = document.getElementById('navLinks');
       const navItems = document.querySelectorAll('.nav-links a');
       const sections = document.querySelectorAll('.parallax-section');
-      // we target both .parallax-bg (images) and .video-bg for parallax movement
       const parallaxBgs = document.querySelectorAll('.parallax-bg, .video-bg');
       const revealElements = document.querySelectorAll('.section-content');
-      
-      // Mobile check
       let isMobile = window.innerWidth <= 768;
       let ticking = false;
       
-      // Parallax function that works on both images and video element
       function updateParallax() {
-        if (isMobile) {
-          // reset transforms for mobile
-          parallaxBgs.forEach(bg => {
-            bg.style.transform = 'translate3d(0,0,0)';
-          });
-          return;
-        }
+        if (isMobile) { parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)'); return; }
         const windowHeight = window.innerHeight;
         parallaxBgs.forEach(bg => {
           const section = bg.closest('.parallax-section');
           if (!section) return;
           const rect = section.getBoundingClientRect();
-          // early exit if far out of view
           if (rect.bottom < -300 || rect.top > windowHeight + 300) return;
           const speed = parseFloat(bg.getAttribute('data-speed')) || 0.5;
           const sectionCenterY = rect.top + rect.height / 2;
@@ -446,174 +751,26 @@
         });
         ticking = false;
       }
-      
       function onScroll() { if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; } }
-      
-      if (!isMobile) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-        updateParallax();
-      } else {
-        parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
-      }
-      
-      window.addEventListener('resize', () => {
-        const newMobile = window.innerWidth <= 768;
-        if (newMobile !== isMobile) {
-          isMobile = newMobile;
-          if (isMobile) {
-            parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
-            window.removeEventListener('scroll', onScroll);
-          } else {
-            window.addEventListener('scroll', onScroll, { passive: true });
-            updateParallax();
-          }
-        } else if (!isMobile) {
-          updateParallax();
-        } else {
-          parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)');
-        }
-      });
-      
-      // Nav scroll effect
-      function handleNavScroll() {
-        if (window.scrollY > 80) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-      }
-      window.addEventListener('scroll', handleNavScroll, { passive: true });
-      handleNavScroll();
-      
-      // Mobile menu toggle
-      if (navToggle) {
-        navToggle.addEventListener('click', () => {
-          navToggle.classList.toggle('active');
-          navLinks.classList.toggle('open');
-        });
-      }
-      
-      navItems.forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('active');
-          navLinks.classList.remove('open');
-        });
-      });
-      
-      // Active link on scroll
-      function updateActiveLink() {
-        const scrollPos = window.scrollY + window.innerHeight / 3;
-        sections.forEach(section => {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          const id = section.getAttribute('id');
-          if (scrollPos >= top && scrollPos < top + height) {
-            navItems.forEach(link => {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === '#' + id) link.classList.add('active');
-            });
-          }
-        });
-      }
-      window.addEventListener('scroll', updateActiveLink, { passive: true });
-      updateActiveLink();
-      
-      // Reveal animations
+      if (!isMobile) { window.addEventListener('scroll', onScroll, { passive: true }); updateParallax(); }
+      window.addEventListener('resize', () => { let newMobile = window.innerWidth <= 768; if (newMobile !== isMobile) { isMobile = newMobile; if (isMobile) window.removeEventListener('scroll', onScroll); else window.addEventListener('scroll', onScroll, { passive: true }); updateParallax(); } else if (!isMobile) updateParallax(); });
+      function handleNavScroll() { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+      window.addEventListener('scroll', handleNavScroll); handleNavScroll();
+      if (navToggle) navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); });
+      navItems.forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); }));
+      function updateActiveLink() { let scrollPos = window.scrollY + window.innerHeight / 3; sections.forEach(section => { let top = section.offsetTop, height = section.offsetHeight, id = section.getAttribute('id'); if (scrollPos >= top && scrollPos < top + height) navItems.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + id) link.classList.add('active'); }); }); }
+      window.addEventListener('scroll', updateActiveLink); updateActiveLink();
       revealElements.forEach(el => el.classList.add('reveal'));
-      
-      function checkReveal() {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 120;
-        revealElements.forEach(el => {
-          const elementTop = el.getBoundingClientRect().top;
-          if (elementTop < windowHeight - revealPoint) el.classList.add('visible');
-        });
-      }
-      window.addEventListener('scroll', checkReveal, { passive: true });
-      checkReveal();
-      
-      // Toast message
-      function showToast(msg) {
-        const el = document.getElementById('toast');
-        if (!el) { alert(msg); return; }
-        el.textContent = msg;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 2800);
-      }
-      
-      // EmailJS
+      function checkReveal() { let windowHeight = window.innerHeight, revealPoint = 120; revealElements.forEach(el => { if (el.getBoundingClientRect().top < windowHeight - revealPoint) el.classList.add('visible'); }); }
+      window.addEventListener('scroll', checkReveal); checkReveal();
+      function showToast(msg) { let el = document.getElementById('toast'); if (el) { el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2800); } else alert(msg); }
       const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const name = contactForm.querySelector("input[name='name']").value.trim();
-          const email = contactForm.querySelector("input[name='email']").value.trim();
-          const message = contactForm.querySelector("textarea[name='message']").value.trim();
-          
-          if (!name || !email || !message) {
-            showToast('Please fill out all fields.');
-            return;
-          }
-          
-          if (typeof emailjs === 'undefined') {
-            showToast('Email service not available. Please try again later.');
-            return;
-          }
-          
-          emailjs.init('pEt0L5IFostMcoXno');
-          
-          emailjs.send('service_3kflnuh', 'template_un57291', {
-            name: name,
-            email: email,
-            message: message,
-            to_email: 'info@octos.at'
-          })
-          .then(() => {
-            showToast('Thank you! Your message has been sent.');
-            contactForm.reset();
-          })
-          .catch(err => {
-            console.error(err);
-            showToast('Sorry, something went wrong. Please try again.');
-          });
-        });
-      }
-      
-      // Handle logo image fallback
-      const logoImg = document.querySelector('.nav-logo-img');
-      if (logoImg) {
-        logoImg.onerror = function() {
-          this.style.display = 'none';
-          if(this.nextElementSibling) this.nextElementSibling.style.display = 'block';
-        };
-      }
-      
-      // Initialize language
+      if (contactForm) contactForm.addEventListener('submit', function(e) { e.preventDefault(); let name = contactForm.querySelector("input[name='name']").value.trim(), email = contactForm.querySelector("input[name='email']").value.trim(), message = contactForm.querySelector("textarea[name='message']").value.trim(); if (!name || !email || !message) { showToast('Please fill out all fields.'); return; } if (typeof emailjs === 'undefined') { showToast('Email service not available.'); return; } emailjs.init('pEt0L5IFostMcoXno'); emailjs.send('service_3kflnuh', 'template_un57291', { name: name, email: email, message: message, to_email: 'info@octos.at' }).then(() => { showToast('Thank you! Your message has been sent.'); contactForm.reset(); }).catch(() => { showToast('Sorry, something went wrong. Please try again.'); }); });
+      const logoImg = document.querySelector('.nav-logo-img'); if (logoImg) logoImg.onerror = function() { this.style.display = 'none'; if(this.nextElementSibling) this.nextElementSibling.style.display = 'block'; };
       const savedLang = localStorage.getItem('preferred-language') || 'en';
-      
-      // Set up language buttons
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          updateLanguage(this.getAttribute('data-lang'));
-        });
-      });
-      
-      // Apply initial language
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); updateLanguage(btn.getAttribute('data-lang')); }));
       updateLanguage(savedLang);
-      
-      // Additional: ensure video loops and plays properly on all devices (autoplay policies)
-      const heroVideo = document.querySelector('#home .video-bg');
-      if(heroVideo) {
-        heroVideo.addEventListener('loadeddata', () => {
-          heroVideo.play().catch(e => console.log("autoplay prevented:", e));
-        });
-        // force mute + loop for reliable autoplay
-        heroVideo.muted = true;
-        heroVideo.loop = true;
-        heroVideo.setAttribute('playsinline', '');
-        heroVideo.setAttribute('autoplay', '');
-        // fallback: if not playing, attempt again
-        heroVideo.play().catch(() => {});
-      }
+      const heroVideo = document.querySelector('#home .video-bg'); if(heroVideo) { heroVideo.muted = true; heroVideo.loop = true; heroVideo.setAttribute('playsinline', ''); heroVideo.play().catch(() => {}); }
     })();
   </script>
 </body>
