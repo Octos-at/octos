@@ -8,10 +8,379 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-  <!-- main stylesheet (preserved fully) -->
-  <link rel="stylesheet" href="templatemo-parallax-starter.css" />
   <style>
-    /* additional overrides / video specific – no style changes, ensures video behaves like parallax-bg */
+    /* TemplateMo 612 Parallax Starter CSS - Fixed Version */
+    :root { 
+      --font-heading:'Oswald',sans-serif; 
+      --font-body:'Source Sans 3',sans-serif; 
+      --white:#fff; 
+      --white-90:rgba(255,255,255,.9); 
+      --white-70:rgba(255,255,255,.7); 
+      --white-40:rgba(255,255,255,.4); 
+      --white-20:rgba(255,255,255,.2); 
+      --nav-bg:rgba(0,0,0,.25); 
+      --nav-bg-scrolled:rgba(0,0,0,.85); 
+      --transition-smooth:.3s ease 
+    }
+
+    *,*::before,*::after{
+      margin:0;
+      padding:0;
+      box-sizing:border-box
+    }
+
+    html{
+      scroll-behavior:smooth
+    }
+
+    body{
+      font-family:var(--font-body);
+      font-weight:300;
+      color:var(--white);
+      line-height:1.7;
+      overflow-x:hidden
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit
+    }
+
+    img{
+      max-width:100%;
+      display:block
+    }
+
+    #templatemo-nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      background:var(--nav-bg);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      transition:background var(--transition-smooth)
+    }
+
+    #templatemo-nav.scrolled{
+      background:var(--nav-bg-scrolled)
+    }
+
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 30px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:70px
+    }
+
+    .nav-logo{
+      font-family:var(--font-heading);
+      font-size:22px;
+      font-weight:600;
+      letter-spacing:4px;
+      color:var(--white)
+    }
+
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:35px
+    }
+
+    .nav-links a{
+      font-family:var(--font-heading);
+      font-size:13px;
+      font-weight:400;
+      letter-spacing:2.5px;
+      color:var(--white-70);
+      transition:color var(--transition-smooth),opacity var(--transition-smooth)
+    }
+
+    .nav-links a:hover,.nav-links a.active{
+      color:var(--white)
+    }
+
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      flex-direction:column;
+      gap:5px
+    }
+
+    .nav-toggle span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:var(--white);
+      transition:all var(--transition-smooth)
+    }
+
+    .parallax-section{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden
+    }
+
+    .parallax-bg{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-position:center center;
+      background-repeat:no-repeat;
+      background-size:cover;
+      will-change:transform;
+      transition:transform .5s cubic-bezier(.22,1,.36,1);
+      z-index:0
+    }
+
+    .parallax-overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.42);
+      z-index:1
+    }
+
+    .parallax-overlay.overlay-dark{
+      background:rgba(0,0,0,.55)
+    }
+
+    .parallax-overlay.overlay-medium{
+      background:rgba(0,0,0,.5)
+    }
+
+    .section-content{
+      position:relative;
+      z-index:2;
+      max-width:960px;
+      width:100%;
+      padding:100px 30px;
+      text-align:center
+    }
+
+    .section-title{
+      font-family:var(--font-heading);
+      font-weight:300;
+      font-size:clamp(36px,6vw,64px);
+      letter-spacing:8px;
+      color:var(--white);
+      margin-bottom:20px;
+      line-height:1.2
+    }
+
+    .hero-title{
+      font-weight:400;
+      letter-spacing:12px
+    }
+
+    .section-subtitle{
+      font-family:var(--font-body);
+      font-size:clamp(13px,1.6vw,16px);
+      letter-spacing:4px;
+      color:var(--white-70);
+      margin-bottom:40px
+    }
+
+    .caps{
+      text-transform:uppercase
+    }
+
+    .content-block{
+      max-width:680px;
+      margin:0 auto
+    }
+
+    .content-block p{
+      font-size:17px;
+      color:var(--white-90);
+      margin-bottom:20px;
+      line-height:1.85
+    }
+
+    .btn-scroll{
+      display:inline-block;
+      font-family:var(--font-heading);
+      font-size:13px;
+      font-weight:400;
+      letter-spacing:4px;
+      color:var(--white);
+      border:1px solid var(--white-40);
+      padding:14px 45px;
+      transition:all var(--transition-smooth)
+    }
+
+    .btn-scroll:hover{
+      background:var(--white);
+      color:#111;
+      border-color:var(--white)
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:50px;
+      margin-top:50px
+    }
+
+    .service-item{
+      text-align:center
+    }
+
+    .service-icon{
+      margin-bottom:20px;
+      opacity:.85
+    }
+
+    .service-item h3{
+      font-family:var(--font-heading);
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:3px;
+      margin-bottom:12px;
+      color:var(--white)
+    }
+
+    .service-item p{
+      font-size:12px;
+      letter-spacing:2px;
+      color:var(--white-70);
+      line-height:1.9
+    }
+
+    .stats-row{
+      display:flex;
+      justify-content:center;
+      gap:70px;
+      margin-top:45px;
+      padding-top:40px;
+      border-top:1px solid var(--white-20)
+    }
+
+    .stat-item{
+      text-align:center
+    }
+
+    .stat-number{
+      display:block;
+      font-family:var(--font-heading);
+      font-size:42px;
+      font-weight:300;
+      letter-spacing:2px;
+      color:var(--white);
+      margin-bottom:8px
+    }
+
+    .stat-label{
+      font-size:11px;
+      letter-spacing:3px;
+      color:var(--white-70)
+    }
+
+    .contact-form-wrap{
+      max-width:600px;
+      margin:0 auto
+    }
+
+    .contact-form{
+      display:flex;
+      flex-direction:column;
+      gap:18px
+    }
+
+    .form-row{
+      display:flex;
+      gap:18px
+    }
+
+    .contact-form input,.contact-form textarea{
+      width:100%;
+      font-family:var(--font-body);
+      font-size:15px;
+      font-weight:300;
+      letter-spacing:.5px;
+      color:var(--white);
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--white-20);
+      padding:16px 20px;
+      outline:none;
+      transition:border-color var(--transition-smooth)
+    }
+
+    .contact-form input::placeholder,.contact-form textarea::placeholder{
+      color:var(--white-40)
+    }
+
+    .contact-form input:focus,.contact-form textarea:focus{
+      border-color:var(--white-70)
+    }
+
+    .contact-form textarea{
+      resize:vertical;
+      min-height:120px
+    }
+
+    .btn-submit{
+      font-family:var(--font-heading);
+      font-size:13px;
+      font-weight:400;
+      letter-spacing:4px;
+      color:var(--white);
+      background:transparent;
+      border:1px solid var(--white-40);
+      padding:16px 45px;
+      cursor:pointer;
+      transition:all var(--transition-smooth);
+      align-self:flex-start;
+      text-transform:uppercase
+    }
+
+    .btn-submit:hover{
+      background:var(--white);
+      color:#111;
+      border-color:var(--white)
+    }
+
+    #templatemo-footer{
+      background:#111;
+      text-align:center;
+      padding:30px 20px;
+      font-size:14px;
+      color:var(--white-40);
+      letter-spacing:1px
+    }
+
+    #templatemo-footer a{
+      color:var(--white-70);
+      transition:color var(--transition-smooth)
+    }
+
+    #templatemo-footer a:hover{
+      color:var(--white)
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .8s ease,transform .8s ease
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0)
+    }
+
+    /* Additional styles for video and cookie consent */
     .parallax-section {
       position: relative;
       overflow: hidden;
@@ -30,24 +399,47 @@
     }
     .parallax-section .video-bg {
       transform: translate3d(0, 0, 0);
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    
-    #about .section-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 100vh;
-      padding-bottom: 120px;
+    .parallax-section .parallax-bg,
+    .parallax-section .video-bg {
+      top: -50%;
+      height: 200%;
     }
-    
     @media (max-width: 768px) {
-      #about .section-content {
-        padding-bottom: 80px;
+      .parallax-section .parallax-bg,
+      .parallax-section .video-bg {
+        top: 0;
+        height: 100%;
       }
     }
-    
-    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:8px;font:14px/1.4 'Source Sans 3',sans-serif;letter-spacing:.2px;z-index:9999;opacity:0;transition:opacity .25s ease}
+    .video-bg {
+      width: 100%;
+      height: 200%;
+      top: -50%;
+      left: 0;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      .video-bg {
+        height: 100%;
+        top: 0;
+      }
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:24px;
+      transform:translateX(-50%);
+      background:rgba(0,0,0,.85);
+      color:#fff;
+      padding:12px 16px;
+      border-radius:8px;
+      font:14px/1.4 'Source Sans 3',sans-serif;
+      letter-spacing:.2px;
+      z-index:10001;
+      opacity:0;
+      transition:opacity .25s ease
+    }
     .toast.show{opacity:1}
     
     .lang-toggle {
@@ -55,7 +447,6 @@
       gap: 5px;
       margin-left: 20px;
     }
-    
     .lang-btn {
       background: transparent;
       border: 1px solid rgba(255,255,255,.4);
@@ -68,18 +459,15 @@
       transition: all .3s ease;
       border-radius: 3px;
     }
-    
     .lang-btn.active {
       background: #fff;
       color: #111;
       border-color: #fff;
     }
-    
     .lang-btn:hover {
       background: rgba(255,255,255,.2);
       color: #fff;
     }
-    
     @media (max-width: 768px) {
       .lang-toggle {
         margin-left: auto;
@@ -118,7 +506,7 @@
       .nav-logo-text { font-size: 18px; letter-spacing: 2px; }
       .nav-logo-img { height: 24px; }
     }
-
+    
     .download-btn {
       display: inline-flex;
       flex-direction: column;
@@ -150,29 +538,16 @@
       color: #111;
       border-color: var(--white);
     }
+    .download-lang-badge {
+      font-size: 11px;
+      background: rgba(255,255,255,0.2);
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
     
-    .parallax-section .parallax-bg,
-    .parallax-section .video-bg {
-      top: -50%;
-      height: 200%;
-    }
-    @media (max-width: 768px) {
-      .parallax-section .parallax-bg,
-      .parallax-section .video-bg {
-        top: 0;
-        height: 100%;
-      }
-    }
-    .video-bg {
-      width: 100%;
-      height: 200%;
-      top: -50%;
-      left: 0;
-      object-fit: cover;
-    }
-    @media (max-width: 768px) { .video-bg { height: 100%; top: 0; } }
-    
-    /* COOKIE CONSENT MODAL - Austrian DSGVO / TKG compliant */
+    /* Cookie Consent Modal */
     .cookie-consent {
       position: fixed;
       bottom: 0;
@@ -199,16 +574,9 @@
       gap: 20px;
     }
     .cookie-text { flex: 3; min-width: 240px; }
-    .cookie-text p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #eee;
-      letter-spacing: 0.3px;
-    }
-    .cookie-text a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
-    .cookie-text a:hover { color: #ccc; }
-    .cookie-buttons { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .cookie-text p { margin: 0; font-size: 14px; line-height: 1.5; color: #eee; }
+    .cookie-text a { color: #fff; text-decoration: underline; }
+    .cookie-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
     .cookie-btn {
       font-family: var(--font-heading);
       font-size: 12px;
@@ -221,14 +589,13 @@
       font-weight: 500;
       text-transform: uppercase;
     }
-    .cookie-btn-accept { background: white; color: #111; border: 1px solid white; }
-    .cookie-btn-accept:hover { background: #e0e0e0; transform: scale(0.98); }
+    .cookie-btn-accept { background: white; color: #111; }
+    .cookie-btn-accept:hover { background: #e0e0e0; }
     .cookie-btn-deny { background: transparent; color: #ddd; border: 1px solid rgba(255,255,255,0.5); }
-    .cookie-btn-deny:hover { background: rgba(255,255,255,0.1); color: white; }
+    .cookie-btn-deny:hover { background: rgba(255,255,255,0.1); }
     .cookie-btn-settings { background: transparent; color: #ccc; border: 1px solid rgba(255,255,255,0.3); }
-    .cookie-btn-settings:hover { background: rgba(255,255,255,0.08); }
     
-    /* MODAL for Privacy & Imprint */
+    /* Legal Modals */
     .legal-modal {
       position: fixed;
       top: 0;
@@ -257,8 +624,6 @@
       overflow-y: auto;
       border: 1px solid rgba(255,255,255,0.2);
       color: #f0f0f0;
-      font-family: var(--font-body);
-      box-shadow: 0 25px 40px rgba(0,0,0,0.5);
     }
     .legal-modal-content h3 {
       font-family: var(--font-heading);
@@ -271,16 +636,9 @@
     .legal-modal-content h4 {
       font-family: var(--font-heading);
       font-size: 18px;
-      margin: 20px 0 8px 0;
-      letter-spacing: 1px;
+      margin: 20px 0 8px;
     }
-    .legal-modal-content p, .legal-modal-content li {
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      color: #ddd;
-    }
-    .legal-modal-content ul { margin: 8px 0 12px 24px; }
+    .legal-modal-content p { font-size: 14px; line-height: 1.6; margin-bottom: 10px; color: #ddd; }
     .close-legal {
       position: absolute;
       top: 18px;
@@ -290,7 +648,6 @@
       font-size: 28px;
       cursor: pointer;
       color: #ccc;
-      transition: color 0.2s;
     }
     .close-legal:hover { color: white; }
     .legal-btn-close {
@@ -301,9 +658,7 @@
       padding: 10px 24px;
       border-radius: 40px;
       font-family: var(--font-heading);
-      letter-spacing: 1px;
       cursor: pointer;
-      font-size: 14px;
     }
     @media (max-width: 680px) {
       .cookie-container { flex-direction: column; text-align: center; padding: 20px; }
@@ -311,16 +666,6 @@
     }
     footer a { color: rgba(255,255,255,0.7); text-decoration: underline; margin: 0 8px; }
     footer a:hover { color: white; }
-    
-    /* Language indicator for download */
-    .download-lang-badge {
-      font-size: 11px;
-      background: rgba(255,255,255,0.2);
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-top: 5px;
-      letter-spacing: 1px;
-    }
   </style>
 </head>
 <body>
@@ -341,13 +686,12 @@
         <li><a href="#contact" data-i18n="nav.contact">CONTACT</a></li>
       </ul>
       <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="de">DE</button>
       </div>
     </div>
   </nav>
   
-  <!-- HERO SECTION -->
   <section id="home" class="parallax-section">
     <video class="parallax-bg video-bg" data-speed="0.5" autoplay loop muted playsinline>
       <source src="videos/videoplayback.mp4" type="video/mp4">
@@ -395,7 +739,6 @@
         <p style="font-size: 20px;" data-i18n="gallery.subtitle">The future of barbering comfort and control.</p>
         <b style="font-size: 20px;" data-i18n="gallery.tagline">Move like you're standing feel like you're not!</b>
         
-        <!-- DOWNLOAD BUTTON WITH LANGUAGE-SPECIFIC MANUAL -->
         <div style="margin: 30px 0;">
           <a href="#" id="downloadManualLink" class="download-btn" download>
             <img src="images/octostool-01.jpg" alt="OctoStool" class="download-btn-image">
@@ -444,99 +787,51 @@
   <div id="cookieConsentModal" class="cookie-consent">
     <div class="cookie-container">
       <div class="cookie-text">
-        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 verwenden wir technisch notwendige Cookies (Session, IP-Erfassung) basierend auf berechtigtem Interesse. Für optionale Analyse-Cookies würden wir Ihre Einwilligung benötigen. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
+        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 speichern wir standardmäßig KEINE Daten. Ihre Sprachauswahl wird nur gespeichert, wenn Sie Cookies akzeptieren. <a href="#" id="privacyDetailsLink">Mehr erfahren</a></p>
       </div>
       <div class="cookie-buttons">
-        <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">AKZEPTIEREN</button>
-        <button id="cookieDenyBtn" class="cookie-btn cookie-btn-deny">ABLEHNEN</button>
-        <button id="cookieSettingsBtn" class="cookie-btn cookie-btn-settings">EINSTELLUNGEN</button>
+        <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">COOKIES AKZEPTIEREN</button>
+        <button id="cookieDenyBtn" class="cookie-btn cookie-btn-deny">KEINE COOKIES</button>
+        <button id="cookieSettingsBtn" class="cookie-btn cookie-btn-settings">DATENSCHUTZ</button>
       </div>
     </div>
   </div>
   
-  <!-- MODAL: Datenschutzerklärung -->
+  <!-- PRIVACY MODAL -->
   <div id="privacyModal" class="legal-modal">
     <div class="legal-modal-content">
       <button class="close-legal" id="closePrivacyModalBtn">&times;</button>
       <h3>DATENSCHUTZERKLÄRUNG</h3>
-      <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2021). Nachfolgend informieren wir Sie gemäß Art 13 DSGVO über die wichtigsten Aspekte der Datenverarbeitung auf unserer Website.</p>
-      <h4>1. Verantwortlicher</h4>
-      <p>OCTOS (eingetragenes Einzelunternehmen)<br>Innrain 103, 6020 Innsbruck, Österreich<br>E-Mail: info@octos.at</p>
-      <h4>2. Besuch der Website & technisch notwendige Cookies</h4>
-      <p>Beim Besuch unserer Website wird Ihre IP-Adresse sowie Beginn und Ende der Sitzung für die Dauer dieser Sitzung erfasst. Dies ist technisch erforderlich, um die Website funktionsfähig darzustellen, und stellt ein berechtigtes Interesse i.S.v. Art 6 Abs 1 lit f DSGVO dar. Diese Daten werden nicht zu Analysezwecken weiterverarbeitet.</p>
-      <h4>3. Kontaktformular</h4>
-      <p>Wenn Sie per Formular auf der Website Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten (Name, E-Mail-Adresse, Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen für maximal 6 Monate bei uns gespeichert. Rechtsgrundlage ist unser berechtigtes Interesse (Art 6 Abs 1 lit f DSGVO) bzw. zur Durchführung vorvertraglicher Maßnahmen (Art 6 Abs 1 lit b DSGVO). Eine Weitergabe an Dritte erfolgt nicht, es sei denn, dies ist gesetzlich erforderlich.</p>
-      <h4>4. Ihre Rechte</h4>
-      <p>Ihnen stehen bezüglich Ihrer verarbeiteten Daten die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch zu. Beschwerden können Sie bei der österreichischen Datenschutzbehörde einreichen.</p>
+      <p><strong>Verantwortlicher:</strong> OCTOS, Innrain 103, 6020 Innsbruck, Österreich | info@octos.at</p>
+      <h4>Cookies & Speicherung</h4>
+      <p><strong>Diese Website speichert standardmäßig KEINE Daten.</strong> Nur wenn Sie "COOKIES AKZEPTIEREN" klicken, werden Ihre Sprachpräferenz und Ihre Einwilligung gespeichert. Bei "KEINE COOKIES" wird absolut nichts gespeichert – auch nicht Ihre Sprachwahl. Die Website funktioniert vollständig ohne Cookies.</p>
+      <h4>Kontaktformular</h4>
+      <p>Ihre Kontaktdaten (Name, E-Mail, Nachricht) werden nur zur Bearbeitung Ihrer Anfrage verarbeitet und nicht in Cookies gespeichert.</p>
+      <h4>Ihre Rechte</h4>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch. Beschwerden bei der österreichischen Datenschutzbehörde.</p>
       <button id="closePrivacyFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
     </div>
   </div>
   
-  <!-- MODAL: IMPRESSUM -->
+  <!-- IMPRINT MODAL -->
   <div id="imprintModal" class="legal-modal">
     <div class="legal-modal-content">
       <button class="close-legal" id="closeImprintModalBtn">&times;</button>
       <h3>IMPRESSUM</h3>
       <p><strong>Firmenname:</strong> OCTOS (eingetragenes Einzelunternehmen)<br>
-      <strong>Inhaber:</strong> [Vorname Nachname des Inhabers]<br>
-      <strong>Rechtsform:</strong> eingetragenes Einzelunternehmen<br>
-      <strong>Sitz (Adresse):</strong> Innrain 103, 6020 Innsbruck, Österreich<br>
+      <strong>Inhaber:</strong> [Vorname Nachname]<br>
+      <strong>Sitz:</strong> Innrain 103, 6020 Innsbruck, Österreich<br>
       <strong>Firmenbuchnummer:</strong> FN [bitte eintragen]a<br>
       <strong>Firmenbuchgericht:</strong> Landesgericht Innsbruck<br>
       <strong>UID-Nummer:</strong> ATU [bitte eintragen]<br>
-      <strong>Telefon:</strong> +43 (0) 512 123456<br>
       <strong>E-Mail:</strong> info@octos.at<br>
-      <strong>Anwendbare Rechtsvorschriften:</strong> Gewerbeordnung (GewO 1994), Unternehmensgesetzbuch (UGB), ECG<br>
       <strong>Mitgliedschaften:</strong> Wirtschaftskammer Tirol</p>
-      <p><strong>Unternehmensgegenstand:</strong> Entwicklung und Vertrieb von ergonomischen Produkten, mechanischen Konstruktionen und Designlösungen.</p>
       <button id="closeImprintFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
     </div>
   </div>
   
   <script>
-    // ========== LANGUAGE-SPECIFIC DOWNLOAD LINKS ==========
-    // Define the manual file paths for each language
-    // IMPORTANT: Replace these paths with your actual manual files
-    const manualFiles = {
-      en: 'docs/octostool_manual_en.pdf',
-      de: 'docs/octostool_manual_de.pdf'
-    };
-    
-    // Fallback to common file if language-specific not found (optional)
-    const fallbackManual = 'docs/octostool.pdf';
-    
-    // Badge text and emoji for language indication
-    const langBadges = {
-      en: { text: '🇬🇧 English Version', emoji: '🇬🇧' },
-      de: { text: '🇩🇪 Deutsche Version', emoji: '🇩🇪' }
-    };
-    
-    // Get download link element
-    const downloadLink = document.getElementById('downloadManualLink');
-    const downloadBadge = document.getElementById('downloadLangBadge');
-    const downloadBtnText = document.getElementById('downloadBtnText');
-    
-    // Function to update download link based on selected language
-    function updateDownloadLink(lang) {
-      if (!downloadLink) return;
-      
-      // Set the href attribute to the language-specific manual
-      const manualPath = manualFiles[lang] || fallbackManual;
-      downloadLink.setAttribute('href', manualPath);
-      
-      // Update the badge to show which language version will be downloaded
-      if (downloadBadge) {
-        const badgeInfo = langBadges[lang] || langBadges.en;
-        downloadBadge.textContent = badgeInfo.text;
-      }
-      
-      // Optional: Add a small title attribute for clarity
-      downloadLink.setAttribute('title', `Download OctoStool manual in ${lang === 'de' ? 'German' : 'English'}`);
-      
-      console.log(`Download link updated: ${manualPath} (${lang})`);
-    }
-    
-    // ========== COOKIE CONSENT MANAGER ==========
+    // ========== STRICT COOKIE CONSENT - ZERO STORAGE WHEN DECLINED ==========
     (function() {
       const CONSENT_KEY = 'octos_cookie_consent';
       const MODAL = document.getElementById('cookieConsentModal');
@@ -549,117 +844,192 @@
       const PRIVACY_MODAL = document.getElementById('privacyModal');
       const IMPRINT_MODAL = document.getElementById('imprintModal');
       
-      function setConsent(choice) {
-        if (choice === 'accepted') {
-          localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics: true, necessary: true, timestamp: Date.now() }));
-          enableAnalytics(true);
-        } else if (choice === 'denied') {
-          localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics: false, necessary: true, timestamp: Date.now() }));
-          enableAnalytics(false);
+      let cookiesAccepted = false;
+      let hasMadeChoice = false;
+      
+      // Delete ALL browser cookies
+      function deleteAllCookies() {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+          if (name !== '') {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
+          }
         }
-        if (MODAL) MODAL.classList.remove('show');
       }
-      function enableAnalytics(enabled) { console.log('[DSGVO] Analytics consent:', enabled ? 'enabled' : 'disabled'); }
-      function showModal() { if (MODAL) MODAL.classList.add('show'); }
-      function checkExisting() { if (localStorage.getItem(CONSENT_KEY)) return true; return false; }
-      if (!checkExisting()) setTimeout(() => showModal(), 400);
-      else if (MODAL) MODAL.classList.remove('show');
       
-      if (ACCEPT_BTN) ACCEPT_BTN.addEventListener('click', () => setConsent('accepted'));
-      if (DENY_BTN) DENY_BTN.addEventListener('click', () => setConsent('denied'));
-      if (SETTINGS_BTN) SETTINGS_BTN.addEventListener('click', () => { if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); if(MODAL) MODAL.classList.remove('show'); });
-      if (PRIVACY_LINK) PRIVACY_LINK.addEventListener('click', (e) => { e.preventDefault(); if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); if(MODAL) MODAL.classList.remove('show'); });
+      // Clear ALL localStorage (including language preference)
+      function clearAllStorage() {
+        try {
+          localStorage.clear();
+          sessionStorage.clear();
+        } catch(e) {}
+      }
       
+      // ACCEPT - store consent AND language preference
+      function acceptCookies() {
+        cookiesAccepted = true;
+        const consentData = { choice: 'accepted', timestamp: Date.now() };
+        try {
+          localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
+          // Save current language
+          const currentLang = document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'en';
+          localStorage.setItem('preferred-language', currentLang);
+        } catch(e) {}
+        showToast('Cookies akzeptiert. Ihre Sprachauswahl wird gespeichert.');
+        hideModal();
+        hasMadeChoice = true;
+      }
+      
+      // DENY - delete EVERYTHING, store NOTHING
+      function denyCookies() {
+        cookiesAccepted = false;
+        deleteAllCookies();
+        clearAllStorage();
+        showToast('Cookies abgelehnt. Es werden KEINE Daten gespeichert.');
+        hideModal();
+        hasMadeChoice = true;
+      }
+      
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+      }
+      
+      function showModal() { if (MODAL && !hasMadeChoice) MODAL.classList.add('show'); }
+      function hideModal() { if (MODAL) MODAL.classList.remove('show'); }
+      
+      // Check for existing consent (only accepted is stored)
+      function checkExistingConsent() {
+        try {
+          const stored = localStorage.getItem(CONSENT_KEY);
+          if (stored) {
+            const consent = JSON.parse(stored);
+            if (consent && consent.choice === 'accepted') {
+              cookiesAccepted = true;
+              hasMadeChoice = true;
+              return true;
+            }
+          }
+        } catch(e) {}
+        return false;
+      }
+      
+      const hasConsent = checkExistingConsent();
+      if (!hasConsent) {
+        setTimeout(() => showModal(), 500);
+      } else {
+        hideModal();
+      }
+      
+      // Language handling - ONLY saves if cookies accepted
+      const translations = {
+        en: {
+          nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" },
+          home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" },
+          about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." },
+          services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } },
+          gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." },
+          contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" }
+        },
+        de: {
+          nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" },
+          home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" },
+          about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." },
+          services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } },
+          gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." },
+          contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" }
+        }
+      };
+      
+      const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_de.pdf' };
+      const downloadLink = document.getElementById('downloadManualLink');
+      const downloadBadge = document.getElementById('downloadLangBadge');
+      const downloadBtnText = document.getElementById('downloadBtnText');
+      
+      function updateDownloadLink(lang) {
+        if (downloadLink) downloadLink.href = manualFiles[lang] || 'docs/octostool.pdf';
+        if (downloadBadge) downloadBadge.textContent = lang === 'de' ? '🇩🇪 Deutsche Version' : '🇬🇧 English Version';
+      }
+      
+      function updateLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const keys = el.getAttribute('data-i18n').split('.');
+          let text = translations[lang];
+          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
+          if (typeof text === 'string') el.textContent = text;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const keys = el.getAttribute('data-i18n-placeholder').split('.');
+          let text = translations[lang];
+          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
+          if (typeof text === 'string') el.placeholder = text;
+        });
+        if (downloadBtnText) {
+          downloadBtnText.textContent = translations[lang]?.gallery?.download || (lang === 'de' ? 'OctoStool HERUNTERLADEN' : 'DOWNLOAD OctoStool');
+        }
+        updateDownloadLink(lang);
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        
+        // ONLY save language preference if cookies are accepted
+        if (cookiesAccepted) {
+          try { localStorage.setItem('preferred-language', lang); } catch(e) {}
+        }
+      }
+      
+      // Load initial language (only if cookies accepted)
+      let initialLang = 'en';
+      if (cookiesAccepted) {
+        const savedLang = localStorage.getItem('preferred-language');
+        if (savedLang === 'en' || savedLang === 'de') initialLang = savedLang;
+      }
+      updateLanguage(initialLang);
+      
+      // Language button event listeners
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          updateLanguage(btn.getAttribute('data-lang'));
+        });
+      });
+      
+      // Cookie button event listeners
+      if (ACCEPT_BTN) ACCEPT_BTN.addEventListener('click', acceptCookies);
+      if (DENY_BTN) DENY_BTN.addEventListener('click', denyCookies);
+      if (SETTINGS_BTN) SETTINGS_BTN.addEventListener('click', () => { if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); hideModal(); });
+      if (PRIVACY_LINK) PRIVACY_LINK.addEventListener('click', (e) => { e.preventDefault(); if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active'); hideModal(); });
+      
+      // Modal management
       function openModal(modal) { if(modal) modal.classList.add('active'); }
       function closeModal(modal) { if(modal) modal.classList.remove('active'); }
+      
       if (OPEN_PRIVACY_FOOTER) OPEN_PRIVACY_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(PRIVACY_MODAL); });
       if (OPEN_IMPRINT_FOOTER) OPEN_IMPRINT_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(IMPRINT_MODAL); });
+      
       document.getElementById('closePrivacyModalBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
       document.getElementById('closePrivacyFooterBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
       document.getElementById('closeImprintModalBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
       document.getElementById('closeImprintFooterBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
+      
       [PRIVACY_MODAL, IMPRINT_MODAL].forEach(modal => {
         if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
       });
     })();
     
-    // ========== TRANSLATIONS with download button text ==========
-    const translations = {
-      en: {
-        nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" },
-        home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" },
-        about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." },
-        services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } },
-        gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." },
-        contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" }
-      },
-      de: {
-        nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" },
-        home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" },
-        about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." },
-        services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } },
-        gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." },
-        contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" }
-      }
-    };
-    
-    function updateLanguage(lang) {
-      // Update all text elements
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const keys = el.getAttribute('data-i18n').split('.');
-        let text = translations[lang];
-        for (let key of keys) {
-          if (text && text[key] !== undefined) text = text[key];
-          else if (text && text[key] === undefined && keys.length > 1) text = text[keys[0]]?.[keys[1]];
-        }
-        if (typeof text === 'string') el.textContent = text;
-      });
-      
-      // Update placeholders
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const keys = el.getAttribute('data-i18n-placeholder').split('.');
-        let text = translations[lang];
-        for (let key of keys) {
-          if (text && text[key] !== undefined) text = text[key];
-        }
-        if (typeof text === 'string') el.placeholder = text;
-      });
-      
-      // Update download button text separately (since it has a specific ID)
-      if (downloadBtnText) {
-        const downloadText = translations[lang]?.gallery?.download || (lang === 'de' ? 'OctoStool HERUNTERLADEN' : 'DOWNLOAD OctoStool');
-        downloadBtnText.textContent = downloadText;
-      }
-      
-      // UPDATE DOWNLOAD LINK BASED ON LANGUAGE
-      updateDownloadLink(lang);
-      
-      // Update language button states
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-      });
-      
-      localStorage.setItem('preferred-language', lang);
-    }
-    
-    // ========== INITIALIZE ==========
-    const savedLang = localStorage.getItem('preferred-language') || 'en';
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateLanguage(btn.getAttribute('data-lang'));
-      });
-    });
-    updateLanguage(savedLang);
-    
-    // ========== SIMPLIFIED PARALLAX & EMAILJS ==========
+    // ========== PARALLAX & EMAILJS FUNCTIONALITY ==========
     (function() {
       const nav = document.getElementById('templatemo-nav');
       const navToggle = document.getElementById('navToggle');
       const navLinks = document.getElementById('navLinks');
       const navItems = document.querySelectorAll('.nav-links a');
-      const sections = document.querySelectorAll('.parallax-section');
       const parallaxBgs = document.querySelectorAll('.parallax-bg, .video-bg');
       const revealElements = document.querySelectorAll('.section-content');
       let isMobile = window.innerWidth <= 768;
@@ -683,49 +1053,21 @@
         });
       }
       
-      function onScroll() { requestAnimationFrame(updateParallax); }
-      if (!isMobile) { window.addEventListener('scroll', onScroll); updateParallax(); }
+      window.addEventListener('scroll', () => requestAnimationFrame(updateParallax));
+      window.addEventListener('resize', () => { isMobile = window.innerWidth <= 768; if (!isMobile) updateParallax(); });
+      updateParallax();
       
-      window.addEventListener('resize', () => {
-        isMobile = window.innerWidth <= 768;
-        if (!isMobile) updateParallax();
-      });
-      
-      function handleNavScroll() {
-        if (window.scrollY > 80) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-      }
+      function handleNavScroll() { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
       window.addEventListener('scroll', handleNavScroll);
       handleNavScroll();
       
-      if (navToggle) {
-        navToggle.addEventListener('click', () => {
-          navToggle.classList.toggle('active');
-          navLinks.classList.toggle('open');
-        });
-      }
-      
-      navItems.forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('active');
-          navLinks.classList.remove('open');
-        });
-      });
+      if (navToggle) navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); });
+      navItems.forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); }));
       
       revealElements.forEach(el => el.classList.add('reveal'));
-      function checkReveal() {
-        const windowHeight = window.innerHeight;
-        revealElements.forEach(el => {
-          if (el.getBoundingClientRect().top < windowHeight - 120) el.classList.add('visible');
-        });
-      }
+      function checkReveal() { revealElements.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 120) el.classList.add('visible'); }); }
       window.addEventListener('scroll', checkReveal);
       checkReveal();
-      
-      function showToast(msg) {
-        const el = document.getElementById('toast');
-        if (el) { el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2800); }
-      }
       
       const contactForm = document.getElementById('contactForm');
       if (contactForm) {
@@ -734,17 +1076,25 @@
           const name = contactForm.querySelector("input[name='name']").value.trim();
           const email = contactForm.querySelector("input[name='email']").value.trim();
           const message = contactForm.querySelector("textarea[name='message']").value.trim();
-          if (!name || !email || !message) { showToast('Please fill out all fields.'); return; }
-          if (typeof emailjs === 'undefined') { showToast('Email service not available.'); return; }
-          emailjs.init('pEt0L5IFostMcoXno');
-          emailjs.send('service_3kflnuh', 'template_un57291', { name: name, email: email, message: message, to_email: 'info@octos.at' })
-            .then(() => { showToast('Thank you! Your message has been sent.'); contactForm.reset(); })
-            .catch(() => { showToast('Sorry, something went wrong. Please try again.'); });
+          if (!name || !email || !message) {
+            const toast = document.getElementById('toast');
+            if(toast) { toast.textContent = 'Bitte alle Felder ausfüllen.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); }
+            return;
+          }
+          if (typeof emailjs !== 'undefined') {
+            emailjs.init('pEt0L5IFostMcoXno');
+            emailjs.send('service_3kflnuh', 'template_un57291', { name, email, message, to_email: 'info@octos.at' })
+              .then(() => {
+                const toast = document.getElementById('toast');
+                if(toast) { toast.textContent = 'Vielen Dank! Ihre Nachricht wurde gesendet.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); }
+                contactForm.reset();
+              });
+          }
         });
       }
       
       const heroVideo = document.querySelector('#home .video-bg');
-      if(heroVideo) { heroVideo.muted = true; heroVideo.loop = true; heroVideo.setAttribute('playsinline', ''); heroVideo.play().catch(() => {}); }
+      if(heroVideo) { heroVideo.muted = true; heroVideo.loop = true; heroVideo.play().catch(() => {}); }
     })();
   </script>
 </body>
