@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="templatemo-parallax-starter.css" />
   <style>
-    /* All existing styles remain the same - preserved for full functionality */
+    /* All styles remain the same */
     .parallax-section { position: relative; overflow: hidden; }
     .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; will-change: transform; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
     .parallax-section .video-bg { transform: translate3d(0, 0, 0); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -38,7 +38,6 @@
     .video-bg { width: 100%; height: 200%; top: -50%; left: 0; object-fit: cover; }
     @media (max-width: 768px) { .video-bg { height: 100%; top: 0; } }
     
-    /* COOKIE CONSENT MODAL - Austrian DSGVO / TKG compliant */
     .cookie-consent {
       position: fixed;
       bottom: 0;
@@ -251,7 +250,7 @@
   <div id="cookieConsentModal" class="cookie-consent">
     <div class="cookie-container">
       <div class="cookie-text">
-        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 verwenden wir KEINE Cookies, es sei denn, Sie erteilen Ihre ausdrückliche Zustimmung. Die Website funktioniert vollständig ohne Cookies. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
+        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 verwenden wir standardmäßig KEINE Cookies. Ihre Sprachpräferenz wird nur gespeichert, wenn Sie Cookies akzeptieren. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
       </div>
       <div class="cookie-buttons">
         <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">COOKIES AKZEPTIEREN</button>
@@ -269,8 +268,8 @@
       <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2021).</p>
       <h4>1. Verantwortlicher</h4>
       <p>OCTOS (eingetragenes Einzelunternehmen)<br>Innrain 103, 6020 Innsbruck, Österreich<br>E-Mail: info@octos.at</p>
-      <h4>2. Cookies & Ihre Wahl</h4>
-      <p><strong>Diese Website verwendet standardmäßig KEINE Cookies.</strong> Wir setzen nur dann Cookies ein, wenn Sie uns Ihre ausdrückliche Einwilligung erteilen. Wenn Sie "KEINE COOKIES" wählen, werden keinerlei Cookies gespeichert – auch nicht Ihre Präferenz. Ihre Entscheidung wird nicht gespeichert, und Sie werden beim nächsten Besuch erneut gefragt. Dies ist die strikteste Auslegung der österreichischen DSGVO und TKG 2021.</p>
+      <h4>2. Cookies & Speicherung</h4>
+      <p><strong>Diese Website verwendet standardmäßig KEINE Cookies.</strong> Wir speichern nur dann Daten (einschließlich Ihrer Sprachpräferenz), wenn Sie uns Ihre ausdrückliche Einwilligung erteilen. Wenn Sie "KEINE COOKIES" wählen, werden keinerlei Daten gespeichert – auch nicht Ihre Sprachwahl. Ihre Entscheidung wird nicht gespeichert, und Sie werden beim nächsten Besuch erneut gefragt.</p>
       <h4>3. Kontaktformular</h4>
       <p>Wenn Sie per Formular Kontakt aufnehmen, werden Ihre Daten (Name, E-Mail, Nachricht) zur Bearbeitung der Anfrage für maximal 6 Monate auf unserem Server gespeichert. Rechtsgrundlage ist Art 6 Abs 1 lit b DSGVO (Vertragsanbahnung). Diese Daten werden nicht in Cookies gespeichert.</p>
       <h4>4. Ihre Rechte</h4>
@@ -299,7 +298,7 @@
   </div>
   
   <script>
-    // ========== COOKIE CONSENT - ZERO COOKIES WHEN REJECTED ==========
+    // ========== STRICT COOKIE CONSENT - NO STORAGE WITHOUT ACCEPTANCE ==========
     (function() {
       const CONSENT_KEY = 'octos_cookie_consent';
       const MODAL = document.getElementById('cookieConsentModal');
@@ -314,6 +313,7 @@
       
       // Flag to track if user has made a choice in this session
       let hasMadeChoice = false;
+      let cookiesAccepted = false;
       
       // Function to delete ALL cookies completely
       function deleteAllCookies() {
@@ -324,7 +324,6 @@
           const eqPos = cookie.indexOf('=');
           const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
           if (name !== '') {
-            // Delete cookie with various path and domain combinations
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname + ';';
@@ -332,20 +331,20 @@
         }
       }
       
-      // Clear localStorage as well (except we don't store anything when rejected)
+      // Clear ALL localStorage (including language preference)
       function clearAllStorage() {
         try {
-          // Only clear our consent key if it exists - we don't want to store ANYTHING when rejected
-          localStorage.removeItem(CONSENT_KEY);
-          // Don't clear other localStorage items that might be needed (like language preference)
-          // Language preference is separate and user expects it to be remembered
+          console.log('[DSGVO] Clearing ALL localStorage (including language preference)');
+          localStorage.clear(); // Remove EVERYTHING when cookies are rejected
         } catch(e) {}
       }
       
-      // Handle ACCEPT - user wants cookies (only then we store consent)
+      // Handle ACCEPT - user wants cookies
       function acceptCookies() {
-        console.log('[DSGVO] User ACCEPTED cookies - storing consent');
-        // Store consent ONLY if user accepted
+        console.log('[DSGVO] User ACCEPTED cookies - storing consent and language preference');
+        cookiesAccepted = true;
+        
+        // Store consent
         const consentData = {
           choice: 'accepted',
           timestamp: Date.now(),
@@ -353,41 +352,46 @@
         };
         try {
           localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
+          
+          // Save current language preference ONLY if cookies are accepted
+          const currentLang = document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'en';
+          localStorage.setItem('preferred-language', currentLang);
+          console.log('[DSGVO] Language preference saved:', currentLang);
         } catch(e) {}
         
         // Enable analytics if you have any
         enableAnalytics(true);
         
-        showToast('Sie haben Cookies akzeptiert. Vielen Dank!');
+        showToast('Sie haben Cookies akzeptiert. Ihre Sprachpräferenz wird gespeichert.');
         hideModal();
         hasMadeChoice = true;
       }
       
-      // Handle DENY - user rejects ALL cookies - STORE NOTHING
+      // Handle DENY - user rejects ALL cookies - DELETE EVERYTHING
       function denyCookies() {
-        console.log('[DSGVO] User REJECTED cookies - NO cookies will be stored');
+        console.log('[DSGVO] User REJECTED cookies - DELETING all stored data');
+        cookiesAccepted = false;
         
         // Delete any existing cookies immediately
         deleteAllCookies();
         
-        // Clear localStorage of any consent data (we don't store rejection)
+        // Clear ALL localStorage (including language preference)
         clearAllStorage();
         
         // Ensure no analytics are enabled
         enableAnalytics(false);
         
-        showToast('Sie haben Cookies abgelehnt. Es werden KEINE Cookies gespeichert.');
+        showToast('Sie haben Cookies abgelehnt. Es werden KEINE Daten gespeichert, auch nicht Ihre Sprachwahl.');
         hideModal();
         hasMadeChoice = true;
         
         // Note: We do NOT store the rejection anywhere
-        // On next visit, the banner will appear again because there's no stored preference
+        // On next visit, the banner will appear again
       }
       
       function enableAnalytics(enabled) {
         console.log('[DSGVO] Analytics enabled:', enabled);
         // Placeholder for Google Analytics or other tracking
-        // If you add GA, only initialize it when enabled === true
       }
       
       function showToast(msg) {
@@ -395,7 +399,7 @@
         if (toast) {
           toast.textContent = msg;
           toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 3000);
+          setTimeout(() => toast.classList.remove('show'), 4000);
         }
       }
       
@@ -413,27 +417,71 @@
           if (stored) {
             const consent = JSON.parse(stored);
             if (consent && consent.choice === 'accepted' && consent.timestamp) {
-              // User previously accepted cookies
               console.log('[DSGVO] Found existing ACCEPTED consent');
+              cookiesAccepted = true;
               enableAnalytics(true);
               hasMadeChoice = true;
-              return true; // Consent exists, don't show banner
+              return true;
             }
           }
         } catch(e) {}
         
-        // No consent stored or it was rejected (we don't store rejections)
-        console.log('[DSGVO] No stored consent - banner will be shown');
+        console.log('[DSGVO] No stored consent or rejected - banner will be shown');
+        cookiesAccepted = false;
         return false;
       }
       
       // Initialize - only show banner if no ACCEPTED consent exists
       const hasConsent = checkExistingConsent();
       if (!hasConsent) {
-        // No stored acceptance - show banner on EVERY visit
         setTimeout(() => showModal(), 500);
       } else {
         hideModal();
+      }
+      
+      // ========== LANGUAGE HANDLING - ONLY SAVE IF COOKIES ACCEPTED ==========
+      // This overrides the default language saving behavior
+      const originalUpdateLanguage = window.updateLanguage;
+      
+      window.updateLanguage = function(lang) {
+        // Update UI immediately (this is just visual, no storage yet)
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const keys = el.getAttribute('data-i18n').split('.');
+          let text = translations[lang];
+          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
+          if (typeof text === 'string') el.textContent = text;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const keys = el.getAttribute('data-i18n-placeholder').split('.');
+          let text = translations[lang];
+          for (let key of keys) if (text && text[key] !== undefined) text = text[key];
+          if (typeof text === 'string') el.placeholder = text;
+        });
+        if (downloadBtnText) {
+          downloadBtnText.textContent = translations[lang]?.gallery?.download || (lang === 'de' ? 'OctoStool HERUNTERLADEN' : 'DOWNLOAD OctoStool');
+        }
+        updateDownloadLink(lang);
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        
+        // ONLY save language preference if cookies are accepted
+        if (cookiesAccepted) {
+          try {
+            localStorage.setItem('preferred-language', lang);
+            console.log('[DSGVO] Language saved because cookies accepted:', lang);
+          } catch(e) {}
+        } else {
+          console.log('[DSGVO] Language NOT saved (cookies not accepted)');
+        }
+      };
+      
+      // Initial language load - check if we should load saved language
+      let initialLang = 'en';
+      if (cookiesAccepted) {
+        const savedLang = localStorage.getItem('preferred-language');
+        if (savedLang && (savedLang === 'en' || savedLang === 'de')) {
+          initialLang = savedLang;
+        }
       }
       
       // Event listeners
@@ -471,18 +519,19 @@
         if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
       });
       
-      // On page unload, if user rejected, ensure no cookies persist
+      // Expose cookiesAccepted flag for other scripts
+      window.cookiesAccepted = function() { return cookiesAccepted; };
+      
+      // On page unload, if user rejected, ensure everything is cleared
       window.addEventListener('beforeunload', function() {
-        if (!hasMadeChoice) {
-          // If no choice made yet, don't delete (user might still be deciding)
-          return;
-        }
-        // Check if consent was accepted - if not, ensure cookies are gone
-        const stored = localStorage.getItem(CONSENT_KEY);
-        if (!stored || JSON.parse(stored)?.choice !== 'accepted') {
+        if (!cookiesAccepted && hasMadeChoice) {
           deleteAllCookies();
+          clearAllStorage();
         }
       });
+      
+      // Initialize language with proper consent check
+      window.updateLanguage(initialLang);
     })();
     
     // ========== LANGUAGE-SPECIFIC DOWNLOAD LINKS ==========
@@ -524,33 +573,7 @@
       }
     };
     
-    function updateLanguage(lang) {
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const keys = el.getAttribute('data-i18n').split('.');
-        let text = translations[lang];
-        for (let key of keys) if (text && text[key] !== undefined) text = text[key];
-        if (typeof text === 'string') el.textContent = text;
-      });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const keys = el.getAttribute('data-i18n-placeholder').split('.');
-        let text = translations[lang];
-        for (let key of keys) if (text && text[key] !== undefined) text = text[key];
-        if (typeof text === 'string') el.placeholder = text;
-      });
-      if (downloadBtnText) {
-        downloadBtnText.textContent = translations[lang]?.gallery?.download || (lang === 'de' ? 'OctoStool HERUNTERLADEN' : 'DOWNLOAD OctoStool');
-      }
-      updateDownloadLink(lang);
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-      localStorage.setItem('preferred-language', lang);
-    }
-    
-    const savedLang = localStorage.getItem('preferred-language') || 'en';
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); updateLanguage(btn.getAttribute('data-lang')); }));
-    updateLanguage(savedLang);
-    
-    // Simplified parallax and emailjs
+    // Parallax and emailjs functionality (simplified, preserved)
     (function() {
       const nav = document.getElementById('templatemo-nav');
       const navToggle = document.getElementById('navToggle');
