@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="templatemo-parallax-starter.css" />
   <style>
-    /* existing styles (preserved) */
+    /* All existing styles remain the same - preserved for full functionality */
     .parallax-section { position: relative; overflow: hidden; }
     .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; will-change: transform; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
     .parallax-section .video-bg { transform: translate3d(0, 0, 0); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
     #about .section-content { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh; padding-bottom: 120px; }
     @media (max-width: 768px) { #about .section-content { padding-bottom: 80px; } }
-    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:8px;font:14px/1.4 'Source Sans 3',sans-serif;letter-spacing:.2px;z-index:9999;opacity:0;transition:opacity .25s ease}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:8px;font:14px/1.4 'Source Sans 3',sans-serif;letter-spacing:.2px;z-index:9999;opacity:0;transition:opacity .25s ease;z-index:10001}
     .toast.show{opacity:1}
     .lang-toggle { display: flex; gap: 5px; margin-left: 20px; }
     .lang-btn { background: transparent; border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.7); padding: 4px 10px; font-size: 12px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; cursor: pointer; transition: all .3s ease; border-radius: 3px; }
@@ -251,12 +251,12 @@
   <div id="cookieConsentModal" class="cookie-consent">
     <div class="cookie-container">
       <div class="cookie-text">
-        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 verwenden wir nur technisch notwendige Cookies für den Betrieb der Website. Für Analyse- oder Marketing-Cookies würden wir Ihre Einwilligung benötigen. Sie können entscheiden, ob Sie nur notwendige Cookies akzeptieren oder Ihre Einwilligung für alle Cookies erteilen. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
+        <p><strong>🍪 Datenschutz & Cookies</strong> — Gemäß der österreichischen DSGVO und TKG 2021 verwenden wir KEINE Cookies, es sei denn, Sie erteilen Ihre ausdrückliche Zustimmung. Die Website funktioniert vollständig ohne Cookies. <a href="#" id="privacyDetailsLink">Mehr zur Datenschutzerklärung</a></p>
       </div>
       <div class="cookie-buttons">
-        <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">ALLE AKZEPTIEREN</button>
-        <button id="cookieDenyBtn" class="cookie-btn cookie-btn-deny">NUR NOTWENDIGE</button>
-        <button id="cookieSettingsBtn" class="cookie-btn cookie-btn-settings">EINSTELLUNGEN</button>
+        <button id="cookieAcceptBtn" class="cookie-btn cookie-btn-accept">COOKIES AKZEPTIEREN</button>
+        <button id="cookieDenyBtn" class="cookie-btn cookie-btn-deny">KEINE COOKIES</button>
+        <button id="cookieSettingsBtn" class="cookie-btn cookie-btn-settings">DATENSCHUTZ</button>
       </div>
     </div>
   </div>
@@ -269,10 +269,10 @@
       <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2021).</p>
       <h4>1. Verantwortlicher</h4>
       <p>OCTOS (eingetragenes Einzelunternehmen)<br>Innrain 103, 6020 Innsbruck, Österreich<br>E-Mail: info@octos.at</p>
-      <h4>2. Cookie-Einwilligung & Speicherung</h4>
-      <p>Wenn Sie der Verwendung von Cookies zustimmen, speichern wir nur Ihre Einwilligungspräferenz (ob Sie zugestimmt haben oder nicht). <strong>Bei Ablehnung werden keinerlei Cookies gesetzt</strong> – weder technisch notwendige noch Analyse-Cookies. Die reine Funktionalität der Website (Navigation, Kontaktformular) ist ohne Cookies gewährleistet.</p>
+      <h4>2. Cookies & Ihre Wahl</h4>
+      <p><strong>Diese Website verwendet standardmäßig KEINE Cookies.</strong> Wir setzen nur dann Cookies ein, wenn Sie uns Ihre ausdrückliche Einwilligung erteilen. Wenn Sie "KEINE COOKIES" wählen, werden keinerlei Cookies gespeichert – auch nicht Ihre Präferenz. Ihre Entscheidung wird nicht gespeichert, und Sie werden beim nächsten Besuch erneut gefragt. Dies ist die strikteste Auslegung der österreichischen DSGVO und TKG 2021.</p>
       <h4>3. Kontaktformular</h4>
-      <p>Wenn Sie per Formular Kontakt aufnehmen, werden Ihre Daten (Name, E-Mail, Nachricht) zur Bearbeitung der Anfrage für maximal 6 Monate gespeichert. Rechtsgrundlage ist Art 6 Abs 1 lit b DSGVO (Vertragsanbahnung).</p>
+      <p>Wenn Sie per Formular Kontakt aufnehmen, werden Ihre Daten (Name, E-Mail, Nachricht) zur Bearbeitung der Anfrage für maximal 6 Monate auf unserem Server gespeichert. Rechtsgrundlage ist Art 6 Abs 1 lit b DSGVO (Vertragsanbahnung). Diese Daten werden nicht in Cookies gespeichert.</p>
       <h4>4. Ihre Rechte</h4>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Beschwerden können Sie bei der österreichischen Datenschutzbehörde einreichen.</p>
       <button id="closePrivacyFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
@@ -299,7 +299,7 @@
   </div>
   
   <script>
-    // ========== COOKIE CONSENT MANAGER - COMPLIANT WITH AUSTRIAN LAW ==========
+    // ========== COOKIE CONSENT - ZERO COOKIES WHEN REJECTED ==========
     (function() {
       const CONSENT_KEY = 'octos_cookie_consent';
       const MODAL = document.getElementById('cookieConsentModal');
@@ -312,84 +312,82 @@
       const PRIVACY_MODAL = document.getElementById('privacyModal');
       const IMPRINT_MODAL = document.getElementById('imprintModal');
       
-      // Function to delete ALL cookies (except the consent preference itself)
+      // Flag to track if user has made a choice in this session
+      let hasMadeChoice = false;
+      
+      // Function to delete ALL cookies completely
       function deleteAllCookies() {
-        console.log('[DSGVO] Deleting all non-essential cookies...');
+        console.log('[DSGVO] Deleting ALL cookies...');
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
           const cookie = cookies[i];
           const eqPos = cookie.indexOf('=');
           const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
-          // Don't delete the consent cookie itself to avoid loop
-          if (name !== CONSENT_KEY && name !== '') {
+          if (name !== '') {
+            // Delete cookie with various path and domain combinations
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname + ';';
           }
         }
       }
       
-      // Function to set only necessary technical cookies (session-only, no tracking)
-      function setNecessaryCookies() {
-        // In this implementation, we don't set ANY cookies for necessary functions
-        // because the site works without cookies. If you had session cookies for login,
-        // you would set them here with proper expiration.
-        console.log('[DSGVO] Only necessary functionality active - NO cookies set');
+      // Clear localStorage as well (except we don't store anything when rejected)
+      function clearAllStorage() {
+        try {
+          // Only clear our consent key if it exists - we don't want to store ANYTHING when rejected
+          localStorage.removeItem(CONSENT_KEY);
+          // Don't clear other localStorage items that might be needed (like language preference)
+          // Language preference is separate and user expects it to be remembered
+        } catch(e) {}
       }
       
-      // Function to set analytics/optional cookies (only when accepted)
-      function setAnalyticsCookies() {
-        console.log('[DSGVO] Analytics cookies would be set here if you had Google Analytics etc.');
-        // Example: gtag('consent', 'update', { analytics_storage: 'granted' });
-      }
-      
-      // Main consent handling
-      function setConsent(choice) {
+      // Handle ACCEPT - user wants cookies (only then we store consent)
+      function acceptCookies() {
+        console.log('[DSGVO] User ACCEPTED cookies - storing consent');
+        // Store consent ONLY if user accepted
         const consentData = {
-          choice: choice, // 'accepted', 'denied'
+          choice: 'accepted',
           timestamp: Date.now(),
-          analyticsEnabled: choice === 'accepted'
+          analyticsEnabled: true
         };
-        
-        if (choice === 'accepted') {
-          // User accepted ALL cookies (including analytics if any)
+        try {
           localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
-          setAnalyticsCookies();
-          setNecessaryCookies();
-          showToast('Sie haben allen Cookies zugestimmt. Vielen Dank!');
-        } else if (choice === 'denied') {
-          // User only wants necessary cookies / declined all non-essential
-          localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
-          // DELETE any existing cookies to ensure compliance
-          deleteAllCookies();
-          setNecessaryCookies();
-          showToast('Sie haben nur notwendige Cookies akzeptiert. Keine Tracking-Cookies werden gesetzt.');
-        }
+        } catch(e) {}
         
-        // Hide the cookie banner
-        if (MODAL) MODAL.classList.remove('show');
+        // Enable analytics if you have any
+        enableAnalytics(true);
+        
+        showToast('Sie haben Cookies akzeptiert. Vielen Dank!');
+        hideModal();
+        hasMadeChoice = true;
       }
       
-      // Function to check existing consent on page load
-      function checkExistingConsent() {
-        const stored = localStorage.getItem(CONSENT_KEY);
-        if (stored) {
-          try {
-            const consent = JSON.parse(stored);
-            if (consent && consent.timestamp) {
-              // If user previously accepted, enable analytics
-              if (consent.choice === 'accepted') {
-                setAnalyticsCookies();
-                setNecessaryCookies();
-              } else if (consent.choice === 'denied') {
-                // User previously declined - ensure no cookies are set
-                deleteAllCookies();
-                setNecessaryCookies();
-              }
-              return true;
-            }
-          } catch(e) {}
-        }
-        return false;
+      // Handle DENY - user rejects ALL cookies - STORE NOTHING
+      function denyCookies() {
+        console.log('[DSGVO] User REJECTED cookies - NO cookies will be stored');
+        
+        // Delete any existing cookies immediately
+        deleteAllCookies();
+        
+        // Clear localStorage of any consent data (we don't store rejection)
+        clearAllStorage();
+        
+        // Ensure no analytics are enabled
+        enableAnalytics(false);
+        
+        showToast('Sie haben Cookies abgelehnt. Es werden KEINE Cookies gespeichert.');
+        hideModal();
+        hasMadeChoice = true;
+        
+        // Note: We do NOT store the rejection anywhere
+        // On next visit, the banner will appear again because there's no stored preference
+      }
+      
+      function enableAnalytics(enabled) {
+        console.log('[DSGVO] Analytics enabled:', enabled);
+        // Placeholder for Google Analytics or other tracking
+        // If you add GA, only initialize it when enabled === true
       }
       
       function showToast(msg) {
@@ -401,23 +399,47 @@
         }
       }
       
-      function showModal() { if (MODAL) MODAL.classList.add('show'); }
-      function hideModal() { if (MODAL) MODAL.classList.remove('show'); }
+      function showModal() { 
+        if (MODAL && !hasMadeChoice) MODAL.classList.add('show'); 
+      }
+      function hideModal() { 
+        if (MODAL) MODAL.classList.remove('show'); 
+      }
       
-      // Initialize - check if consent already given
+      // Check if user has previously ACCEPTED (only accepted is stored)
+      function checkExistingConsent() {
+        try {
+          const stored = localStorage.getItem(CONSENT_KEY);
+          if (stored) {
+            const consent = JSON.parse(stored);
+            if (consent && consent.choice === 'accepted' && consent.timestamp) {
+              // User previously accepted cookies
+              console.log('[DSGVO] Found existing ACCEPTED consent');
+              enableAnalytics(true);
+              hasMadeChoice = true;
+              return true; // Consent exists, don't show banner
+            }
+          }
+        } catch(e) {}
+        
+        // No consent stored or it was rejected (we don't store rejections)
+        console.log('[DSGVO] No stored consent - banner will be shown');
+        return false;
+      }
+      
+      // Initialize - only show banner if no ACCEPTED consent exists
       const hasConsent = checkExistingConsent();
       if (!hasConsent) {
-        // No consent stored yet - show cookie banner
-        setTimeout(() => showModal(), 400);
+        // No stored acceptance - show banner on EVERY visit
+        setTimeout(() => showModal(), 500);
       } else {
         hideModal();
       }
       
-      // Event listeners for consent buttons
-      if (ACCEPT_BTN) ACCEPT_BTN.addEventListener('click', () => setConsent('accepted'));
-      if (DENY_BTN) DENY_BTN.addEventListener('click', () => setConsent('denied'));
+      // Event listeners
+      if (ACCEPT_BTN) ACCEPT_BTN.addEventListener('click', acceptCookies);
+      if (DENY_BTN) DENY_BTN.addEventListener('click', denyCookies);
       
-      // Settings button shows privacy modal
       if (SETTINGS_BTN) {
         SETTINGS_BTN.addEventListener('click', () => {
           if(PRIVACY_MODAL) PRIVACY_MODAL.classList.add('active');
@@ -433,7 +455,7 @@
         });
       }
       
-      // Modal management for privacy and imprint
+      // Modal management
       function openModal(modal) { if(modal) modal.classList.add('active'); }
       function closeModal(modal) { if(modal) modal.classList.remove('active'); }
       
@@ -447,6 +469,19 @@
       
       [PRIVACY_MODAL, IMPRINT_MODAL].forEach(modal => {
         if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
+      });
+      
+      // On page unload, if user rejected, ensure no cookies persist
+      window.addEventListener('beforeunload', function() {
+        if (!hasMadeChoice) {
+          // If no choice made yet, don't delete (user might still be deciding)
+          return;
+        }
+        // Check if consent was accepted - if not, ensure cookies are gone
+        const stored = localStorage.getItem(CONSENT_KEY);
+        if (!stored || JSON.parse(stored)?.choice !== 'accepted') {
+          deleteAllCookies();
+        }
       });
     })();
     
@@ -515,7 +550,7 @@
     document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); updateLanguage(btn.getAttribute('data-lang')); }));
     updateLanguage(savedLang);
     
-    // Simplified parallax and emailjs (preserved from original)
+    // Simplified parallax and emailjs
     (function() {
       const nav = document.getElementById('templatemo-nav');
       const navToggle = document.getElementById('navToggle');
