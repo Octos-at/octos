@@ -341,6 +341,28 @@
       font-family: var(--font-heading);
       cursor: pointer;
     }
+    .pdf-download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-family: var(--font-heading);
+      letter-spacing: 1px;
+      margin-top: 6px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .pdf-download-link:hover {
+      background: white;
+      color: #111;
+      border-color: white;
+    }
+    .pdf-download-link span { font-size: 18px; }
     @media (max-width: 680px) {
       .cookie-container { flex-direction: column; text-align: center; padding: 20px; }
       .cookie-buttons { justify-content: center; }
@@ -521,12 +543,17 @@
     </div>
   </div>
   
-  <!-- AGB MODAL - exact content from provided PDF (B2B AGB OCTOS e.U.) -->
+  <!-- AGB MODAL - exact content from provided PDF (B2B AGB OCTOS e.U.) + PDF download link -->
   <div id="tosModal" class="legal-modal">
     <div class="legal-modal-content">
       <button class="close-legal" id="closeTosModalBtn">&times;</button>
-      <h3>ALLGEMEINE GESCHÄFTSBEDINGUNGEN (AGB)</h3>
-      <p style="margin-bottom: 5px;"><strong>der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B)</strong></p>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <h3 style="margin-bottom: 0; border-left: 4px solid white; padding-left: 18px;">ALLGEMEINE GESCHÄFTSBEDINGUNGEN (AGB)</h3>
+        <a href="docs/AGB_OCTOS_B2B_2026.pdf" id="agbPdfDownloadLink" class="pdf-download-link" download>
+          <span>📄</span> AGB als PDF herunterladen
+        </a>
+      </div>
+      <p style="margin-bottom: 5px; margin-top: 8px;"><strong>der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B)</strong></p>
       <p style="font-size: 13px; margin-top: 0;">Stand: 01.06.2026 | OCTOS e.U. | Innsbruck, Österreich | www.octos.at</p>
       <hr>
       
@@ -615,7 +642,12 @@
       <p class="agb-paragraph">15.4 Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung ist durch eine wirksame Regelung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
       
       <hr>
-      <p style="font-size: 12px; text-align: center;">OCTOS e.U. | Innsbruck, Österreich | www.octos.at | Stand: 01.06.2026</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <p style="font-size: 12px; margin: 0;">OCTOS e.U. | Innsbruck, Österreich | www.octos.at | Stand: 01.06.2026</p>
+        <a href="docs/AGB_OCTOS_B2B_2026.pdf" class="pdf-download-link" download style="margin: 0;">
+          <span>📄</span> PDF herunterladen
+        </a>
+      </div>
       <button id="closeTosFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
     </div>
   </div>
@@ -740,7 +772,7 @@
       [PRIVACY_MODAL, IMPRINT_MODAL, TOS_MODAL].forEach(modal => { if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); }); });
     })();
     
-    // Parallax + emailJS (original preserved)
+    // Parallax + emailJS (original preserved - truncated for brevity but fully functional)
     (function() { 'use strict'; const nav = document.getElementById('templatemo-nav'); const navToggle = document.getElementById('navToggle'); const navLinks = document.getElementById('navLinks'); const navItems = document.querySelectorAll('.nav-links a'); const sections = document.querySelectorAll('.parallax-section'); const parallaxBgs = document.querySelectorAll('.parallax-bg, .video-bg'); const revealElements = document.querySelectorAll('.section-content'); let isMobile = window.innerWidth <= 768; let ticking = false; function updateParallax() { if (isMobile) { parallaxBgs.forEach(bg => { bg.style.transform = 'translate3d(0,0,0)'; }); return; } const windowHeight = window.innerHeight; parallaxBgs.forEach(bg => { const section = bg.closest('.parallax-section'); if (!section) return; const rect = section.getBoundingClientRect(); if (rect.bottom < -300 || rect.top > windowHeight + 300) return; const speed = parseFloat(bg.getAttribute('data-speed')) || 0.5; const sectionCenterY = rect.top + rect.height / 2; const viewportCenterY = windowHeight / 2; const offset = sectionCenterY - viewportCenterY; const totalTravel = windowHeight + rect.height; const normalized = Math.max(-1, Math.min(1, offset / (totalTravel / 2))); const translateY = normalized * (windowHeight * speed); bg.style.transform = 'translate3d(0,' + translateY.toFixed(1) + 'px,0)'; }); ticking = false; } function onScroll() { if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; } } if (!isMobile) { window.addEventListener('scroll', onScroll, { passive: true }); updateParallax(); } else { parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)'); } window.addEventListener('resize', () => { const newMobile = window.innerWidth <= 768; if (newMobile !== isMobile) { isMobile = newMobile; if (isMobile) { parallaxBgs.forEach(bg => bg.style.transform = 'translate3d(0,0,0)'); window.removeEventListener('scroll', onScroll); } else { window.addEventListener('scroll', onScroll, { passive: true }); updateParallax(); } } else if (!isMobile) { updateParallax(); } }); function handleNavScroll() { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); } window.addEventListener('scroll', handleNavScroll, { passive: true }); handleNavScroll(); if (navToggle) { navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navLinks.classList.toggle('open'); }); } navItems.forEach(link => { link.addEventListener('click', () => { navToggle.classList.remove('active'); navLinks.classList.remove('open'); }); }); function updateActiveLink() { const scrollPos = window.scrollY + window.innerHeight / 3; sections.forEach(section => { const top = section.offsetTop; const height = section.offsetHeight; const id = section.getAttribute('id'); if (scrollPos >= top && scrollPos < top + height) { navItems.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + id) link.classList.add('active'); }); } }); } window.addEventListener('scroll', updateActiveLink, { passive: true }); updateActiveLink(); revealElements.forEach(el => el.classList.add('reveal')); function checkReveal() { const windowHeight = window.innerHeight; const revealPoint = 120; revealElements.forEach(el => { const elementTop = el.getBoundingClientRect().top; if (elementTop < windowHeight - revealPoint) el.classList.add('visible'); }); } window.addEventListener('scroll', checkReveal, { passive: true }); checkReveal(); const contactForm = document.getElementById('contactForm'); if (contactForm) { contactForm.addEventListener('submit', function(e) { e.preventDefault(); const name = contactForm.querySelector("input[name='name']").value.trim(); const email = contactForm.querySelector("input[name='email']").value.trim(); const message = contactForm.querySelector("textarea[name='message']").value.trim(); if (!name || !email || !message) { showToast('Please fill out all fields.'); return; } if (typeof emailjs === 'undefined') { showToast('Email service not available.'); return; } emailjs.init('pEt0L5IFostMcoXno'); emailjs.send('service_3kflnuh', 'template_un57291', { name: name, email: email, message: message, to_email: 'info@octos.at' }).then(() => { showToast('Thank you! Your message has been sent.'); contactForm.reset(); }).catch(err => { console.error(err); showToast('Sorry, something went wrong.'); }); }); } const logoImg = document.querySelector('.nav-logo-img'); if (logoImg) { logoImg.onerror = function() { this.style.display = 'none'; if(this.nextElementSibling) this.nextElementSibling.style.display = 'block'; }; } const heroVideo = document.querySelector('#home .video-bg'); if(heroVideo) { heroVideo.addEventListener('loadeddata', () => { heroVideo.play().catch(e => console.log("autoplay prevented:", e)); }); heroVideo.muted = true; heroVideo.loop = true; heroVideo.setAttribute('playsinline', ''); heroVideo.setAttribute('autoplay', ''); heroVideo.play().catch(() => {}); } function showToast(msg) { const toast = document.getElementById('toast'); if (toast) { toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); } } })();
   </script>
 </body>
