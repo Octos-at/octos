@@ -342,6 +342,10 @@
       margin-top: 5px;
       letter-spacing: 1px;
     }
+    /* small improvement for AGB modal list */
+    .legal-modal-content ul { margin-top: 8px; padding-left: 20px; }
+    .legal-modal-content li { font-size: 14px; line-height: 1.5; margin-bottom: 6px; color: #ddd; }
+    .legal-modal-content hr { border-color: rgba(255,255,255,0.2); margin: 18px 0; }
   </style>
 </head>
 <body>
@@ -387,8 +391,8 @@
     <div class="section-content">
       <h2 class="section-title" data-i18n="about.title">ABOUT US</h2>
       <div class="about-text-wide">
-        <p class="section-subtitle caps" data-i18n="about.text1">Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.</p>
-        <p class="section-subtitle caps" data-i18n="about.text2">Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency.</p>
+        <p data-i18n="about.text1">Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.</p>
+        <p data-i18n="about.text2">Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency.</p>
       </div>
     </div>
   </section>
@@ -413,8 +417,8 @@
     <div class="section-content">
       <h2 class="section-title" data-i18n="gallery.title">OctoStool</h2>
       <div class="content-block">
-        <p class="section-subtitle caps" data-i18n="gallery.subtitle">The future of barbering comfort and control.</p>
-        <p class="section-subtitle caps" data-i18n="gallery.tagline">Move like you're standing feel like you're not!</b>
+        <p style="font-size: 20px;" data-i18n="gallery.subtitle">The future of barbering comfort and control.</p>
+        <b style="font-size: 20px;" data-i18n="gallery.tagline">Move like you're standing feel like you're not!</b>
         
         <div style="margin: 30px 0;">
           <a href="#" id="downloadManualLink" class="download-btn" download>
@@ -454,7 +458,7 @@
   </section>
   
   <footer id="templatemo-footer">
-    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a></p>
+    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a> | <a href="#" id="openTosLink">AGB</a></p>
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
@@ -479,7 +483,7 @@
     <div class="legal-modal-content">
       <button class="close-legal" id="closePrivacyModalBtn">&times;</button>
       <h3>DATENSCHUTZERKLÄRUNG</h3>
-      <p><strong>Verantwortlicher:</strong> OCTOS e.U. / Daniel Varga, Innrain 103, 6020 Innsbruck, Österreich | info@octos.at</p>
+      <p><strong>Verantwortlicher:</strong> OCTOS, Innrain 103, 6020 Innsbruck, Österreich | info@octos.at</p>
       <h4>Cookies & Speicherung</h4>
       <p><strong>Diese Website speichert standardmäßig KEINE Daten.</strong> Nur wenn Sie "COOKIES AKZEPTIEREN" klicken, werden Ihre Sprachpräferenz und Ihre Einwilligung gespeichert. Bei "KEINE COOKIES" wird absolut nichts gespeichert – auch nicht Ihre Sprachwahl. Die Website funktioniert vollständig ohne Cookies.</p>
       <h4>Kontaktformular</h4>
@@ -495,19 +499,45 @@
     <div class="legal-modal-content">
       <button class="close-legal" id="closeImprintModalBtn">&times;</button>
       <h3>IMPRESSUM</h3>
-      <p><strong>Firmenwortlaut:</strong> OCTOS e.U.<br>
-      <strong>Geschäftsführer/Inhaber:</strong> Ing. Daniel Varga<br>
+      <p><strong>Firmenname:</strong> OCTOS (eingetragenes Einzelunternehmen)<br>
+      <strong>Inhaber:</strong> [Vorname Nachname]<br>
       <strong>Sitz:</strong> Innrain 103, 6020 Innsbruck, Österreich<br>
-      <strong>Firmenbuchnummer:</strong> FN 676155x<br>
-      <strong>Firmengericht:</strong> Landesgericht Innsbruck<br>
-      <strong>UID-Nummer:</strong> ATU83179524<br>
-      <strong>Unternehmensgegenstand des eingetragenen Unternehmens:</strong> Metalltechniker, Handelsbetrieb<br>
-      <strong>Aufsichtsbehörde:</strong> Bezirkshauptmannschaft Innsbruck<br>
-      <strong>Anwendbare Rechtsvorschriften und Zugang dazu :</strong> Berufsrecht: Gewerbeordnung: www.ris.bka.gv.at<br>
+      <strong>Firmenbuchnummer:</strong> FN [bitte eintragen]<br>
+      <strong>Firmenbuchgericht:</strong> Landesgericht Innsbruck<br>
+      <strong>UID-Nummer:</strong> ATU [bitte eintragen]<br>
       <strong>E-Mail:</strong> info@octos.at<br>
-      <strong>Telefon:</strong> 0670 6500 200<br>
-      <strong>Mitgliedschaften:</strong> Wirtschaftskammer Tirol, Landesinnung Metalltechniker </p>
+      <strong>Mitgliedschaften:</strong> Wirtschaftskammer Tirol</p>
       <button id="closeImprintFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
+    </div>
+  </div>
+  
+  <!-- TERMS (AGB) MODAL -->
+  <div id="tosModal" class="legal-modal">
+    <div class="legal-modal-content">
+      <button class="close-legal" id="closeTosModalBtn">&times;</button>
+      <h3>ALLGEMEINE GESCHÄFTSBEDINGUNGEN (AGB)</h3>
+      <p><strong>Gültig ab: 1. Juni 2026</strong> | OCTOS, Innrain 103, 6020 Innsbruck, Österreich</p>
+      <h4>1. Geltungsbereich</h4>
+      <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge, Lieferungen und Leistungen zwischen der Firma OCTOS (nachfolgend „Anbieter“) und ihren Kunden (nachfolgend „Besteller“). Abweichende Bedingungen des Bestellers werden nicht anerkannt, es sei denn, der Anbieter stimmt ihnen ausdrücklich schriftlich zu.</p>
+      <h4>2. Vertragsgegenstand</h4>
+      <p>Der Anbieter liefert hochwertige Produkte, insbesondere den OctoStool sowie weiteres Zubehör. Alle Angebote sind freibleibend und unverbindlich. Mit der Bestellung erklärt der Besteller verbindlich den Kauf des Produkts.</p>
+      <h4>3. Preise & Zahlungsbedingungen</h4>
+      <p>Es gelten die zum Zeitpunkt der Bestellung auf der Website angegebenen Preise in Euro zuzüglich gesetzlicher Mehrwertsteuer. Versandkosten werden separat ausgewiesen. Die Zahlung erfolgt per Vorkasse, Kreditkarte oder über die angegebenen Zahlungsdienstleister. Rechnungen sind sofort ohne Abzug fällig.</p>
+      <h4>4. Lieferung & Versand</h4>
+      <p>Wir liefern weltweit. Die Lieferzeit beträgt innerhalb Österreichs ca. 3–7 Werktage, international 7–14 Werktage, sofern nicht anders angegeben. Gefahrenübergang erfolgt mit Übergabe an den Transportdienstleister. Teillieferungen sind zulässig.</p>
+      <h4>5. Eigentumsvorbehalt</h4>
+      <p>Die gelieferte Ware bleibt bis zur vollständigen Bezahlung aller Forderungen Eigentum des Anbieters.</p>
+      <h4>6. Gewährleistung & Mängelhaftung</h4>
+      <p>Die Gewährleistung beträgt 24 Monate ab Lieferung. Offene Mängel sind innerhalb von 14 Tagen schriftlich anzuzeigen. Bei berechtigten Mängeln wird nach Wahl des Anbieters nachgebessert, Ersatz geliefert oder der Kaufpreis erstattet.</p>
+      <h4>7. Haftung</h4>
+      <p>Der Anbieter haftet nur bei Vorsatz oder grober Fahrlässigkeit. Für leichte Fahrlässigkeit haftet der Anbieter nicht, es sei denn, es handelt sich um Verletzung wesentlicher Vertragspflichten. In diesem Fall ist die Haftung auf den vertragstypischen Schaden begrenzt.</p>
+      <h4>8. Widerrufsrecht für Verbraucher</h4>
+      <p>Verbraucher haben ein 14-tägiges Rückgaberecht. Die Kosten der Rücksendung trägt der Besteller, sofern die Ware nicht fehlerhaft ist. Vom Widerruf ausgeschlossen sind individuell gefertigte Produkte.</p>
+      <h4>9. Schlussbestimmungen</h4>
+      <p>Es gilt österreichisches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand für alle Streitigkeiten ist Innsbruck. Sollten einzelne Bestimmungen unwirksam sein, bleibt der Rest des Vertrags gültig.</p>
+      <hr>
+      <p style="font-size: 12px;">Stand: Juni 2026 – OCTOS behält sich Änderungen der AGB vor. Bei Fragen kontaktieren Sie uns unter <strong>info@octos.at</strong>.</p>
+      <button id="closeTosFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
     </div>
   </div>
   
@@ -522,8 +552,10 @@
       const PRIVACY_LINK = document.getElementById('privacyDetailsLink');
       const OPEN_PRIVACY_FOOTER = document.getElementById('openPrivacyLink');
       const OPEN_IMPRINT_FOOTER = document.getElementById('openImprintLink');
+      const OPEN_TOS_FOOTER = document.getElementById('openTosLink'); // new AGB link
       const PRIVACY_MODAL = document.getElementById('privacyModal');
       const IMPRINT_MODAL = document.getElementById('imprintModal');
+      const TOS_MODAL = document.getElementById('tosModal'); // AGB Modal
       
       let cookiesAccepted = false;
       let hasMadeChoice = false;
@@ -628,7 +660,7 @@
         }
       };
       
-      const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_ge.pdf' };
+      const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_de.pdf' };
       const downloadLink = document.getElementById('downloadManualLink');
       const downloadBadge = document.getElementById('downloadLangBadge');
       const downloadBtnText = document.getElementById('downloadBtnText');
@@ -687,13 +719,17 @@
       
       if (OPEN_PRIVACY_FOOTER) OPEN_PRIVACY_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(PRIVACY_MODAL); });
       if (OPEN_IMPRINT_FOOTER) OPEN_IMPRINT_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(IMPRINT_MODAL); });
+      if (OPEN_TOS_FOOTER) OPEN_TOS_FOOTER.addEventListener('click', (e) => { e.preventDefault(); openModal(TOS_MODAL); });
       
+      // close buttons for AGB
       document.getElementById('closePrivacyModalBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
       document.getElementById('closePrivacyFooterBtn')?.addEventListener('click', () => closeModal(PRIVACY_MODAL));
       document.getElementById('closeImprintModalBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
       document.getElementById('closeImprintFooterBtn')?.addEventListener('click', () => closeModal(IMPRINT_MODAL));
+      document.getElementById('closeTosModalBtn')?.addEventListener('click', () => closeModal(TOS_MODAL));
+      document.getElementById('closeTosFooterBtn')?.addEventListener('click', () => closeModal(TOS_MODAL));
       
-      [PRIVACY_MODAL, IMPRINT_MODAL].forEach(modal => {
+      [PRIVACY_MODAL, IMPRINT_MODAL, TOS_MODAL].forEach(modal => {
         if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); });
       });
     })();
