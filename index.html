@@ -97,6 +97,62 @@
       color: #fff;
     }
     
+    /* Buy Now button in nav */
+    .nav-buy-btn {
+      background: #fff;
+      color: #111 !important;
+      padding: 6px 18px !important;
+      border-radius: 30px;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
+      margin-left: 8px;
+      font-size: 12px !important;
+      letter-spacing: 1.5px !important;
+    }
+    .nav-buy-btn:hover {
+      background: #e0e0e0 !important;
+      transform: scale(1.05);
+    }
+    
+    /* Buy Now button in gallery */
+    .buy-now-section {
+      margin: 20px 0 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .buy-now-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #111;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      padding: 14px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid #ffffff;
+      text-transform: uppercase;
+    }
+    .buy-now-btn:hover {
+      background: transparent;
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
+    .buy-now-btn-outline {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.6);
+    }
+    .buy-now-btn-outline:hover {
+      background: #ffffff;
+      color: #111;
+    }
+    
     @media (max-width: 768px) {
       .lang-toggle {
         margin-left: auto;
@@ -116,6 +172,12 @@
       
       .nav-links {
         order: 4;
+      }
+      
+      .nav-buy-btn {
+        margin-left: 0;
+        margin-top: 8px;
+        display: inline-block !important;
       }
     }
     
@@ -396,6 +458,7 @@
         <li><a href="#services" data-i18n="nav.services">SERVICES</a></li>
         <li><a href="#gallery" data-i18n="nav.gallery">GALLERY</a></li>
         <li><a href="#contact" data-i18n="nav.contact">CONTACT</a></li>
+        <li><a href="https://shop.octos.at" class="nav-buy-btn" target="_blank" rel="noopener noreferrer">BUY NOW</a></li>
       </ul>
       <div class="lang-toggle">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -451,6 +514,12 @@
       <div class="content-block">
         <p style="font-size: 20px;" data-i18n="gallery.subtitle">The future of barbering comfort and control.</p>
         <b style="font-size: 20px;" data-i18n="gallery.tagline">Move like you're standing feel like you're not!</b>
+        
+        <!-- Buy Now buttons in gallery -->
+        <div class="buy-now-section">
+          <a href="https://shop.octos.at" class="buy-now-btn" target="_blank" rel="noopener noreferrer">🛒 BUY NOW</a>
+          <a href="https://shop.octos.at" class="buy-now-btn buy-now-btn-outline" target="_blank" rel="noopener noreferrer">SHOP</a>
+        </div>
         
         <div style="margin: 30px 0;">
           <a href="#" id="downloadManualLink" class="download-btn" download>
