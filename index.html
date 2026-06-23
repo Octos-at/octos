@@ -97,6 +97,23 @@
       color: #fff;
     }
     
+    /* Buy Now button in nav */
+    .nav-buy-btn {
+      background: #fff;
+      color: #111 !important;
+      padding: 6px 18px !important;
+      border-radius: 30px;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
+      margin-left: 8px;
+      font-size: 12px !important;
+      letter-spacing: 1.5px !important;
+    }
+    .nav-buy-btn:hover {
+      background: #e0e0e0 !important;
+      transform: scale(1.05);
+    }
+    
     /* Buy Now button in gallery */
     .buy-now-section {
       margin: 20px 0 10px;
@@ -155,6 +172,12 @@
       
       .nav-links {
         order: 4;
+      }
+      
+      .nav-buy-btn {
+        margin-left: 0;
+        margin-top: 8px;
+        display: inline-block !important;
       }
     }
     
@@ -435,6 +458,7 @@
         <li><a href="#services" data-i18n="nav.services">SERVICES</a></li>
         <li><a href="#gallery" data-i18n="nav.gallery">GALLERY</a></li>
         <li><a href="#contact" data-i18n="nav.contact">CONTACT</a></li>
+        <li><a href="https://shop.octos.at" class="nav-buy-btn" target="_blank" rel="noopener noreferrer">BUY NOW</a></li>
       </ul>
       <div class="lang-toggle">
         <button class="lang-btn active" data-lang="en">EN</button>
