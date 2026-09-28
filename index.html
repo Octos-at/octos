@@ -441,43 +441,14 @@
     }
     hr { border-color: rgba(255,255,255,0.2); margin: 16px 0; }
 
-    /* ===== Return Form Download Section ===== */
-    .returns-section {
-      background: #111115;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding: 60px 20px;
-      text-align: center;
-      color: #f0f0f0;
-    }
-    .returns-container {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .returns-title {
-      font-family: var(--font-heading);
-      font-size: 26px;
-      letter-spacing: 3px;
-      margin: 0 0 14px;
-      color: #fff;
-    }
-    .returns-text {
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.6;
-      color: #ccc;
-      margin: 0 0 22px;
-    }
-    .returns-download {
-      font-size: 15px;
-      padding: 12px 26px;
-      margin-top: 0;
-    }
-    .returns-download span:first-child {
-      font-size: 20px;
-    }
-    @media (max-width: 680px) {
-      .returns-section { padding: 45px 18px; }
-      .returns-title { font-size: 22px; letter-spacing: 2px; }
+    /* AGB B2C highlight */
+    .agb-b2c-marker {
+      color: #ffd700;
+      font-weight: 600;
+      font-style: italic;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      display: block;
     }
   </style>
 </head>
@@ -497,7 +468,7 @@
         <li><a href="#services" data-i18n="nav.services">SERVICES</a></li>
         <li><a href="#gallery" data-i18n="nav.gallery">GALLERY</a></li>
         <li><a href="#contact" data-i18n="nav.contact">CONTACT</a></li>
-        <li><a href="https://shop.octos.at" class="nav-buy-btn" target="_blank" rel="noopener noreferrer">BUY NOW</a></li>
+        <li><a href="https://shop.octos.at" class="nav-buy-btn" target="_blank" rel="noopener noreferrer">Shop</a></li>
       </ul>
       <div class="lang-toggle">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -556,7 +527,7 @@
         
         <!-- Buy Now buttons in gallery -->
         <div class="buy-now-section">
-          <a href="https://shop.octos.at" class="buy-now-btn" target="_blank" rel="noopener noreferrer">🛒 BUY NOW</a>
+          <a href="https://shop.octos.at" class="buy-now-btn" target="_blank" rel="noopener noreferrer">🛒 Shop</a>
         </div>
         
         <div style="margin: 30px 0;">
@@ -596,29 +567,8 @@
     </div>
   </section>
   
-  <!-- ===== RETURN FORM DOWNLOAD SECTION (lower part) ===== -->
-  <section id="returns" class="returns-section">
-    <div class="returns-container">
-      <h3 class="returns-title" data-i18n="returns.title">RETURN FORM</h3>
-      <p class="returns-text" data-i18n="returns.text">
-        Need to return an item? Download our return form, fill it out, and include it with your shipment.
-      </p>
-      <a
-        href="docs/OCTOS_Return_Form.pdf"
-        id="returnFormDownloadLink"
-        class="pdf-download-link returns-download"
-        download="OCTOS_Return_Form.pdf"
-        target="_blank"
-        rel="noopener"
-      >
-        <span>⬇</span>
-        <span data-i18n="returns.download">RETURN FORM</span>
-      </a>
-    </div>
-  </section>
-
   <footer id="templatemo-footer">
-    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a> | <a href="#" id="openTosLink">AGB</a> | <a href="docs/OCTOS_Return_Form.pdf" download>Rücksendeformular</a></p>
+    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a> | <a href="#" id="openTosLink">AGB</a></p>
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
@@ -675,110 +625,171 @@
     </div>
   </div>
   
-  <!-- AGB MODAL - exact content from provided PDF (B2B AGB OCTOS e.U.) + PDF download link -->
+  <!-- AGB MODAL - FULL B2B & B2C CONTENT FROM UPLOADED PDF -->
   <div id="tosModal" class="legal-modal">
     <div class="legal-modal-content">
       <button class="close-legal" id="closeTosModalBtn">&times;</button>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <h3 style="margin-bottom: 0; border-left: 4px solid white; padding-left: 18px;">ALLGEMEINE GESCHÄFTSBEDINGUNGEN (AGB)</h3>
-        <a href="docs/AGB_OCTOS_B2B_2026.pdf" id="agbPdfDownloadLink" class="pdf-download-link" download>
-          <span>📄</span> AGB als PDF herunterladen
-        </a>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="docs/OCTOS_AGB_2026.pdf" id="agbPdfDownloadLink" class="pdf-download-link" download>
+            <span>📄</span> AGB als PDF
+          </a>
+          <a href="docs/Ruecktrittsformular_OCTOS.pdf" id="returnFormDownloadLink" class="pdf-download-link" download>
+            <span>📄</span> Rücktrittsformular
+          </a>
+        </div>
       </div>
-      <p style="margin-bottom: 5px; margin-top: 8px;"><strong>der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B)</strong></p>
+      <p style="margin-bottom: 5px; margin-top: 8px;"><strong>der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B) und Verbraucher (B2C)</strong></p>
       <p style="font-size: 13px; margin-top: 0;">Stand: 01.06.2026 | OCTOS e.U. | Innsbruck, Österreich | www.octos.at</p>
       <hr>
       
       <div class="agb-section"><strong>§ 1 Geltungsbereich</strong></div>
-      <p class="agb-paragraph">1.1 Diese Allgemeinen Geschäftsbedingungen gelten für sämtliche Lieferungen, Leistungen und Angebote der OCTOS e.U. (nachfolgend „Verkäufer“) gegenüber Unternehmern im Sinne des Unternehmensgesetzbuches (UGB) sowie juristischen Personen des öffentlichen Rechts.</p>
-      <p class="agb-paragraph">1.2 Diese AGB gelten ausschließlich. Entgegenstehende oder abweichende Geschäftsbedingungen des Kunden werden nicht anerkannt, sofern ihrer Geltung nicht ausdrücklich schriftlich zugestimmt wurde.</p>
+      <p class="agb-paragraph">1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) der OCTOS e.U. (nachfolgend „Verkäufer“) gelten für sämtliche Lieferungen, Leistungen und Angebote gegenüber Unternehmern im Sinne des Unternehmensgesetzbuches (UGB) sowie gegenüber Verbrauchern im Sinne des Konsumentenschutzgesetzes (KSchG).</p>
+      <p class="agb-paragraph">1.2 Diese AGB gelten ausschließlich. Entgegenstehende oder abweichende Geschäftsbedingungen des Kunden werden nicht anerkannt, sofern der Verkäufer ihrer Geltung nicht ausdrücklich schriftlich zugestimmt hat.</p>
       <p class="agb-paragraph">1.3 Individuelle Vereinbarungen zwischen Verkäufer und Kunde haben Vorrang vor diesen AGB. Abweichungen sowie Ergänzungen dieser AGB bedürfen der Schriftform. Dies gilt auch für die Aufhebung dieser Schriftformklausel selbst.</p>
+      <p class="agb-paragraph">1.4 Verbraucher im Sinne dieser AGB ist jede natürliche Person, die ein Rechtsgeschäft zu einem Zweck abschließt, der weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden kann (§ 1 KSchG). Unternehmer ist jede natürliche oder juristische Person, die bei Abschluss des Rechtsgeschäfts in Ausübung ihrer gewerblichen oder selbständigen beruflichen Tätigkeit handelt.</p>
       
       <div class="agb-section"><strong>§ 2 Vertragsabschluss</strong></div>
-      <p class="agb-paragraph">2.1 Angebote des Verkäufers sind freibleibend und unverbindlich.</p>
+      <p class="agb-paragraph">2.1 Angebote des Verkäufers sind freibleibend und unverbindlich, sofern sie nicht ausdrücklich als verbindlich gekennzeichnet sind.</p>
       <p class="agb-paragraph">2.2 Bestellungen des Kunden gelten als verbindliches Vertragsangebot.</p>
-      <p class="agb-paragraph">2.3 Der Vertrag kommt erst durch schriftliche Auftragsbestätigung oder durch Auslieferung der Ware zustande.</p>
+      <p class="agb-paragraph">2.3 Der Vertrag kommt erst durch schriftliche Auftragsbestätigung des Verkäufers oder durch Auslieferung der Ware zustande.</p>
       <p class="agb-paragraph">2.4 Der Verkäufer ist berechtigt, Bestellungen ohne Angabe von Gründen abzulehnen.</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">2.5 Bei Vertragsabschluss im Fernabsatz (z. B. Onlineshop, E-Mail, Telefon) oder außerhalb von Geschäftsräumen erhält der Verbraucher vor Vertragsabschluss alle gesetzlich vorgeschriebenen Informationen gemäß §§ 4, 5 FAGG, insbesondere über Produkteigenschaften, Gesamtpreis inkl. Steuern und Nebenkosten, Lieferbedingungen sowie das Rücktrittsrecht.</p>
+      <p class="agb-paragraph">2.6 Der Vertragstext wird vom Verkäufer gespeichert und dem Verbraucher auf Anfrage zugänglich gemacht.</p>
       
       <div class="agb-section"><strong>§ 3 Preise und Zahlungsbedingungen</strong></div>
-      <p class="agb-paragraph">3.1 Sämtliche Preise verstehen sich in Euro zuzüglich der jeweils geltenden gesetzlichen Umsatzsteuer.</p>
-      <p class="agb-paragraph">3.2 Sofern nicht ausdrücklich anders vereinbart, gelten die Preise ab Lager Innsbruck.</p>
-      <p class="agb-paragraph">3.3 Verpackungs-, Versand-, Transport-, Versicherungs-, Zoll- und sonstige Nebenkosten trägt der Kunde.</p>
-      <p class="agb-paragraph">3.4 Rechnungen sind innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug zur Zahlung fällig. Maßgeblich für den Fristbeginn ist das Datum der Rechnungsausstellung.</p>
-      <p class="agb-paragraph">3.5 Bei Zahlungsverzug gelten Verzugszinsen in gesetzlicher Höhe gemäß § 456 UGB (derzeit 9,2 Prozentpunkte über dem Basiszinssatz).</p>
-      <p class="agb-paragraph">3.6 Darüber hinaus ist der Verkäufer berechtigt, sämtliche zur zweckentsprechenden Rechtsverfolgung notwendigen Mahn-, Inkasso- und Rechtsanwaltskosten geltend zu machen.</p>
-      <p class="agb-paragraph">3.7 Der Kunde ist zur Aufrechnung nur berechtigt, wenn seine Gegenforderung rechtskräftig gerichtlich festgestellt oder vom Verkäufer ausdrücklich schriftlich anerkannt wurde. Eine Aufrechnung gegen bestrittene Forderungen des Verkäufers ist ausgeschlossen.</p>
-      <p class="agb-paragraph">3.8 Preisanpassung: Bei einer wesentlichen Änderung der Beschaffungskosten (insbesondere Rohstoff-, Material- oder Energiepreise) nach Vertragsabschluss, die der Verkäufer nicht zu vertreten hat und die mehr als 5 % des vereinbarten Preises ausmacht, ist der Verkäufer berechtigt, den Preis entsprechend anzupassen. Der Verkäufer hat die Preisanpassung schriftlich mitzuteilen; der Kunde ist in diesem Fall berechtigt, innerhalb von zwei Wochen schriftlich vom Vertrag zurückzutreten.</p>
+      <p class="agb-paragraph">3.1 Sämtliche Preise verstehen sich in Euro.</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">3.1.1 Gegenüber Verbrauchern verstehen sich alle angegebenen Preise als Endpreise inkl. der gesetzlichen Umsatzsteuer sowie aller sonstigen Preisbestandteile. Zusätzliche Liefer-, Versand- oder sonstige Kosten werden vor Abgabe der Bestellung gesondert ausgewiesen.</p>
+      <p class="agb-paragraph">3.2 Gegenüber Unternehmern verstehen sich alle Preise zzgl. der jeweils geltenden gesetzlichen Umsatzsteuer. Sofern nicht ausdrücklich anders vereinbart, gelten die Preise ab Lager Innsbruck. Verpackungs-, Versand-, Transport-, Versicherungs-, Zoll- und sonstige Nebenkosten trägt der Unternehmer.</p>
+      <p class="agb-paragraph">3.3 Rechnungen sind innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug zur Zahlung fällig. Maßgeblich für den Fristbeginn ist das Datum der Rechnungsausstellung.</p>
+      <p class="agb-paragraph">3.4 Bei Zahlungsverzug gelten folgende Regelungen: Gegenüber Unternehmern: Verzugszinsen in gesetzlicher Höhe gemäß § 456 UGB (derzeit 9,2 Prozentpunkte über dem Basiszinssatz). Der Verkäufer ist darüber hinaus berechtigt, sämtliche zur zweckentsprechenden Rechtsverfolgung notwendigen Mahn-, Inkasso- und Rechtsanwaltskosten geltend zu machen.</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">3.4.1 Gegenüber Verbrauchern: Verzugszinsen in Höhe von 4 % p.a. (§ 1000 ABGB). Weitergehende Kosten werden nur geltend gemacht, soweit sie gesetzlich zwingendem Recht entsprechen.</p>
+      <p class="agb-paragraph">3.5 Aufrechnung - nur für Unternehmer: Der Unternehmer ist zur Aufrechnung nur berechtigt, wenn seine Gegenforderung rechtskräftig gerichtlich festgestellt oder vom Verkäufer ausdrücklich schriftlich anerkannt wurde. Eine Aufrechnung gegen bestrittene Forderungen des Verkäufers ist gegenüber Unternehmern ausgeschlossen. Gegenüber Verbrauchern gelten die gesetzlichen Regelungen.</p>
+      <p class="agb-paragraph">3.6 Preisanpassung - nur für Unternehmer: Ändert sich nach Vertragsabschluss der von der Statistik Austria verlautbarte Verbraucherpreisindex 2020 (VPI 2020) um mehr als 5 % gegenüber dem Indexstand zum Zeitpunkt des Vertragsabschlusses, sind sowohl der Verkäufer als auch der Unternehmer berechtigt, den vereinbarten Preis im Verhältnis der Indexänderung schriftlich anzupassen. Der Verkäufer hat die Indexänderung durch Vorlage der maßgeblichen Veröffentlichung der Statistik Austria nachzuweisen. Der Unternehmer ist berechtigt, innerhalb von zwei Wochen nach Zugang der Anpassungserklärung schriftlich vom Vertrag zurückzutreten.</p>
       
-      <div class="agb-section"><strong>§ 4 Lieferung und Gefahrübergang</strong></div>
-      <p class="agb-paragraph">4.1 Liefertermine und Lieferfristen sind nur verbindlich, wenn sie ausdrücklich schriftlich als verbindlich bestätigt wurden. Bei Rahmenverträgen gelten schriftlich fixierte Liefertermine als verbindlich, sofern dies im Rahmenvertrag ausdrücklich vereinbart wird.</p>
-      <p class="agb-paragraph">4.2 Ereignisse höherer Gewalt, Betriebsstörungen, Lieferengpässe von Vorlieferanten, behördliche Maßnahmen oder sonstige vom Verkäufer nicht zu vertretende Umstände verlängern Lieferfristen angemessen. Der Verkäufer hat den Kunden unverzüglich über den Eintritt eines solchen Ereignisses zu informieren.</p>
-      <p class="agb-paragraph">4.3 Die Gefahr des zufälligen Untergangs oder der zufälligen Verschlechterung der Ware geht spätestens mit Übergabe an den ersten Frachtführer oder Transporteur auf den Kunden über.</p>
-      <p class="agb-paragraph">4.4 Gerät der Kunde in Annahmeverzug, ist der Verkäufer berechtigt, die Ware auf Gefahr und Kosten des Kunden einzulagern.</p>
+      <div class="agb-section"><strong>§ 4 Rücktrittsrecht</strong></div>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">4.1 Verbrauchern steht bei im Fernabsatz oder außerhalb von Geschäftsräumen geschlossenen Verträgen ein gesetzliches Rücktrittsrecht von 14 Tagen zu. Die Frist beginnt ab dem Tag, an dem der Verbraucher oder ein von ihm benannter Dritter (nicht der Frachtführer) die Waren in Besitz genommen hat.</p>
+      <p class="agb-paragraph">4.2 Zur Ausübung des Rücktrittsrechts hat der Verbraucher den Verkäufer (OCTOS e.U., Innrain 103, 6020 Innsbruck, info@octos.at) mittels einer eindeutigen Erklärung (z. B. Brief, E-Mail) über seinen Entschluss zu informieren. Zur Fristwahrung genügt die rechtzeitige Absendung der Erklärung.</p>
+      <p class="agb-paragraph">4.3 Im Falle eines wirksamen Rücktritts hat der Verkäufer alle vom Verbraucher geleisteten Zahlungen einschließlich Lieferkosten unverzüglich und spätestens binnen 14 Tagen ab Eingang der Rücktrittserklärung zurückzuzahlen.</p>
+      <p class="agb-paragraph">4.4 Die Rückzahlung erfolgt mit demselben Zahlungsmittel wie die ursprüngliche Transaktion. Der Verkäufer kann die Rückzahlung verweigern, bis er die Waren zurückerhalten hat oder der Verbraucher den Nachweis der Rücksendung erbracht hat.</p>
+      <p class="agb-paragraph">4.5 Der Verbraucher hat die Waren spätestens binnen 14 Tagen ab der Rücktrittserklärung zurückzusenden. Die unmittelbaren Kosten der Rücksendung trägt der Verbraucher.</p>
+      <p class="agb-paragraph">4.6 Das Rücktrittsrecht besteht nicht bei Waren, die nach Kundenspezifikation angefertigt wurden oder eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind (§ 18 Abs. 1 Z 3 FAGG).</p>
+      <p class="agb-paragraph">4.7 Ein Muster-Rücktrittsformular ist unter www.octos.at abrufbar.</p>
       
-      <div class="agb-section"><strong>§ 5 Eigentumsvorbehalt</strong></div>
-      <p class="agb-paragraph">5.1 Sämtliche gelieferten Waren bleiben bis zur vollständigen Bezahlung aller Forderungen aus der Geschäftsbeziehung Eigentum des Verkäufers.</p>
-      <p class="agb-paragraph">5.2 Der Kunde ist berechtigt, die Vorbehaltsware im ordentlichen Geschäftsgang weiterzuveräußern.</p>
-      <p class="agb-paragraph">5.3 Der Kunde tritt bereits jetzt sämtliche Forderungen aus der Weiterveräußerung der Vorbehaltsware an den Verkäufer ab. Der Verkäufer nimmt diese Abtretung an.</p>
-      <p class="agb-paragraph">5.4 Der Kunde hat Zugriffe Dritter auf Vorbehaltsware unverzüglich schriftlich bekanntzugeben.</p>
-      <p class="agb-paragraph">5.5 Der Kunde hat die Vorbehaltsware auf eigene Kosten gegen übliche Risiken, insbesondere Feuer, Wasser und Diebstahl, ausreichend zu versichern. Der Kunde tritt hiermit sämtliche Versicherungsansprüche im Zusammenhang mit der Vorbehaltsware in Höhe des Rechnungswertes bereits jetzt an den Verkäufer ab. Der Verkäufer nimmt diese Abtretung an.</p>
-      <p class="agb-paragraph">5.6 Im Falle der Rücknahme der Vorbehaltsware durch den Verkäufer - insbesondere im Fall des Zahlungsverzugs - ist der Verkäufer berechtigt, die Geschäftsräume des Kunden während der üblichen Geschäftszeiten zu betreten, um die Vorbehaltsware sicherzustellen. Die Kosten der Rückholung trägt der Kunde.</p>
+      <div class="agb-section"><strong>§ 5 Lieferung und Gefahrübergang</strong></div>
+      <p class="agb-paragraph">5.1 Liefertermine und Lieferfristen sind nur verbindlich, wenn sie ausdrücklich schriftlich als verbindlich bestätigt wurden. Bei Rahmenverträgen mit Unternehmern gelten schriftlich fixierte Liefertermine als verbindlich, sofern dies im Rahmenvertrag ausdrücklich vereinbart wird.</p>
+      <p class="agb-paragraph">5.2 Ereignisse höherer Gewalt, Betriebsstörungen, Lieferengpässe von Vorlieferanten, behördliche Maßnahmen oder sonstige vom Verkäufer nicht zu vertretende Umstände verlängern Lieferfristen angemessen. Der Verkäufer hat den Kunden unverzüglich über den Eintritt eines solchen Ereignisses zu informieren.</p>
+      <p class="agb-paragraph">5.3 Die Gefahr des zufälligen Untergangs oder der zufälligen Verschlechterung der Ware geht mit Übergabe an den Kunden oder einen von ihm benannten Dritten über.</p>
+      <p class="agb-paragraph">5.3.1 Gegenüber Verbrauchern geht die Gefahr erst über, wenn der Verbraucher oder ein von ihm benannter Dritter (nicht der Frachtführer) die Ware tatsächlich in Besitz genommen hat.</p>
+      <p class="agb-paragraph">5.4 Gerät der Kunde in Annahmeverzug, ist der Verkäufer berechtigt, die Ware auf Gefahr und Kosten des Kunden einzulagern.</p>
       
-      <div class="agb-section"><strong>§ 6 Untersuchungs- und Rügepflicht</strong></div>
-      <p class="agb-paragraph">6.1 Der Kunde hat die Ware unverzüglich nach Erhalt zu untersuchen.</p>
-      <p class="agb-paragraph">6.2 Offensichtliche Mängel sind spätestens innerhalb von fünf Werktagen nach Erhalt der Ware schriftlich anzuzeigen.</p>
-      <p class="agb-paragraph">6.3 Versteckte Mängel sind spätestens innerhalb von fünf Werktagen nach deren Entdeckung schriftlich anzuzeigen.</p>
-      <p class="agb-paragraph">6.4 Unterbleibt die rechtzeitige Anzeige, gelten die Bestimmungen des § 377 UGB.</p>
+      <div class="agb-section"><strong>§ 6 Eigentumsvorbehalt</strong></div>
+      <p class="agb-paragraph">6.1 Sämtliche gelieferten Waren bleiben bis zur vollständigen Bezahlung aller Forderungen aus der Geschäftsbeziehung Eigentum des Verkäufers.</p>
+      <p class="agb-paragraph">6.2 Der Unternehmer ist berechtigt, die Vorbehaltsware im ordentlichen Geschäftsgang weiterzuveräußern. Er tritt bereits jetzt sämtliche Forderungen aus der Weiterveräußerung an den Verkäufer ab; der Verkäufer nimmt diese Abtretung an.</p>
+      <p class="agb-paragraph">6.3 Der Kunde hat Zugriffe Dritter auf Vorbehaltsware unverzüglich schriftlich bekanntzugeben.</p>
+      <p class="agb-paragraph">6.4 Der Kunde hat die Vorbehaltsware auf eigene Kosten gegen übliche Risiken (insbesondere Feuer, Wasser, Diebstahl) ausreichend zu versichern und tritt Versicherungsansprüche hieraus bereits jetzt in Höhe des Rechnungswertes an den Verkäufer ab; der Verkäufer nimmt diese Abtretung an.</p>
+      <p class="agb-paragraph">6.5 Im Falle der Rücknahme der Vorbehaltsware ist der Verkäufer berechtigt, die Geschäftsräume des Kunden während der üblichen Geschäftszeiten zu betreten. Die Kosten der Rückholung trägt der Kunde.</p>
       
-      <div class="agb-section"><strong>§ 7 Gewährleistung</strong></div>
-      <p class="agb-paragraph">7.1 Die Gewährleistungsfrist beträgt für Unternehmer zwölf Monate ab Übergabe der Ware. Diese Verkürzung gilt ausschließlich für Neuware. Bei gebrauchten Waren beträgt die Gewährleistungsfrist sechs Monate ab Übergabe.</p>
-      <p class="agb-paragraph">7.2 Bei berechtigten Gewährleistungsansprüchen ist der Verkäufer nach eigener Wahl zur Verbesserung oder zum Austausch berechtigt.</p>
-      <p class="agb-paragraph">7.3 Schlägt die Verbesserung oder der Austausch fehl oder ist dies wirtschaftlich unzumutbar, kann der Kunde Preisminderung oder Vertragsaufhebung verlangen.</p>
-      <p class="agb-paragraph">7.4 Gewährleistungsansprüche bestehen insbesondere nicht bei: normalem Verschleiß, natürlicher Abnutzung, unsachgemäßer Verwendung, Missachtung der Bedienungsanleitung, Überschreitung der zulässigen Belastungsgrenzen, eigenmächtigen Veränderungen oder Reparaturen, mangelnder Wartung, Schäden durch höhere Gewalt.</p>
-      <p class="agb-paragraph">7.5 Ein Anspruch auf Ersatz von Aus- und Einbaukosten, Betriebsunterbrechungen oder sonstigen Folgekosten besteht nicht, soweit dies gesetzlich zulässig ist.</p>
+      <div class="agb-section"><strong>§ 7 Untersuchungs- und Rügepflicht (nur für Unternehmer)</strong></div>
+      <p class="agb-paragraph">7.1 Unternehmer haben die Ware unverzüglich nach Erhalt zu untersuchen.</p>
+      <p class="agb-paragraph">7.2 Offensichtliche Mängel sind spätestens innerhalb von 14 Tagen nach Erhalt der Ware schriftlich anzuzeigen.</p>
+      <p class="agb-paragraph">7.3 Versteckte Mängel sind spätestens innerhalb von 14 Tagen nach deren Entdeckung schriftlich anzuzeigen.</p>
+      <p class="agb-paragraph">7.4 Unterbleibt die rechtzeitige Anzeige, gelten die Bestimmungen des § 377 UGB. Gegenüber Verbrauchern findet § 7 keine Anwendung.</p>
       
-      <div class="agb-section"><strong>§ 8 Bestimmungsgemäße Verwendung, Sicherheit und Wartung</strong></div>
-      <p class="agb-paragraph">8.1 Sämtliche vom Verkäufer gelieferten Waren dürfen ausschließlich entsprechend ihrem vorgesehenen Verwendungszweck sowie gemäß den jeweils mitgelieferten Anleitungen und Sicherheitshinweisen verwendet werden.</p>
-      <p class="agb-paragraph">8.2 Jede Verwendung außerhalb des vorgesehenen Verwendungszwecks, insbesondere unsachgemäße Nutzung, Überlastung, eigenmächtige Veränderungen, Umbauten oder die Verwendung entgegen den Anweisungen des Verkäufers, erfolgt auf eigenes Risiko des Kunden.</p>
-      <p class="agb-paragraph">8.3 Technische Spezifikationen, Belastungsgrenzen, Einsatzbereiche, Sicherheitsanforderungen sowie sonstige produktspezifische Eigenschaften ergeben sich ausschließlich aus den jeweils gültigen technischen Unterlagen, Produktbeschreibungen, Benutzer- und Wartungsanleitungen sowie den vom Verkäufer bereitgestellten Produktsicherheits- und Warnhinweisen.</p>
-      <p class="agb-paragraph">8.4 Der Kunde ist verpflichtet, sämtliche mit der Ware gelieferten oder bereitgestellten Bedienungs-, Sicherheits-, Wartungs-, Montage- und Warnhinweise einzuhalten und sicherzustellen, dass diese allen Personen zugänglich gemacht werden.</p>
-      <p class="agb-paragraph">8.5 Der Kunde hat die Ware entsprechend den Vorgaben des Verkäufers regelmäßig zu überprüfen, zu warten und instand zu halten. Insbesondere sind sicherheitsrelevante Bauteile sowie bewegliche oder verschleißanfällige Komponenten regelmäßig zu kontrollieren.</p>
-      <p class="agb-paragraph">8.6 Der Verkäufer stellt für die jeweiligen Produkte produktspezifische Benutzer- und Wartungsanleitungen sowie erforderliche Produktsicherheits- und Warnhinweise zur Verfügung.</p>
+      <div class="agb-section"><strong>§ 8 Gewährleistung</strong></div>
+      <p class="agb-paragraph"><strong>a) Gewährleistung gegenüber Unternehmern</strong></p>
+      <p class="agb-paragraph">8.1 Die Gewährleistungsfrist beträgt gegenüber Unternehmern zwölf (12) Monate ab Übergabe der Ware. Diese Verkürzung gilt ausschließlich für Neuware. Bei gebrauchten Waren beträgt die Gewährleistungsfrist sechs (6) Monate ab Übergabe.</p>
+      <p class="agb-paragraph">8.2 Bei berechtigten Gewährleistungsansprüchen ist der Verkäufer nach eigener Wahl zur Verbesserung oder zum Austausch berechtigt. Schlägt die Verbesserung oder der Austausch fehl oder ist dies wirtschaftlich unzumutbar, kann der Unternehmer Preisminderung oder Vertragsaufhebung verlangen.</p>
+      <p class="agb-paragraph"><strong>b) Gewährleistung gegenüber Verbrauchern</strong></p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">8.3 Die Gewährleistungsfrist beträgt gegenüber Verbrauchern zwei (2) Jahre ab Übergabe der Ware (§ 922 ff. ABGB i. V. m. § 9 KSchG). Eine Verkürzung dieser Frist ist gegenüber Verbrauchern nicht zulässig.</p>
+      <p class="agb-paragraph">8.4 Zeigt sich ein Mangel innerhalb von zwölf (12) Monaten ab Übergabe, wird vermutet, dass er bereits bei Übergabe vorgelegen hat (§ 924 ABGB).</p>
+      <p class="agb-paragraph">8.5 Der Verkäufer ist zunächst berechtigt, nach eigener Wahl Verbesserung oder Austausch zu leisten. Schlägt der zweite Verbesserungsversuch fehl, kann der Verbraucher Preisminderung oder – sofern der Mangel nicht geringfügig ist – Vertragsauflösung verlangen.</p>
+      <p class="agb-paragraph">8.6 Schadensersatzansprüche von Verbrauchern wegen Mängeln bleiben unvermindert bestehen.</p>
+      <p class="agb-paragraph"><strong>c) Gemeinsame Ausschlüsse</strong></p>
+      <p class="agb-paragraph">8.7 Gewährleistungsansprüche bestehen insbesondere nicht bei:</p>
+      <p class="agb-paragraph">• normalem Verschleiß und natürlicher Abnutzung,<br>
+      • unsachgemäßer Verwendung oder Missachtung der Bedienungsanleitung,<br>
+      • Überschreitung der zulässigen Belastungsgrenzen,<br>
+      • eigenmächtigen Veränderungen oder Reparaturen durch den Kunden oder Dritte,<br>
+      • mangelnder Wartung gemäß den Vorgaben des Verkäufers,<br>
+      • Schäden durch höhere Gewalt.</p>
       
-      <div class="agb-section"><strong>§ 9 Haftung</strong></div>
-      <p class="agb-paragraph">9.1 Der Verkäufer haftet unbeschränkt für Schäden, die vorsätzlich oder grob fahrlässig verursacht wurden.</p>
-      <p class="agb-paragraph">9.2 Die Haftung für leichte Fahrlässigkeit wird – soweit gesetzlich zulässig – ausgeschlossen.</p>
-      <p class="agb-paragraph">9.3 Soweit ein Haftungsausschluss gesetzlich nicht zulässig ist, haftet der Verkäufer ausschließlich für den typischerweise vorhersehbaren Schaden.</p>
-      <p class="agb-paragraph">9.4 Die Haftung für entgangenen Gewinn, Produktionsausfälle, Betriebsunterbrechungen, mittelbare Schäden und Folgeschäden ist ausgeschlossen, soweit gesetzlich zulässig.</p>
-      <p class="agb-paragraph">9.5 Die Haftung des Verkäufers ist je Schadensfall auf den Nettoauftragswert der betroffenen Lieferung beschränkt, soweit dies gesetzlich zulässig ist.</p>
-      <p class="agb-paragraph">9.6 Die vorstehenden Haftungsbeschränkungen gelten nicht für: Vorsatz, grobe Fahrlässigkeit, Ansprüche nach dem Produkthaftungsgesetz (PHG), Schäden an Leben, Körper oder Gesundheit.</p>
+      <div class="agb-section"><strong>§ 9 Bestimmungsgemäße Verwendung, Sicherheit und Wartung</strong></div>
+      <p class="agb-paragraph">9.1 Sämtliche vom Verkäufer gelieferten Waren dürfen ausschließlich entsprechend ihrem vorgesehenen Verwendungszweck sowie gemäß den jeweils mitgelieferten oder bereitgestellten Bedienungs-, Sicherheits-, Montage-, Wartungs- und Warnhinweisen verwendet werden.</p>
+      <p class="agb-paragraph">9.2 Jede Verwendung außerhalb des vorgesehenen Verwendungszwecks – insbesondere unsachgemäße Nutzung, Überlastung, eigenmächtige Veränderungen oder die Verwendung entgegen den Anweisungen des Verkäufers – erfolgt auf eigenes Risiko des Kunden.</p>
+      <p class="agb-paragraph">9.3 Technische Spezifikationen, Belastungsgrenzen, Einsatzbereiche und Sicherheitsanforderungen ergeben sich ausschließlich aus den jeweils gültigen technischen Unterlagen, Produktbeschreibungen und Benutzeranleitungen des Verkäufers. Abweichende Eigenschaften gelten nur dann als vereinbart, wenn diese ausdrücklich schriftlich festgehalten wurden.</p>
+      <p class="agb-paragraph">9.4 Der Kunde ist verpflichtet, sämtliche Bedienungs-, Sicherheits-, Wartungs- und Warnhinweise einzuhalten und sicherzustellen, dass diese allen Personen zugänglich gemacht werden, die die Ware verwenden, montieren, warten oder damit in Berührung kommen.</p>
+      <p class="agb-paragraph">9.5 Der Kunde hat die Ware entsprechend den Vorgaben des Verkäufers regelmäßig zu überprüfen, zu warten und instand zu halten. Sicherheitsrelevante Bauteile sowie bewegliche oder verschleißanfällige Komponenten sind regelmäßig auf ordnungsgemäßen Zustand, Beschädigungen und Funktionsfähigkeit zu kontrollieren.</p>
       
-      <div class="agb-section"><strong>§ 12 Datenschutz</strong></div>
-      <p class="agb-paragraph">12.1 Personenbezogene Daten werden ausschließlich im Rahmen der geltenden datenschutzrechtlichen Vorschriften, insbesondere der DSGVO und des DSG, verarbeitet.</p>
-      <p class="agb-paragraph">12.2 Soweit der Kunde im Rahmen der Geschäftsbeziehung personenbezogene Daten Dritter (z. B. seiner Mitarbeiter oder Endkunden) an den Verkäufer übermittelt, bestätigt der Kunde, dass er hierzu rechtlich befugt ist und die erforderlichen Einwilligungen eingeholt hat.</p>
-      <p class="agb-paragraph">12.3 Nähere Informationen zur Datenverarbeitung sind der Datenschutzerklärung unter www.octos.at zu entnehmen.</p>
+      <div class="agb-section"><strong>§ 10 Haftung</strong></div>
+      <p class="agb-paragraph">10.1 Der Verkäufer haftet unbeschränkt für Schäden, die vorsätzlich oder grob fahrlässig verursacht wurden.</p>
+      <p class="agb-paragraph">10.2 Die Haftung des Verkäufers für leichte Fahrlässigkeit gegenüber Unternehmern wird – soweit gesetzlich zulässig und vorbehaltlich § 10.6 – ausgeschlossen.</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">10.2.1 Gegenüber Verbrauchern ist ein Ausschluss der Haftung für leichte Fahrlässigkeit gemäß § 6 Abs. 1 Z 9 KSchG unzulässig. Der Verkäufer haftet gegenüber Verbrauchern daher auch für leichte Fahrlässigkeit.</p>
+      <p class="agb-paragraph">10.3 Soweit ein Haftungsausschluss gesetzlich nicht zulässig ist, haftet der Verkäufer ausschließlich für den typischerweise vorhersehbaren Schaden.</p>
+      <p class="agb-paragraph">10.4 Die Haftung für entgangenen Gewinn, Produktionsausfälle, Betriebsunterbrechungen, mittelbare Schäden und Folgeschäden gegenüber Unternehmern ist ausgeschlossen, soweit gesetzlich zulässig.</p>
+      <p class="agb-paragraph">10.5 Die Haftung des Verkäufers ist gegenüber Unternehmern je Schadensfall auf den Nettoauftragswert der betroffenen Lieferung beschränkt, soweit gesetzlich zulässig.</p>
+      <p class="agb-paragraph">10.6 Die vorstehenden Haftungsbeschränkungen und -ausschlüsse gelten nicht für:</p>
+      <p class="agb-paragraph">• Vorsatz,<br>
+      • grobe Fahrlässigkeit,<br>
+      • Ansprüche nach dem Produkthaftungsgesetz (PHG); die Haftungsbeschränkung in § 10.5 gilt für PHG-Ansprüche nur insoweit, als dies nach dem PHG zulässig ist,<br>
+      • Schäden an Leben, Körper oder Gesundheit.</p>
       
-      <div class="agb-section"><strong>§ 13 Exportkontrolle und Sanktionen</strong></div>
-      <p class="agb-paragraph">13.1 Der Kunde verpflichtet sich, die gelieferten Waren ausschließlich im Einklang mit den anwendbaren Exportkontrollvorschriften der EU, Österreichs sowie der Vereinigten Staaten zu verwenden und weiterzugeben.</p>
-      <p class="agb-paragraph">13.2 Bei einer Weiterlieferung in Drittstaaten hat der Kunde sicherzustellen, dass keine anwendbaren Embargos oder Sanktionsvorschriften verletzt werden, und ist für die Einholung etwaiger erforderlicher Ausfuhrgenehmigungen selbst verantwortlich.</p>
-      <p class="agb-paragraph">13.3 Der Kunde stellt den Verkäufer von sämtlichen Schäden, Bußgeldern und Ansprüchen Dritter frei, die aus einer Verletzung dieser Pflichten entstehen.</p>
+      <div class="agb-section"><strong>§ 11 Geistiges Eigentum</strong></div>
+      <p class="agb-paragraph">11.1 Sämtliche Zeichnungen, Konstruktionen, technische Unterlagen, CAD-Daten, Berechnungen, Muster, Prototypen, Bedienungsanleitungen und sonstige Dokumentationen bleiben geistiges Eigentum des Verkäufers.</p>
+      <p class="agb-paragraph">11.2 Eine Weitergabe, Vervielfältigung oder Nutzung durch Dritte bedarf der vorherigen schriftlichen Zustimmung des Verkäufers.</p>
       
-      <div class="agb-section"><strong>§ 14 Höhere Gewalt</strong></div>
-      <p class="agb-paragraph">14.1 Ereignisse höherer Gewalt entbinden den Verkäufer für die Dauer und den Umfang ihrer Auswirkungen von seinen Leistungspflichten.</p>
-      <p class="agb-paragraph">14.2 Dauert ein Ereignis höherer Gewalt länger als drei Monate an, sind beide Parteien berechtigt, vom noch nicht erfüllten Teil des Vertrages zurückzutreten.</p>
+      <div class="agb-section"><strong>§ 12 Vertraulichkeit</strong></div>
+      <p class="agb-paragraph">12.1 Der Kunde verpflichtet sich, sämtliche ihm im Rahmen der Geschäftsbeziehung bekannt werdenden technischen, wirtschaftlichen und geschäftlichen Informationen vertraulich zu behandeln.</p>
+      <p class="agb-paragraph">12.2 Diese Verpflichtung bleibt auch nach Beendigung der Geschäftsbeziehung aufrecht.</p>
       
-      <div class="agb-section"><strong>§ 15 Schlussbestimmungen</strong></div>
-      <p class="agb-paragraph">15.1 Es gilt ausschließlich österreichisches materielles Recht unter Ausschluss der Kollisionsnormen und des UN-Kaufrechts (CISG).</p>
-      <p class="agb-paragraph">15.2 Ausschließlicher Gerichtsstand für sämtliche Streitigkeiten aus oder im Zusammenhang mit dem Vertragsverhältnis ist Innsbruck, Österreich.</p>
-      <p class="agb-paragraph">15.3 Der Verkäufer ist jedoch berechtigt, Ansprüche auch am allgemeinen Gerichtsstand des Kunden geltend zu machen.</p>
-      <p class="agb-paragraph">15.4 Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung ist durch eine wirksame Regelung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
+      <div class="agb-section"><strong>§ 13 Datenschutz</strong></div>
+      <p class="agb-paragraph">13.1 Personenbezogene Daten werden ausschließlich im Rahmen der geltenden datenschutzrechtlichen Vorschriften, insbesondere der DSGVO und des österreichischen DSG, verarbeitet.</p>
+      <p class="agb-paragraph">13.2 Soweit der Kunde im Rahmen der Geschäftsbeziehung personenbezogene Daten Dritter (z. B. seiner Mitarbeiter oder Endkunden) an den Verkäufer übermittelt, bestätigt der Kunde, hierzu rechtlich befugt zu sein und alle erforderlichen Einwilligungen eingeholt zu haben.</p>
+      <p class="agb-paragraph">13.3 Nähere Informationen zur Datenverarbeitung sind der Datenschutzerklärung unter www.octos.at zu entnehmen.</p>
+      <p class="agb-paragraph" style="font-size: 12px; color: #aaa;">OCTOS e.U. | Innsbruck, Österreich | www.octos.at | Firmenbuchnummer: ATU83179524</p>
+      
+      <div class="agb-section"><strong>§ 14 Exportkontrolle und Sanktionen</strong></div>
+      <p class="agb-paragraph">14.1 Der Kunde verpflichtet sich, die gelieferten Waren ausschließlich im Einklang mit den anwendbaren Exportkontrollvorschriften der EU, Österreichs sowie der Vereinigten Staaten zu verwenden und weiterzugeben.</p>
+      <p class="agb-paragraph">14.2 Bei einer Weiterlieferung in Drittstaaten hat der Kunde sicherzustellen, dass keine anwendbaren Embargos oder Sanktionsvorschriften verletzt werden, und ist für die Einholung etwaiger erforderlicher Ausfuhrgenehmigungen selbst verantwortlich.</p>
+      <p class="agb-paragraph">14.3 Der Kunde stellt den Verkäufer von sämtlichen Schäden, Bußgeldern und Ansprüchen Dritter frei, die aus einer Verletzung dieser Pflichten entstehen.</p>
+      
+      <div class="agb-section"><strong>§ 15 Höhere Gewalt</strong></div>
+      <p class="agb-paragraph">15.1 Ereignisse höherer Gewalt entbinden den Verkäufer für die Dauer und den Umfang ihrer Auswirkungen von seinen Leistungspflichten.</p>
+      <p class="agb-paragraph">15.2 Dauert ein Ereignis höherer Gewalt länger als drei Monate an, sind beide Parteien berechtigt, vom noch nicht erfüllten Teil des Vertrages zurückzutreten.</p>
+      
+      <div class="agb-section"><strong>§ 16 Online-Streitbeilegung</strong></div>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">16.1 Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die unter https://ec.europa.eu/consumers/odr/ erreichbar ist.</p>
+      <p class="agb-paragraph">16.2 Der Verkäufer ist zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit, sofern keine gesetzliche Pflicht zur Teilnahme besteht.</p>
+      <p class="agb-paragraph">16.3 Verbraucher können sich mit Beschwerden an die österreichische Schlichtungsstelle für Verbrauchergeschäfte wenden: www.verbraucherschlichtung.at</p>
+      
+      <div class="agb-section"><strong>§ 17 Schlussbestimmungen</strong></div>
+      <p class="agb-paragraph">17.1 Es gilt ausschließlich österreichisches materielles Recht unter Ausschluss der Kollisionsnormen und des UN-Kaufrechts (CISG).</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">17.1.1 Gegenüber Verbrauchern mit gewöhnlichem Aufenthalt in einem anderen EU-Mitgliedstaat bleiben zwingende Verbraucherschutzvorschriften des jeweiligen Aufenthaltslandes unverändert anwendbar.</p>
+      <p class="agb-paragraph">17.2 Ausschließlicher Gerichtsstand für Streitigkeiten mit Unternehmern ist Innsbruck, Österreich. Der Verkäufer ist berechtigt, Ansprüche auch am allgemeinen Gerichtsstand des Unternehmers geltend zu machen.</p>
+      <span class="agb-b2c-marker">NUR FÜR VERBRAUCHER - B2C</span>
+      <p class="agb-paragraph">17.2.1 Für Klagen des Verkäufers gegen Verbraucher gilt als ausschließlicher Gerichtsstand der allgemeine Gerichtsstand des Verbrauchers (§ 14 KSchG). Für Klagen des Verbrauchers gegen den Verkäufer kann der Verbraucher nach Wahl den Gerichtsstand Innsbruck oder seinen allgemeinen Gerichtsstand wählen.</p>
+      <p class="agb-paragraph">17.3 Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung ist durch eine wirksame Regelung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
       
       <hr>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <p style="font-size: 12px; margin: 0;">OCTOS e.U. | Innsbruck, Österreich | www.octos.at | Stand: 01.06.2026</p>
-        <a href="docs/AGB_OCTOS_B2B_2026.pdf" class="pdf-download-link" download style="margin: 0;">
-          <span>📄</span> PDF herunterladen
-        </a>
+        <div style="display: flex; gap: 10px;">
+          <a href="docs/OCTOS_AGB_2026.pdf" class="pdf-download-link" download style="margin: 0;">
+            <span>📄</span> AGB PDF
+          </a>
+          <a href="docs/Ruecktrittsformular_OCTOS.pdf" class="pdf-download-link" download style="margin: 0;">
+            <span>📄</span> Rücktrittsformular
+          </a>
+        </div>
       </div>
       <button id="closeTosFooterBtn" class="legal-btn-close">SCHLIESSEN</button>
     </div>
@@ -861,27 +872,8 @@
       const hasConsent = checkExistingConsent();
       if (!hasConsent) setTimeout(() => showModal(), 500); else hideModal();
       
-      // translations object — now includes 'returns' for return form section
-      const translations = {
-        en: {
-          nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" },
-          home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" },
-          about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." },
-          services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } },
-          gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." },
-          contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" },
-          returns: { title: "RETURN FORM", text: "Need to return an item? Download our return form, fill it out, and include it with your shipment.", download: "RETURN FORM" }
-        },
-        de: {
-          nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" },
-          home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" },
-          about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." },
-          services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } },
-          gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." },
-          contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" },
-          returns: { title: "RÜCKSENDEFORMULAR", text: "Möchten Sie einen Artikel zurücksenden? Laden Sie unser Rücksendeformular herunter, füllen Sie es aus und legen Sie es Ihrer Sendung bei.", download: "RÜCKSENDEFORMULAR" }
-        }
-      };
+      // translations object (simplified, same as original)
+      const translations = { en: { nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" }, home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" }, about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." }, services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } }, gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." }, contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" } }, de: { nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" }, home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" }, about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." }, services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } }, gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." }, contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" } } };
       
       const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_de.pdf' };
       const downloadLink = document.getElementById('downloadManualLink');
