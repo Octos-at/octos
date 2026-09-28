@@ -440,6 +440,45 @@
       letter-spacing: 1px;
     }
     hr { border-color: rgba(255,255,255,0.2); margin: 16px 0; }
+
+    /* ===== Return Form Download Section ===== */
+    .returns-section {
+      background: #111115;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 60px 20px;
+      text-align: center;
+      color: #f0f0f0;
+    }
+    .returns-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .returns-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      letter-spacing: 3px;
+      margin: 0 0 14px;
+      color: #fff;
+    }
+    .returns-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ccc;
+      margin: 0 0 22px;
+    }
+    .returns-download {
+      font-size: 15px;
+      padding: 12px 26px;
+      margin-top: 0;
+    }
+    .returns-download span:first-child {
+      font-size: 20px;
+    }
+    @media (max-width: 680px) {
+      .returns-section { padding: 45px 18px; }
+      .returns-title { font-size: 22px; letter-spacing: 2px; }
+    }
   </style>
 </head>
 <body>
@@ -557,8 +596,29 @@
     </div>
   </section>
   
+  <!-- ===== RETURN FORM DOWNLOAD SECTION (lower part) ===== -->
+  <section id="returns" class="returns-section">
+    <div class="returns-container">
+      <h3 class="returns-title" data-i18n="returns.title">RETURN FORM</h3>
+      <p class="returns-text" data-i18n="returns.text">
+        Need to return an item? Download our return form, fill it out, and include it with your shipment.
+      </p>
+      <a
+        href="docs/OCTOS_Return_Form.pdf"
+        id="returnFormDownloadLink"
+        class="pdf-download-link returns-download"
+        download="OCTOS_Return_Form.pdf"
+        target="_blank"
+        rel="noopener"
+      >
+        <span>⬇</span>
+        <span data-i18n="returns.download">RETURN FORM</span>
+      </a>
+    </div>
+  </section>
+
   <footer id="templatemo-footer">
-    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a> | <a href="#" id="openTosLink">AGB</a></p>
+    <p>Copyright © 2026 OCTOS | <a href="#" id="openPrivacyLink">Datenschutzerklärung</a> | <a href="#" id="openImprintLink">Impressum</a> | <a href="#" id="openTosLink">AGB</a> | <a href="docs/OCTOS_Return_Form.pdf" download>Rücksendeformular</a></p>
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
@@ -801,8 +861,27 @@
       const hasConsent = checkExistingConsent();
       if (!hasConsent) setTimeout(() => showModal(), 500); else hideModal();
       
-      // translations object (simplified, same as original)
-      const translations = { en: { nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" }, home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" }, about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." }, services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } }, gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." }, contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" } }, de: { nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" }, home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" }, about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." }, services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } }, gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." }, contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" } } };
+      // translations object — now includes 'returns' for return form section
+      const translations = {
+        en: {
+          nav: { home: "HOME", about: "ABOUT", services: "SERVICES", gallery: "GALLERY", contact: "CONTACT" },
+          home: { title: "WELCOME TO OCTOS", subtitle: "EFFICIENCY ENGINEERED, COMFORT ASSURED.", explore: "EXPLORE" },
+          about: { title: "ABOUT US", text1: "Hello from Innsbruck, We are a design-focused team dedicated to creating products that make everyday life simpler and more comfortable.", text2: "Our mission is to deliver well-crafted solutions that enhance comfort and improve everyday efficiency." },
+          services: { title: "WHAT WE DO", subtitle: "DESIGN · DEVELOP · DELIVER", design: { title: "DESIGN", text: "CUSTOM‑MADE MECHANICAL DESIGNS" }, develop: { title: "DEVELOP", text: "ENGINEERED IN THE BEST QUALITY WITH HIGH AUSTRIAN STANDARDS" }, deliver: { title: "DELIVER", text: "NO MATTER WHERE YOU ARE, WE SHIP GLOBALLY" } },
+          gallery: { title: "OctoStool", subtitle: "The future of barbering comfort and control.", tagline: "Move like you're standing feel like you're not!", download: "DOWNLOAD OctoStool", health: "Reduce strain on your back, legs, and shoulders", efficiency: "Move around your client effortlessly. Stay close, precise, and in control from every angle.", comfort: "Full freedom & reach, while keeping you comfortably seated and fully supported." },
+          contact: { title: "GET IN TOUCH", subtitle: "LET'S START SOMETHING GREAT TOGETHER", name: "Your name", email: "Your email", message: "Your message", submit: "SEND MESSAGE" },
+          returns: { title: "RETURN FORM", text: "Need to return an item? Download our return form, fill it out, and include it with your shipment.", download: "RETURN FORM" }
+        },
+        de: {
+          nav: { home: "START", about: "ÜBER UNS", services: "LEISTUNGEN", gallery: "GALERIE", contact: "KONTAKT" },
+          home: { title: "WILLKOMMEN BEI OCTOS", subtitle: "EFFIZIENZ ENGINEERED, KOMFORT GARANTIERT.", explore: "ENTDECKEN" },
+          about: { title: "ÜBER UNS", text1: "Hallo aus Innsbruck, Wir sind ein designorientiertes Team, das sich der Entwicklung von Produkten widmet, die den Alltag einfacher und komfortabler machen.", text2: "Unsere Mission ist es, durchdachte Lösungen zu liefern, die den Komfort erhöhen und die tägliche Effizienz verbessern." },
+          services: { title: "UNSERE LEISTUNGEN", subtitle: "DESIGN · ENTWICKLUNG · LIEFERUNG", design: { title: "DESIGN", text: "INDIVIDUELLE MECHANISCHE KONSTRUKTIONEN" }, develop: { title: "ENTWICKLUNG", text: "ENTWICKELT IN HÖCHSTER QUALITÄT NACH ÖSTERREICHISCHEN STANDARDS" }, deliver: { title: "LIEFERUNG", text: "EGAL WO SIE SIND, WIR LIEFERN WELTWEIT" } },
+          gallery: { title: "OctoStool", subtitle: "Die Zukunft des Friseurkomforts und der Kontrolle.", tagline: "Bewegen Sie sich als ob Sie stehen, fühlen Sie sich als ob Sie sitzen!", download: "OctoStool HERUNTERLADEN", health: "Reduziert Belastung von Rücken, Beinen und Schultern", efficiency: "Bewegen Sie sich mühelos um Ihren Kunden. Bleiben Sie nah, präzise und kontrolliert aus jedem Winkel.", comfort: "Volle Freiheit & Reichweite, während Sie bequem sitzen und vollständig unterstützt werden." },
+          contact: { title: "KONTAKT", subtitle: "LASSEN SIE UNS GEMEINSAM ETWAS GROSSARTIGES STARTEN", name: "Ihr Name", email: "Ihre E-Mail", message: "Ihre Nachricht", submit: "NACHRICHT SENDEN" },
+          returns: { title: "RÜCKSENDEFORMULAR", text: "Möchten Sie einen Artikel zurücksenden? Laden Sie unser Rücksendeformular herunter, füllen Sie es aus und legen Sie es Ihrer Sendung bei.", download: "RÜCKSENDEFORMULAR" }
+        }
+      };
       
       const manualFiles = { en: 'docs/octostool_manual_en.pdf', de: 'docs/octostool_manual_de.pdf' };
       const downloadLink = document.getElementById('downloadManualLink');
