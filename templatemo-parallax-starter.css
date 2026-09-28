@@ -544,6 +544,32 @@ img{
     font-size:34px
   }
 }
-
+// ========== HIDDEN MANUAL DOWNLOAD VIA DIRECT LINK ==========
+(function() {
+  // Check if URL contains #Manual_DE or ?manual=de
+  const hash = window.location.hash;
+  const search = window.location.search;
+  
+  if (hash === '#Manual_DE' || search.includes('manual=de')) {
+    // Hide the main website content (optional: you can hide specific elements instead)
+    document.body.style.overflow = 'hidden';
+    
+    // Show the manual download overlay
+    const overlay = document.getElementById('manualDownloadOverlay');
+    if (overlay) {
+      overlay.style.display = 'flex';
+    }
+    
+    // Optional: hide the rest of the page by hiding all direct children of body except the overlay
+    // This is a simple approach; if you prefer to just overlay, you can remove this part.
+    const bodyChildren = document.body.children;
+    for (let i = 0; i < bodyChildren.length; i++) {
+      const child = bodyChildren[i];
+      if (child.id !== 'manualDownloadOverlay' && child.tagName !== 'SCRIPT') {
+        child.style.display = 'none';
+      }
+    }
+  }
+})();
 /* REMOVED the problematic absolute positioning for about section */
 /* #about .section-content was causing layout issues - FIXED */
