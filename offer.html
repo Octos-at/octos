@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get an offer · OCTOS</title>
+<meta name="description" content="Request a written offer for the OctoStool Essential or Power+, for barbershops and resellers.">
+<link rel="alternate" hreflang="en" href="offer.html">
+<link rel="alternate" hreflang="de" href="de/offer.html">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="OCTOS home"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="shop" href="offer.html" aria-current="page">Get offer</a>
+    </nav>
+    <span class="lang" aria-label="Language"><b>EN</b> / <a href="de/offer.html" hreflang="de" lang="de">DE</a></span>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="btn btn-wood" href="contact.html">Start your project</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="phead" aria-labelledby="pg-title">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">OctoStool · Request an offer</p>
+        <h1 id="pg-title">Your OctoStool, <em>configured.</em></h1>
+        <p class="lead">Choose the version, options and quantity. We reply with a written offer including price, delivery time and shipping.</p>
+        <ol class="next" aria-label="How it works">
+          <li><b>01</b><span>Configure</span><small>Version, options and quantity</small></li>
+          <li><b>02</b><span>Get your offer</span><small>Price, delivery time and shipping, in writing</small></li>
+          <li><b>03</b><span>Confirm and receive</span><small>Made in Austria, delivered to your door</small></li>
+        </ol>
+      </div>
+      <figure class="white"><img src="img/studio-ergo.webp" alt="OctoStool with Ergo+ seat mounted to a barber chair"><figcaption>OctoStool</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="form-title">
+    <div class="wrap">
+      <h2 id="form-title" class="eyebrow" style="font:500 .75rem/1.3 var(--mono);margin-bottom:20px">Offer request</h2>
+      <form class="offer" id="offer" novalidate>
+        <fieldset>
+          <legend><b>01</b>You are</legend>
+          <div class="pick">
+            <label class="opt"><input type="radio" name="o-type" id="o-type-shop" value="barbershop" checked><span><b>Barbershop</b><small>For use in your own shop</small></span></label>
+            <label class="opt"><input type="radio" name="o-type" id="o-type-trade" value="reseller"><span><b>Reseller / wholesale</b><small>For resale to barbershops</small></span></label>
+          </div>
+          <label class="opt docs" id="o-docs-row" hidden><input type="checkbox" id="o-docs" value="docs"><span><b>Send me the user manual and technical datasheet</b><small>For resellers and wholesale: we send both with your offer.</small></span></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><b>02</b>Version and quantity</legend>
+          <div class="pick">
+            <div class="opt model"><label for="o-ess"><input type="checkbox" id="o-ess" value="essential"><span><b>OctoStool Essential</b><small>Durable, for loads up to 110 kg</small></span></label>
+              <div class="f qty"><label for="o-ess-q">Quantity</label><input id="o-ess-q" type="number" min="1" value="1" inputmode="numeric" disabled></div></div>
+            <div class="opt model"><label for="o-pow"><input type="checkbox" id="o-pow" value="power-plus"><span><b>OctoStool Power+</b><small>Extra durable, for loads up to 150 kg</small></span></label>
+              <div class="f qty"><label for="o-pow-q">Quantity</label><input id="o-pow-q" type="number" min="1" value="1" inputmode="numeric" disabled></div></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><b>03</b>Options</legend>
+          <div class="grid">
+            <div class="f"><label for="o-seat">Seat</label><select id="o-seat"><option>Ergo+</option><option>Ergo</option><option>Classic+</option><option>Classic</option></select></div>
+            <div class="f"><label for="o-leather">Leather</label><select id="o-leather"><option>Black</option><option>Grey</option><option>White</option><option>Individual (please describe below)</option></select></div>
+            <div class="f"><label for="o-frame">Frame</label><select id="o-frame"><option>Black</option><option>Custom colour (please describe below)</option></select></div>
+            <div class="f"><label for="o-arm">Arm</label><select id="o-arm"><option>Mahogany</option><option>Oak</option><option>Powder-coated steel</option></select></div>
+          </div>
+          <p class="hint">The same options are available for Essential and Power+. Ordering several units in different finishes? Choose the main one here and list the rest in the message.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend><b>04</b>Your details</legend>
+          <div class="grid">
+            <div class="f wide"><label for="o-co">Company name</label><input id="o-co" type="text" autocomplete="organization"></div>
+            <div class="f"><label for="o-name">Contact name</label><input id="o-name" type="text" autocomplete="name"></div>
+            <div class="f"><label for="o-mail">E-Mail</label><input id="o-mail" type="email" autocomplete="email"></div>
+            <div class="f wide"><label for="o-street">Street and number</label><input id="o-street" type="text" autocomplete="street-address"></div>
+            <div class="f"><label for="o-zip">Postcode and city</label><input id="o-zip" type="text" autocomplete="address-level2"></div>
+            <div class="f"><label for="o-country">Country</label><input id="o-country" type="text" autocomplete="country-name" value="Austria"></div>
+            <div class="f"><label for="o-phone">Phone (optional)</label><input id="o-phone" type="tel" autocomplete="tel"></div>
+            <div class="f"><label for="o-vat">VAT ID (optional)</label><input id="o-vat" type="text"></div>
+            <div class="f wide"><label for="o-msg">Message (optional)</label><textarea id="o-msg" placeholder="Delivery date, special finishes, questions"></textarea></div>
+          </div>
+        </fieldset>
+
+        <div class="send">
+          <button class="btn btn-wood" type="submit">Get offer <span class="arrow">→</span></button>
+          <p class="note" id="o-note">Pressing the button opens your email app with everything filled in, so you only need to press send. No email app? Write to <a href="mailto:info@octos.at">info@octos.at</a>.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="OCTOS home"></a>
+    <span class="slogan">OCTOS - We Design, We Develop, We Deliver</span>
+    <nav aria-label="Footer">
+      <a href="services.html">Services</a><a href="products.html">Products</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="offer.html">Get offer</a><a href="impressum.html">Impressum</a><a href="impressum.html#datenschutz">Privacy</a><a href="impressum.html#agb">Terms (AGB)</a><a href="de/offer.html">Deutsch</a>
+    </nav>
+    <div class="social"><a href="https://www.instagram.com/octos.at/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></a><a href="https://www.youtube.com/@OCTOS-LLC" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5.2-3z" fill="var(--icon-cut, #0d0d0c)"/></svg></a><a href="https://www.tiktok.com/@octos_llc" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h3c.3 2.2 1.7 3.6 4 3.9v3.1c-1.5 0-2.9-.4-4-1.2V15a6 6 0 1 1-6-6v3.2A2.8 2.8 0 1 0 14 15z" fill="currentColor"/></svg></a></div>
+    <p class="legal">OCTOS e.U. · Ing. Daniel Varga · Innrain 103, 6020 Innsbruck · FN 676155 x, Landesgericht Innsbruck · UID-Nr. ATU83179524</p>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>
