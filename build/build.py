@@ -992,10 +992,10 @@ def build(lang):
       <div class="legal-sec" id="agb">
         <h2>{t("Terms and conditions (AGB)", "Allgemeine Geschäftsbedingungen (AGB)")}</h2>
         <div class="legal-text">
-          <p>{t("General terms and conditions of OCTOS e.U. for deliveries and services to businesses (B2B) and consumers (B2C). As of 01.06.2026. The terms are available in German.",
-                "Allgemeine Geschäftsbedingungen der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B) und Verbraucher (B2C). Stand: 01.06.2026.")}</p>
+          <p>{t("General terms and conditions of OCTOS e.U. for deliveries and services to businesses (B2B) and consumers (B2C). As of 21.09.2026. The terms are available in German.",
+                "Allgemeine Geschäftsbedingungen der OCTOS e.U. für Lieferungen und Leistungen an Unternehmer (B2B) und Verbraucher (B2C). Stand: 21.09.2026.")}</p>
           <div class="docs">
-            <a class="btn btn-ink" href="{R}docs/AGB_OCTOS_2026_B2B_B2C.pdf" target="_blank" rel="noopener">{t("AGB (PDF, German)", "AGB als PDF")}</a>
+            <a class="btn btn-ink" href="{R}docs/OCTOS_AGB_2026.pdf" target="_blank" rel="noopener">{t("AGB (PDF, German)", "AGB als PDF")}</a>
             <a class="btn btn-line on-light" href="{R}docs/OCTOS_Ruecktrittsformular.pdf" target="_blank" rel="noopener">{t("Withdrawal form (PDF, German)", "Rücktrittsformular (PDF)")}</a>
           </div>
         </div>
