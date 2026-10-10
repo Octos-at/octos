@@ -63,7 +63,8 @@ function mailForm(form, subject) {
     }
     n.className = 'note ok';
     var who = document.getElementById('q-co').value.trim() || document.getElementById('q-name').value.trim();
-    mailForm(f, (de ? 'Projektanfrage' : 'Project inquiry') + (who ? ': ' + who : ''));
+    var ic = document.getElementById('q-idea-check');
+    mailForm(f, (ic && ic.checked ? (de ? 'Ideen-Check' : 'Idea check') : (de ? 'Projektanfrage' : 'Project inquiry')) + (who ? ': ' + who : ''));
   });
 
   var v = document.querySelector('.stage video');
@@ -122,7 +123,7 @@ function mailForm(form, subject) {
   var root = document.documentElement;
 
   // reveal: content floats up as it enters the viewport
-  var sel = '.block-head, .card, .svc-group, .skills article, .facts > div, .kit li, .values article, .who-grid article, .case-grid > *, .two > *, .opts > *, .gallery figure, .buy > div, .map > *, .steps > *, .story > *, form.offer fieldset, .reel, .quote';
+  var sel = '.block-head, .card, .svc-group, .skills article, .facts > div, .kit li, .values article, .who-grid article, .case-grid > *, .two > *, .opts > *, .gallery figure, .buy > div, .map > *, .steps > *, .story > *, form.offer fieldset, .reel, .quote, .ideacheck:not(.compact), .faq-list';
   var els = document.querySelectorAll(sel);
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -155,4 +156,12 @@ function mailForm(form, subject) {
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
   window.addEventListener('resize', frame);
   frame();
+})();
+
+// free idea check: ?topic=idea or the button on the contact page ticks the checkbox on the inquiry form
+(function () {
+  var c = document.getElementById('q-idea-check');
+  if (!c) return;
+  if (/[?&]topic=idea\b/.test(location.search)) c.checked = true;
+  document.querySelectorAll('[data-idea]').forEach(function (a) { a.addEventListener('click', function () { c.checked = true; }); });
 })();

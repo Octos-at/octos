@@ -601,3 +601,29 @@ body::before {
 .stand li small { color: var(--night-mute); font-size: .92rem; line-height: 1.45; }
 .founder-short { max-width: 760px; }
 .founder-short p:not(.eyebrow) { font-size: 1.1rem; }
+
+/* free idea check + FAQ (2026-10-10) */
+section.ic-band { padding-block: 0 clamp(64px, 9vw, 120px); }
+.process + section.ic-band, .who + section.ic-band { padding-top: clamp(48px, 6vw, 72px); }
+.ideacheck { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--oak); padding: clamp(24px, 4vw, 44px); }
+.ideacheck h3 { font: 700 clamp(1.5rem, 3vw, 2.2rem)/1.1 var(--display); margin-top: 10px; }
+.ideacheck p:not(.eyebrow) { color: var(--ink-2); margin-top: 12px; max-width: 60ch; }
+.ic-cta { display: grid; gap: 12px; justify-items: start; }
+.ic-faq { font: 500 .78rem var(--mono); letter-spacing: .06em; color: var(--ink-2); }
+.ideacheck.compact { grid-template-columns: minmax(0, 1fr); margin-top: 32px; background: var(--night-2); border-color: var(--night-rule); border-left-color: var(--oak); padding: 22px; }
+.ideacheck.compact .eyebrow, .ideacheck.compact p:not(.eyebrow), .ideacheck.compact .ic-faq { color: var(--night-mute); }
+.ideacheck.compact h3 { font-size: 1.4rem; color: var(--night-ink); }
+.ideacheck.compact .ic-cta { grid-auto-flow: column; align-items: center; justify-content: start; gap: 18px; }
+@media (max-width: 760px) { .ideacheck { grid-template-columns: minmax(0, 1fr); } .ideacheck.compact .ic-cta { grid-auto-flow: row; } }
+.faq-list { max-width: 880px; border-top: 1px solid var(--rule); }
+.faq-list details { border-bottom: 1px solid var(--rule); }
+.faq-list summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 24px; padding: 20px 0; font-weight: 600; font-size: 1.08rem; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; font: 500 1.3rem/1 var(--mono); color: var(--wood); transition: transform .2s; }
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p { color: var(--ink-2); padding: 0 0 22px; max-width: 70ch; }
+label.chk { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; border: 1px solid var(--night-rule); background: var(--night); padding: 12px 14px; border-radius: 2px; }
+label.chk input { accent-color: var(--oak); width: 18px; height: 18px; margin-top: 2px; flex: none; }
+label.chk span { display: grid; gap: 2px; }
+label.chk b { color: var(--night-ink); font-weight: 600; }
+label.chk small { color: var(--night-mute); font-size: .88rem; }

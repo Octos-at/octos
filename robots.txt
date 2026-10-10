@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://octos.at/sitemap.xml

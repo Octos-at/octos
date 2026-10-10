@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://octos.at/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/"/>
+  </url>
+  <url>
+    <loc>https://octos.at/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/services"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/services"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/services"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/services"/>
+  </url>
+  <url>
+    <loc>https://octos.at/products</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/products"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/products"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/products"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/products</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/products"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/products"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/products"/>
+  </url>
+  <url>
+    <loc>https://octos.at/octostool</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/octostool"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/octostool"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/octostool"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/octostool</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/octostool"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/octostool"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/octostool"/>
+  </url>
+  <url>
+    <loc>https://octos.at/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/about"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/about"/>
+  </url>
+  <url>
+    <loc>https://octos.at/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/contact"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/contact"/>
+  </url>
+  <url>
+    <loc>https://octos.at/offer</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/offer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/offer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/offer"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/offer</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/offer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/offer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/offer"/>
+  </url>
+  <url>
+    <loc>https://octos.at/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/impressum"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/impressum"/>
+  </url>
+  <url>
+    <loc>https://octos.at/de/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://octos.at/impressum"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://octos.at/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://octos.at/impressum"/>
+  </url>
+</urlset>

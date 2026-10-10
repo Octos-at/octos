@@ -5,6 +5,7 @@ Run:  python3 build/build.py   (from the site folder, or anywhere)
 Every page is written from the bilingual text below, so a copy change is made
 once here and both languages are rebuilt.
 """
+import json
 import os
 
 CUR = ' aria-current="page"'
@@ -27,6 +28,7 @@ SLOTS = [  # (key, EN, DE, example EN, example DE, open?)
 PHONE = "+43 670 6500 200"
 PHONE_TEL = "+436706500200"
 MAIL = "info@octos.at"
+SITE_URL = "https://octos.at"
 DATE = "9 Oct 2026"
 
 
@@ -43,10 +45,53 @@ def build(lang):
             f'<a href="{url}" target="_blank" rel="noopener" aria-label="{name}">{icon}{f"<span><b>{name}</b>{handle}</span>" if labels else ""}</a>'
             for name, url, handle, icon in SOCIAL)
 
+    # search + sharing (Daniel's go 2026-10-10, notes/idea4-seo): titles, absolute hreflang, canonical, share tags, JSON-LD
+    TITLES = {
+        "index": ("Product Development &amp; Prototyping in Austria · OCTOS", "Produktentwicklung &amp; Prototypenbau in Innsbruck · OCTOS"),
+        "services": ("Product Design, FEA, Prototypes &amp; Engineering · OCTOS", "Produktdesign, FEM, Prototypen &amp; Konstruktion · OCTOS"),
+        "products": ("Products Designed &amp; Built in Austria · OCTOS", "Produkte, entwickelt &amp; gebaut in Tirol · OCTOS"),
+        "octostool": ("OctoStool: Barber Stool on a Swivel Arm · OCTOS", "OctoStool: Barbierhocker mit Schwenkarm · OCTOS"),
+        "about": ("About OCTOS · Engineering Team in Innsbruck", "Über OCTOS · Konstruktionsbüro in Innsbruck"),
+        "contact": ("Contact · Start Your Product Project · OCTOS", "Kontakt · Ihr Produktprojekt starten · OCTOS"),
+        "offer": ("Get an OctoStool Offer · OCTOS", "OctoStool-Angebot anfordern · OCTOS"),
+    }
+
+    def seo(page, title, desc):
+        slug = "" if page == "index" else page
+        en_url, de_url = f"{SITE_URL}/{slug}", f"{SITE_URL}/de/{slug}"
+        url = de_url if de else en_url
+        tags = f"""<link rel="canonical" href="{url}">
+<link rel="alternate" hreflang="en" href="{en_url}">
+<link rel="alternate" hreflang="de" href="{de_url}">
+<link rel="alternate" hreflang="x-default" href="{en_url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OCTOS">
+<meta property="og:locale" content="{t("en_GB", "de_AT")}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE_URL}/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">"""
+        ld = None
+        if page == "index":
+            ld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "OCTOS", "url": f"{SITE_URL}/",
+                  "logo": f"{SITE_URL}/img/logo.svg", "image": f"{SITE_URL}/img/share.jpg", "email": MAIL, "telephone": PHONE,
+                  "address": {"@type": "PostalAddress", "addressLocality": "Innsbruck", "addressRegion": "Tirol", "addressCountry": "AT"},
+                  "areaServed": ["AT", "DE", "CH"], "slogan": "We Design, We Develop, We Deliver",
+                  "sameAs": [u for _n, u, _h, _i in SOCIAL]}
+        elif page == "octostool":
+            ld = {"@context": "https://schema.org", "@type": "Product", "name": "OctoStool",
+                  "brand": {"@type": "Brand", "name": "OCTOS"}, "image": f"{SITE_URL}/img/studio-ergo.webp", "description": desc}
+        if ld:
+            tags += f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
+        return tags
+
     def head(page, title, desc):
+        if page in TITLES:
+            title = t(*TITLES[page])
         other = f"../{page}.html" if de else f"de/{page}.html"
-        en_href = f"../{page}.html" if de else f"{page}.html"
-        de_href = f"{page}.html" if de else f"de/{page}.html"
         return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -54,8 +99,7 @@ def build(lang):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="alternate" hreflang="en" href="{en_href}">
-<link rel="alternate" hreflang="de" href="{de_href}">
+{seo(page, title, desc)}
 <link rel="icon" href="{R}img/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{R}css/fonts.css">
 <link rel="stylesheet" href="{R}css/site.css">
@@ -128,6 +172,45 @@ def build(lang):
   </section>
 """
 
+    def idea_check(compact=False, faq="services.html#faq"):
+        # free 30-min idea check offer (Daniel 2026-10-10); button presets the checkbox on the contact form
+        body = f"""<div class="ideacheck{' compact' if compact else ''}">
+          <div>
+            <p class="eyebrow">{t("Free · 30 minutes · Video call", "Kostenlos · 30 Minuten · Videocall")}</p>
+            <h3>{t("Free idea check, 30 minutes.", "Kostenloser Ideen-Check, 30 Minuten.")}</h3>
+            <p>{t("Tell us your idea in a short video call. We tell you honestly what it takes: which steps, roughly how long, and what budget band to expect. Free and with no obligation. NDA on request.",
+                  "Erzählen Sie uns Ihre Idee in einem kurzen Videocall. Wir sagen Ihnen ehrlich, was es braucht: welche Schritte, wie lange ungefähr und mit welchem Budgetrahmen Sie rechnen sollten. Kostenlos und unverbindlich. NDA auf Wunsch.")}</p>
+          </div>
+          <div class="ic-cta">
+            <a class="btn btn-wood" href="{'#inq' if compact else 'contact.html?topic=idea#inq'}"{' data-idea' if compact else ''}>{t("Book a free idea check", "Kostenlosen Ideen-Check buchen")} <span class="arrow">→</span></a>
+            <a class="ic-faq" href="{faq}">{t("Questions? Read the FAQ", "Fragen? Zu den FAQ")}</a>
+          </div>
+        </div>"""
+        if compact:
+            return body
+        return f"""
+  <section class="block ic-band" aria-label="{t("Free idea check", "Kostenloser Ideen-Check")}">
+    <div class="wrap">{body}
+    </div>
+  </section>
+"""
+
+    FAQ = [('Is the idea check really free?', 'Ist der Ideen-Check wirklich kostenlos?', 'Yes. 30 minutes by video call, free and with no obligation.', 'Ja. 30 Minuten per Videocall, kostenlos und unverbindlich.'), ('What should I prepare for the idea check?', 'Was soll ich für den Ideen-Check vorbereiten?', 'Nothing is required. A sketch, photos, a rough budget or a target date help us give you a better first answer.', 'Nichts davon ist Pflicht. Eine Skizze, Fotos, ein grobes Budget oder ein Wunschtermin helfen uns aber, Ihnen eine bessere erste Antwort zu geben.'), ('I only have an idea, no drawings. Is that enough?', 'Ich habe nur eine Idee, keine Zeichnungen. Reicht das?', 'Yes. A napkin sketch is a fine start. Turning ideas into drawings and 3D models is part of what we do.', 'Ja. Eine Serviettenskizze ist ein guter Anfang. Aus Ideen Zeichnungen und 3D-Modelle zu machen, ist Teil unserer Arbeit.'), ('What does a project cost?', 'Was kostet ein Projekt?', 'Most projects fall into one of three bands: under €5,000, €5,000 to 20,000, or over €20,000. After the idea check you get a written offer with a fixed scope.', 'Die meisten Projekte liegen in einem von drei Rahmen: unter 5.000 €, 5.000 bis 20.000 € oder über 20.000 €. Nach dem Ideen-Check erhalten Sie ein schriftliches Angebot mit festem Umfang.'), ('How long does it take?', 'Wie lange dauert es?', 'A full project from idea to product typically takes 3 to 6 months. Single services often take 1 to 3 weeks.', 'Ein komplettes Projekt von der Idee zum Produkt dauert meist 3 bis 6 Monate. Einzelleistungen oft 1 bis 3 Wochen.'), ('Can I book only one step, like FEA or renderings?', 'Kann ich auch nur einen Schritt buchen, etwa FEM oder Renderings?', 'Yes. There is no minimum project size. Many clients only need the missing step.', 'Ja. Es gibt keine Mindestprojektgröße. Viele Kunden brauchen nur den fehlenden Schritt.'), ('Do you sign an NDA?', 'Unterschreiben Sie eine Geheimhaltungsvereinbarung (NDA)?', 'Yes. On request we send our standard NDA before the first call.', 'Ja. Auf Wunsch senden wir Ihnen vor dem ersten Gespräch unsere Standard-NDA.'), ('Who owns the result?', 'Wem gehört das Ergebnis?', 'We agree this per project and put it in writing in the offer, before any work starts.', 'Das vereinbaren wir pro Projekt und halten es im Angebot schriftlich fest, bevor die Arbeit beginnt.'), ('How do you charge?', 'Wie rechnen Sie ab?', 'A fixed price per phase, agreed before each phase starts. No open-ended hourly billing.', 'Zum Fixpreis pro Phase, vereinbart vor Beginn jeder Phase. Keine offene Stundenabrechnung.'), ('Can you also manufacture the product?', 'Können Sie das Produkt auch fertigen?', 'We build prototypes and small runs in our own workshop and work with manufacturing partners for larger quantities.', 'Prototypen und Kleinserien bauen wir in der eigenen Werkstatt, für größere Stückzahlen arbeiten wir mit Fertigungspartnern.'), ('Can you help with testing and certification, like CE?', 'Helfen Sie bei Prüfung und Zertifizierung, etwa CE?', 'Our team brings more than 20 years of experience in the regulated medical device industry. We test in-house or coordinate tests to the relevant standards with accredited test facilities, and prepare the technical documentation.', 'Unser Team bringt über 20 Jahre Erfahrung aus der regulierten Medizintechnik mit. Wir prüfen im Haus oder koordinieren Prüfungen nach den relevanten Normen mit akkreditierten Prüfstellen und erstellen die technische Dokumentation.'), ('Do you work with clients outside Austria?', 'Arbeiten Sie auch mit Kunden außerhalb Österreichs?', 'Yes. We work remotely, in German or English.', 'Ja. Wir arbeiten remote, auf Deutsch oder Englisch.'), ("What if my idea isn't feasible?", 'Was, wenn meine Idee nicht umsetzbar ist?', "We tell you honestly in the idea check, and if we can, we suggest a different route. You don't pay for finding that out.", 'Das sagen wir Ihnen ehrlich im Ideen-Check und schlagen, wenn möglich, einen anderen Weg vor. Dafür zahlen Sie nichts.'), ('Do you help with patents?', 'Helfen Sie bei Patenten?', "We don't file patents ourselves, but we work alongside your patent attorney and prepare the drawings for the application.", 'Patente melden wir nicht selbst an, aber wir arbeiten mit Ihrem Patentanwalt zusammen und erstellen die Zeichnungen für die Anmeldung.'), ('Do you also do packaging and branding?', 'Machen Sie auch Verpackung und Branding?', 'Yes: packaging development, logo design, brand creation, product photos and video.', 'Ja: Verpackungsentwicklung, Logodesign, Markenaufbau, Produktfotos und Video.'), ('What happens after the idea check?', 'Wie geht es nach dem Ideen-Check weiter?', 'Within 3 working days you get a short written summary and, if you want to go ahead, an offer with scope, timeline and price.', 'Innerhalb von 3 Werktagen erhalten Sie eine kurze schriftliche Zusammenfassung und, wenn Sie weitermachen möchten, ein Angebot mit Umfang, Zeitplan und Preis.')]
+
+    def faq_block():
+        items = "".join(f'<details><summary>{t(qe, qd)}</summary><p>{t(ae, ad)}</p></details>' for qe, qd, ae, ad in FAQ)
+        return f"""
+  <section class="block faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">{t("Questions before you start.", "Fragen vor dem Start.")}</h2>
+      </div>
+      <div class="faq-list">{items}</div>
+    </div>
+  </section>
+"""
+
     def contact_block(heading_tag="h2", extra=""):
         return f"""
   <section class="contact" id="contact" aria-labelledby="ct-title">
@@ -155,6 +238,7 @@ def build(lang):
           <select id="q-budget"><option>{t("Not sure yet", "Noch offen")}</option><option>{t("Under €5,000", "Unter 5.000 €")}</option><option>{t("€5,000 – 20,000", "5.000 – 20.000 €")}</option><option>{t("Over €20,000", "Über 20.000 €")}</option></select></div>
         <div class="f"><label for="q-time">{t("Timeline", "Zeitrahmen")}</label>
           <select id="q-time"><option>{t("Flexible", "Flexibel")}</option><option>{t("Within 3 months", "Innerhalb von 3 Monaten")}</option><option>{t("3 – 6 months", "3 – 6 Monate")}</option><option>{t("Over 6 months", "Über 6 Monate")}</option></select></div>
+        <label class="chk wide" for="q-idea-check"><input type="checkbox" id="q-idea-check"><span><b>{t("Book a free idea check", "Kostenlosen Ideen-Check buchen")}</b><small>{t("30 minutes by video call, free and with no obligation", "30 Minuten per Videocall, kostenlos und unverbindlich")}</small></span></label>
         <div class="f"><label for="q-co">{t("Company (optional)", "Firma (optional)")}</label><input id="q-co" type="text" autocomplete="organization"></div>
         <div class="f"><label for="q-name">Name</label><input id="q-name" type="text" autocomplete="name"></div>
         <div class="f"><label for="q-mail">E-Mail</label><input id="q-mail" type="email" autocomplete="email"></div>
@@ -326,7 +410,7 @@ def build(lang):
       </div>
     </div>
   </section>
-
+{idea_check()}
   <section class="block who" id="about" aria-labelledby="who-title">
     <div class="wrap">
       <div class="block-head">
@@ -486,7 +570,7 @@ def build(lang):
       </div>
     </div>
   </section>
-{cta_band("Bring the idea. <em>We bring the plan.</em>", "Sie bringen die Idee. <em>Wir den Plan.</em>",
+{idea_check(faq="#faq")}{faq_block()}{cta_band("Bring the idea. <em>We bring the plan.</em>", "Sie bringen die Idee. <em>Wir den Plan.</em>",
           "Tell us what you want to build. We reply with first thoughts and the next steps.", "Erzählen Sie uns, was Sie bauen möchten. Wir antworten mit ersten Gedanken und den nächsten Schritten.")}
 </main>
 """ + footer("services")
@@ -815,7 +899,7 @@ def build(lang):
                             t("Start your project with OCTOS in Innsbruck: info@octos.at, +43 670 6500 200.",
                               "Starten Sie Ihr Projekt mit OCTOS in Innsbruck: info@octos.at, +43 670 6500 200.")) + f"""
 <main id="top">
-{contact_block("h1", next_steps)}
+{contact_block("h1", idea_check(True) + next_steps)}
   <section class="block" aria-labelledby="visit-title">
     <div class="wrap">
       <div class="block-head">
