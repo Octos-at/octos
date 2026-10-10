@@ -16,6 +16,8 @@ SOCIAL = [
      '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5.2-3z" fill="var(--icon-cut, #0d0d0c)"/></svg>'),
     ("TikTok", "https://www.tiktok.com/@octos_llc", "@octos_llc",
      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h3c.3 2.2 1.7 3.6 4 3.9v3.1c-1.5 0-2.9-.4-4-1.2V15a6 6 0 1 1-6-6v3.2A2.8 2.8 0 1 0 14 15z" fill="currentColor"/></svg>'),
+    ("Facebook", "https://www.facebook.com/profile.php?id=61594530514316", "OCTOS",
+     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z" fill="currentColor"/></svg>'),
 ]
 SLOTS = [  # (key, EN, DE, example EN, example DE, open?)
     ("small", "Small project", "Kleines Projekt", "e.g. a part redesign or a 3D-printed prototype", "z. B. ein Bauteil-Redesign oder ein 3D-gedruckter Prototyp", True),
@@ -83,7 +85,6 @@ def build(lang):
     <a href="index.html" class="logo" aria-label="{t("OCTOS home", "OCTOS Startseite")}"></a>
     <nav class="nav" id="nav" aria-label="{t("Main", "Hauptmenü")}">
 {links}
-      <a class="shop" href="offer.html"{CUR if page == "offer" else ""}>{t("Get offer", "Angebot")}</a>
     </nav>
     <span class="lang" aria-label="{t("Language", "Sprache")}">{lang_sw}</span>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -221,10 +222,10 @@ def build(lang):
         </div>
         <p class="tagline">Efficiency Engineered, Comfort Assured</p>
       </div>
-      <div class="stage">
+      <div class="stage-wrap"><div class="stage">
         <video src="{R}img/hero.mp4" poster="{R}img/hero-poster.jpg" autoplay muted loop playsinline aria-label="{t("Rotating 3D render of the OctoStool mounted to a barber chair", "Rotierendes 3D-Rendering des OctoStool am Barbierstuhl")}"></video>
-        <p class="callout c1"><b>{t("3D render", "3D-Rendering")}</b>{t("OctoStool + barber chair", "OctoStool + Barbierstuhl")}</p>
-        <p class="callout c2"><b>{t("210° swivel · 50–70 cm reach", "210° schwenkbar · 50–70 cm Reichweite")}</b>{t("Designed, engineered and built by OCTOS", "Von OCTOS gestaltet, konstruiert und gebaut")}</p>
+      </div>
+      <p class="stage-cap"><b>{t("3D render", "3D-Rendering")}</b> · {t("Designed, engineered and built by OCTOS", "Von OCTOS gestaltet, konstruiert und gebaut")}</p>
       </div>
     </div>
   </section>
@@ -672,70 +673,48 @@ def build(lang):
 
     # ------------------------------------------------------------------ ABOUT
     pages["about"] = head("about", t("About · OCTOS", "Über uns · OCTOS"),
-                          t("OCTOS was founded in Innsbruck by Ing. Daniel Varga, mechanical engineer and furniture designer, with a team covering materials science, electronics, medical devices, packaging and brand.",
-                            "OCTOS wurde in Innsbruck von Ing. Daniel Varga gegründet, Maschinenbauingenieur und Möbeldesigner, mit einem Team aus Materialwissenschaft, Elektronik, Medizintechnik, Verpackung und Marke.")) + f"""
+                          t("OCTOS designs, develops and delivers meaningful products for entrepreneurs and companies, with a team covering engineering, materials science, electronics, medical devices, packaging and brand.",
+                            "OCTOS gestaltet, entwickelt und liefert sinnvolle Produkte für Gründer und Unternehmen, mit einem Team aus Engineering, Materialwissenschaft, Elektronik, Medizintechnik, Verpackung und Marke.")) + f"""
 <main id="top">
-  <section class="phead founder-head" aria-labelledby="pg-title">
+  <section class="phead about-head" aria-labelledby="pg-title">
     <div class="wrap">
       <div>
-        <p class="eyebrow">{t("About OCTOS · The founder", "Über OCTOS · Der Gründer")}</p>
-        <h1 id="pg-title">{t("Driven by curiosity. <em>Built to last.</em>", "Aus Neugier. <em>Für die Dauer gebaut.</em>")}</h1>
-        <p class="lead">{t("OCTOS was founded by Ing. Daniel Varga, a mechanical engineer from Innsbruck who turns ideas into products that work hard and feel right, for clients and under our own name.",
-                           "OCTOS wurde von Ing. Daniel Varga gegründet, einem Maschinenbauingenieur aus Innsbruck, der Ideen in Produkte verwandelt, die viel leisten und sich richtig anfühlen, für Kunden und unter eigenem Namen.")}</p>
+        <p class="eyebrow">{t("About us", "Über uns")}</p>
+        <h1 id="pg-title" class="brand-h1">OCTOS</h1>
+        <p class="lead mission"><b>{t("Our mission:", "Unsere Mission:")}</b> {t("to turn good ideas into meaningful products. Engineered to last, built with care and delivered ready for the market.",
+                           "aus guten Ideen sinnvolle Produkte zu machen. Gebaut für die Dauer, mit Sorgfalt gefertigt und marktreif geliefert.")}</p>
+        <p class="slogan-line">We Design, We Develop, We Deliver</p>
       </div>
-      <figure class="founder-pic"><img src="{R}img/founder.webp" alt="{t("Portrait of Ing. Daniel Varga, founder of OCTOS", "Porträt von Ing. Daniel Varga, Gründer von OCTOS")}" width="960" height="1200"><figcaption>Ing. Daniel Varga · {t("Founder", "Gründer")}</figcaption></figure>
+      <div class="stand" aria-labelledby="stand-title">
+        <p class="eyebrow" id="stand-title">{t("What we stand for", "Wofür wir stehen")}</p>
+        <ul>
+          <li><b>{t("Meaningful products", "Sinnvolle Produkte")}</b><small>{t("We build what solves a real problem for the people who use it every day. No gadgets for the drawer.", "Wir bauen, was ein echtes Problem für die Menschen löst, die es täglich nutzen. Keine Gadgets für die Schublade.")}</small></li>
+          <li><b>{t("Engineered quality", "Durchdachte Qualität")}</b><small>{t("The rigour of a highly regulated industry: calculated, tested and documented.", "Die Sorgfalt einer streng regulierten Branche: berechnet, geprüft und dokumentiert.")}</small></li>
+          <li><b>{t("One team, the whole chain", "Ein Team, die ganze Kette")}</b><small>{t("From the first sketch to delivery, one contact and no lost handovers.", "Von der ersten Skizze bis zur Lieferung, ein Ansprechpartner und keine verlorenen Übergaben.")}</small></li>
+          <li><b>{t("Never stop learning", "Niemals aufhören zu lernen")}</b><small>{t("Every project teaches us something new, and every client benefits from it.", "Jedes Projekt lehrt uns etwas Neues, und jeder Kunde profitiert davon.")}</small></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="block" aria-labelledby="story-title">
-    <div class="wrap two">
-      <div class="prose">
-        <p class="eyebrow">{t("The founder's story", "Die Geschichte des Gründers")}</p>
-        <h2 id="story-title">{t("Never stop learning.", "Niemals aufhören zu lernen.")}</h2>
-        <p class="big">{t("Daniel was born in Innsbruck and grew up between the mountains, where sport is not a hobby but part of life. In winter you find him on skis, the rest of the year in the gym and on the squash court.",
-                          "Daniel wurde in Innsbruck geboren und ist zwischen den Bergen aufgewachsen, wo Sport kein Hobby ist, sondern zum Leben gehört. Im Winter findet man ihn auf Skiern, den Rest des Jahres im Fitnessstudio und auf dem Squash-Court.")}</p>
-        <p>{t("Sport taught him focus, stamina and a feel for what equipment really has to deliver.",
-              "Der Sport hat ihn Fokus und Ausdauer gelehrt, und ein Gespür dafür, was Ausrüstung wirklich leisten muss.")}</p>
-        <p>{t("He earned his engineering degree at HTL Anichstraße in Innsbruck, one of Tyrol's leading technical schools. Out of pure curiosity he went on to study engineering and physics at university, to understand even more deeply how materials behave and how forces flow through a structure.",
-              "Seine Ingenieursausbildung hat er an der HTL Anichstraße in Innsbruck abgeschlossen, einer der führenden technischen Schulen Tirols. Aus reiner Neugier studierte er danach Ingenieurwesen und Physik an der Universität, um noch tiefer zu verstehen, wie sich Werkstoffe verhalten und wie Kräfte durch eine Struktur fließen.")}</p>
-        <p>{t("For more than 12 years he has worked in the medical device industry, one of the most highly regulated fields there is. That is where he learned to design for safety, document every decision and take products through testing to recognised standards. Along the way he added furniture design, laser marking and welding technology, so ideas don't stay on the screen.",
-              "Seit über 12 Jahren arbeitet er in der Medizintechnik, einer der am strengsten regulierten Branchen überhaupt. Dort hat er gelernt, auf Sicherheit hin zu konstruieren, jede Entscheidung zu dokumentieren und Produkte normgerecht durch Prüfungen zu bringen. Dazu kamen Möbeldesign, Lasermarkierung und Schweißtechnik, damit Ideen nicht auf dem Bildschirm bleiben.")}</p>
-        <p>{t("Today, at 35, he brings all of it together at OCTOS, with the same ambition he started with: never stop learning, and put every new skill to work for our clients.",
-              "Heute, mit 35, vereint er all das bei OCTOS, mit demselben Anspruch wie am Anfang: niemals aufhören zu lernen und jede neue Fähigkeit für unsere Kunden einzusetzen.")}</p>
-      </div>
-      <div class="team" aria-label="{t("Founder profile", "Profil des Gründers")}">
-        <p class="eyebrow">Ing. Daniel Varga</p>
-        <article><b>{t("Founder, 35", "Gründer, 35")}</b><span>{t("Born in Innsbruck, Tyrol", "Geboren in Innsbruck, Tirol")}</span></article>
-        <article><b>{t("Mechanical engineering", "Maschinenbau")}</b><small>HTL Anichstraße, Innsbruck</small></article>
-        <article><b>{t("Medical devices", "Medizintechnik")}</b><span>{t("12+ years", "12+ Jahre")}</span></article>
-        <article><b>{t("Laser marking and welding technology", "Lasermarkierung und Schweißtechnik")}</b><small>{t("Built and marked in our own workshop", "Gefertigt und markiert in der eigenen Werkstatt")}</small></article>
-        <article><b>{t("Furniture design", "Möbeldesign")}</b></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block process" aria-labelledby="facts-title">
     <div class="wrap">
-      <div class="block-head">
-        <p class="eyebrow">{t("At a glance", "Auf einen Blick")}</p>
-        <h2 id="facts-title">{t("Experience you can build on.", "Erfahrung, auf die Sie bauen können.")}</h2>
-      </div>
-      <div class="facts">
-        <div><b>12+ {t("years", "Jahre")}</b><small>{t("Founder's experience in the medical device industry", "Erfahrung des Gründers in der Medizintechnik")}</small></div>
-        <div><b>20+ {t("years", "Jahre")}</b><small>{t("Combined team experience in the medical device industry", "Gemeinsame Team-Erfahrung in der Medizintechnik")}</small></div>
-        <div><b>PhD</b><small>{t("Materials science, in the team", "Materialwissenschaft im Team")}</small></div>
-        <div><b>{t("Since 2026", "Seit 2026")}</b><small>{t("Founded in mid-2026 in Innsbruck, shipping worldwide", "Gegründet Mitte 2026 in Innsbruck, Lieferung weltweit")}</small></div>
+      <div class="prose founder-short">
+        <p class="eyebrow">{t("How it started", "Wie alles begann")}</p>
+        <h2 id="story-title">{t("Founded in Innsbruck.", "Gegründet in Innsbruck.")}</h2>
+        <p>{t("OCTOS was founded in 2026 by Ing. Daniel Varga, a mechanical engineer from Innsbruck. After his engineering degree at HTL Anichstraße and further studies in engineering and physics, he spent more than 12 years in the medical device industry, where he learned to design for safety and document every decision. Growing up between the mountains, with skiing, the gym and squash as constant companions, taught him focus and stamina. Today he brings it all together at OCTOS, with one ambition: never stop learning, and put every new skill to work for our clients.",
+              "OCTOS wurde 2026 von Ing. Daniel Varga gegründet, einem Maschinenbauingenieur aus Innsbruck. Nach seiner Ingenieursausbildung an der HTL Anichstraße und weiteren Studien in Ingenieurwesen und Physik war er über 12 Jahre in der Medizintechnik tätig, wo er gelernt hat, auf Sicherheit hin zu konstruieren und jede Entscheidung zu dokumentieren. Aufgewachsen zwischen den Bergen, mit Skifahren, Fitnessstudio und Squash als ständigen Begleitern, hat er Fokus und Ausdauer gelernt. Heute vereint er all das bei OCTOS, mit einem Anspruch: niemals aufhören zu lernen und jede neue Fähigkeit für unsere Kunden einzusetzen.")}</p>
       </div>
     </div>
   </section>
 
-  <section class="block" aria-labelledby="skills-title">
+  <section class="block process" aria-labelledby="skills-title">
     <div class="wrap">
       <div class="block-head">
         <p class="eyebrow">{t("The team", "Das Team")}</p>
         <h2 id="skills-title">{t("One team. <em>The whole chain.</em>", "Ein Team. <em>Die ganze Kette.</em>")}</h2>
-        <p class="lead">{t("Behind the founder stands a team of experienced specialists. From the first sketch to the film that launches your product, every skill sits at one table, so your project moves fast, stays consistent and never gets lost between suppliers.",
-                           "Hinter dem Gründer steht ein Team erfahrener Spezialisten. Von der ersten Skizze bis zum Film, der Ihr Produkt vorstellt, sitzt jede Kompetenz an einem Tisch: Ihr Projekt kommt schnell voran, bleibt aus einem Guss und geht nie zwischen Lieferanten verloren.")}</p>
+        <p class="lead">{t("Behind OCTOS stands a team of experienced specialists. From the first sketch to the film that launches your product, every skill sits at one table, so your project moves fast, stays consistent and never gets lost between suppliers.",
+                           "Hinter OCTOS steht ein Team erfahrener Spezialisten. Von der ersten Skizze bis zum Film, der Ihr Produkt vorstellt, sitzt jede Kompetenz an einem Tisch: Ihr Projekt kommt schnell voran, bleibt aus einem Guss und geht nie zwischen Lieferanten verloren.")}</p>
       </div>
       <div class="skills">
         <article><h3>{t("Product management", "Produktmanagement")}</h3><p>{t("Experienced in leading products from idea to launch: requirements, budget, timeline and suppliers, all in hand.", "Erfahren darin, Produkte von der Idee bis zur Markteinführung zu führen: Anforderungen, Budget, Zeitplan und Lieferanten fest im Griff.")}</p></article>
@@ -747,6 +726,21 @@ def build(lang):
         <article><h3>{t("3D printing &amp; prototyping", "3D-Druck &amp; Prototypenbau")}</h3><p>{t("Fast, functional prototypes and parts straight from CAD, so ideas can be tested in the hand within days.", "Schnelle, funktionsfähige Prototypen und Teile direkt aus dem CAD, damit Ideen in wenigen Tagen in der Hand getestet werden können.")}</p></article>
         <article><h3>{t("Footage creation", "Videoproduktion")}</h3><p>{t("Filming and editing: product films, social clips and commercials that show your product at its best.", "Filmen und Schneiden: Produktfilme, Social Clips und Werbespots, die Ihr Produkt von seiner besten Seite zeigen.")}</p></article>
         <article><h3>{t("Logo design &amp; brand creation", "Logodesign &amp; Markenaufbau")}</h3><p>{t("A clear, memorable mark and a brand as well engineered as the product behind it, from name and look to the story you tell.", "Ein klares, einprägsames Zeichen und eine Marke, so durchdacht wie das Produkt dahinter, von Name und Erscheinungsbild bis zur Geschichte, die Sie erzählen.")}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="facts-title">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">{t("At a glance", "Auf einen Blick")}</p>
+        <h2 id="facts-title">{t("Experience you can build on.", "Erfahrung, auf die Sie bauen können.")}</h2>
+      </div>
+      <div class="facts">
+        <div><b>20+ {t("years", "Jahre")}</b><small>{t("Combined team experience in the medical device industry", "Gemeinsame Team-Erfahrung in der Medizintechnik")}</small></div>
+        <div><b>PhD</b><small>{t("Materials science, in the team", "Materialwissenschaft im Team")}</small></div>
+        <div><b>9</b><small>{t("Disciplines under one roof, from engineering to film", "Disziplinen unter einem Dach, vom Engineering bis zum Film")}</small></div>
+        <div><b>{t("Since 2026", "Seit 2026")}</b><small>{t("Based in Innsbruck, shipping worldwide", "Sitz in Innsbruck, Lieferung weltweit")}</small></div>
       </div>
     </div>
   </section>

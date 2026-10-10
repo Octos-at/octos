@@ -583,3 +583,21 @@ body::before {
 }
 .card.rv.in:hover, .kit li.rv.in:hover { transform: translateY(-4px); transition-delay: 0ms; }
 @media (prefers-reduced-motion: reduce) { .card.rv.in:hover, .kit li.rv.in:hover { transform: none; } }
+/* hero video caption, kept outside the render */
+.stage-wrap { min-width: 0; }
+.stage-cap { margin-top: 14px; font: 400 .72rem/1.4 var(--mono); letter-spacing: .04em; color: var(--night-mute); text-align: right; }
+.stage-cap b { color: var(--night-ink); font-weight: 500; }
+@media (max-width: 860px) { .stage-wrap { order: -1; } .stage-cap { text-align: left; } }
+/* About: brand head + what we stand for */
+.phead h1.brand-h1 { font-size: clamp(3.2rem, 9vw, 7rem); font-stretch: 125%; font-weight: 800; letter-spacing: .02em; line-height: .95; }
+.phead .mission b { color: var(--oak); font-weight: 600; }
+.phead .mission { color: var(--night-ink); max-width: 40ch; }
+.slogan-line { margin-top: 22px; font: 500 .78rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--night-mute); }
+.stand { border-top: 1px solid var(--night-rule); }
+.stand .eyebrow { padding-block: 14px; }
+.stand ul { list-style: none; margin: 0; padding: 0; }
+.stand li { display: grid; gap: 4px; padding: 14px 0; border-top: 1px solid var(--night-rule); }
+.stand li b { font: 700 1.1rem/1.25 var(--display); font-stretch: 112%; color: var(--night-ink); }
+.stand li small { color: var(--night-mute); font-size: .92rem; line-height: 1.45; }
+.founder-short { max-width: 760px; }
+.founder-short p:not(.eyebrow) { font-size: 1.1rem; }
