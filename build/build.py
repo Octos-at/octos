@@ -101,7 +101,7 @@ def build(lang):
     <a href="index.html" class="logo" aria-label="{t("OCTOS home", "OCTOS Startseite")}"></a>
     <span class="slogan">OCTOS - We Design, We Develop, We Deliver</span>
     <nav aria-label="Footer">
-      <a href="services.html">{t("Services", "Leistungen")}</a><a href="products.html">{t("Products", "Produkte")}</a><a href="about.html">{t("About", "Über uns")}</a><a href="contact.html">{t("Contact", "Kontakt")}</a><a href="offer.html">{t("Get offer", "Angebot")}</a><a href="impressum.html">Impressum</a><a href="impressum.html#datenschutz">{t("Privacy", "Datenschutz")}</a><a href="impressum.html#agb">{t("Terms (AGB)", "AGB")}</a><a href="{other}">{t("Deutsch", "English")}</a>
+      <a href="services.html">{t("Services", "Leistungen")}</a><a href="products.html">{t("Products", "Produkte")}</a><a href="about.html">{t("About", "Über uns")}</a><a href="contact.html">{t("Contact", "Kontakt")}</a><a href="impressum.html">Impressum</a><a href="impressum.html#datenschutz">{t("Privacy", "Datenschutz")}</a><a href="impressum.html#agb">{t("Terms (AGB)", "AGB")}</a><a href="{other}">{t("Deutsch", "English")}</a>
     </nav>
     <div class="social">{social_icons()}</div>
     <p class="legal">OCTOS e.U. · Ing. Daniel Varga · Innrain 103, 6020 Innsbruck · FN 676155 x, Landesgericht Innsbruck · UID-Nr. ATU83179524</p>
