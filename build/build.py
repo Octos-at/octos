@@ -879,7 +879,7 @@ def build(lang):
       <dl class="specs" style="margin-top:48px">
         <dt>{t("Company", "Unternehmen")}</dt><dd>OCTOS e.U., Innsbruck</dd>
         <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
-        <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe)")}</dd>
+        <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade); Handelsgewerbe, trading business (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe); Handelsgewerbe (freies Gewerbe)")}</dd>
       </dl>
     </div>
   </section>
