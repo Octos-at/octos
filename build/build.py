@@ -757,8 +757,8 @@ def build(lang):
 
     # ------------------------------------------------------------------ ABOUT
     pages["about"] = head("about", t("About · OCTOS", "Über uns · OCTOS"),
-                          t("OCTOS designs, develops and delivers meaningful products for entrepreneurs and companies, with a team covering engineering, materials science, electronics, medical devices, packaging and brand.",
-                            "OCTOS gestaltet, entwickelt und liefert sinnvolle Produkte für Gründer und Unternehmen, mit einem Team aus Engineering, Materialwissenschaft, Elektronik, Medizintechnik, Verpackung und Marke.")) + f"""
+                          t("OCTOS designs, develops and delivers meaningful products for entrepreneurs and companies, with a team covering industrial design, metal manufacturing, materials science, electronics, medical devices, packaging and brand.",
+                            "OCTOS gestaltet, entwickelt und liefert sinnvolle Produkte für Gründer und Unternehmen, mit einem Team aus Industriedesign, Metalltechnik, Materialwissenschaft, Elektronik, Medizintechnik, Verpackung und Marke.")) + f"""
 <main id="top">
   <section class="phead about-head" aria-labelledby="pg-title">
     <div class="wrap">
