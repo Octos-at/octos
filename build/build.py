@@ -878,7 +878,7 @@ def build(lang):
       </div>
       <dl class="specs" style="margin-top:48px">
         <dt>{t("Company", "Unternehmen")}</dt><dd>OCTOS e.U., Innsbruck</dd>
-        <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
+        <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister, Landesgremium Elektro- und Einrichtungsfachhandel</dd>
         <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade); Handelsgewerbe, trading business (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe); Handelsgewerbe (freies Gewerbe)")}</dd>
       </dl>
     </div>
@@ -1041,7 +1041,7 @@ def build(lang):
           <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade); Handelsgewerbe, trading business (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe); Handelsgewerbe (freies Gewerbe)")}</dd>
           <dt>{t("Supervisory authority", "Aufsichtsbehörde")}</dt><dd>Bezirkshauptmannschaft Innsbruck</dd>
           <dt>{t("Applicable regulations", "Anwendbare Rechtsvorschriften")}</dt><dd>{t("Trade law", "Berufsrecht")}: Gewerbeordnung, <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">www.ris.bka.gv.at</a></dd>
-          <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
+          <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister, Landesgremium Elektro- und Einrichtungsfachhandel</dd>
           <dt>E-Mail</dt><dd><a href="mailto:{MAIL}">{MAIL}</a></dd>
           <dt>{t("Phone", "Telefon")}</dt><dd><a href="tel:{PHONE_TEL}">{PHONE}</a></dd>
         </dl>
