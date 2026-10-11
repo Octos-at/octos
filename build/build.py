@@ -324,7 +324,7 @@ def build(lang):
       </div>
       <div class="ddd">
         <article class="pillar">
-          <div class="pic contain"><img src="{R}img/drawing.webp" alt="{t("Technical line drawing of the OctoStool", "Technische Strichzeichnung des OctoStool")}" loading="lazy"></div>
+          <div class="pic contain vid"><video src="{R}img/design-anim.mp4" poster="{R}img/design-anim-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{t("CAD animation of the OctoStool design", "CAD-Animation des OctoStool-Designs")}"></video></div>
           <div class="verb"><h3>Design</h3><span>{t("idea → plan", "Idee → Plan")}</span></div>
           <ul class="svc">
             <li><strong>{t("Concept &amp; product design", "Konzept &amp; Produktdesign")}</strong><small>{t("Your idea, turned into a clear concept, a project plan and a design that can be built.", "Ihre Idee wird zu einem klaren Konzept, einem Projektplan und einem Design, das sich bauen lässt.")}</small></li>
@@ -467,7 +467,7 @@ def build(lang):
       <div class="svc-group" id="design">
         <div class="side">
           <p class="verb">Design<span>{t("idea → plan", "Idee → Plan")}</span></p>
-          <div class="pic contain"><img src="{R}img/drawing.webp" alt="{t("Technical line drawing of the OctoStool", "Technische Strichzeichnung des OctoStool")}" loading="lazy"></div>
+          <div class="pic contain vid"><video src="{R}img/design-anim.mp4" poster="{R}img/design-anim-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{t("CAD animation of the OctoStool design", "CAD-Animation des OctoStool-Designs")}"></video></div>
         </div>
         <ul class="svc-list">{svc(1, "Concept &amp; product design", "Konzept &amp; Produktdesign",
             "Your idea, turned into a product plan.", "Ihre Idee als Produktplan.",
