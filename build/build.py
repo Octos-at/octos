@@ -1038,7 +1038,7 @@ def build(lang):
           <dt>{t("Company register no.", "Firmenbuchnummer")}</dt><dd>FN 676155 x</dd>
           <dt>{t("Register court", "Firmenbuchgericht")}</dt><dd>Landesgericht Innsbruck</dd>
           <dt>{t("VAT ID (UID)", "UID-Nummer")}</dt><dd>ATU83179524</dd>
-          <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe)")}</dd>
+          <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade); Handelsgewerbe, trading business (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe); Handelsgewerbe (freies Gewerbe)")}</dd>
           <dt>{t("Supervisory authority", "Aufsichtsbehörde")}</dt><dd>Bezirkshauptmannschaft Innsbruck</dd>
           <dt>{t("Applicable regulations", "Anwendbare Rechtsvorschriften")}</dt><dd>{t("Trade law", "Berufsrecht")}: Gewerbeordnung, <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">www.ris.bka.gv.at</a></dd>
           <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
