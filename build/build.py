@@ -48,10 +48,10 @@ def build(lang):
     # search + sharing (Daniel's go 2026-10-10, notes/idea4-seo): titles, absolute hreflang, canonical, share tags, JSON-LD
     TITLES = {
         "index": ("Product Development &amp; Prototyping in Austria · OCTOS", "Produktentwicklung &amp; Prototypenbau in Innsbruck · OCTOS"),
-        "services": ("Product Design, FEA, Prototypes &amp; Engineering · OCTOS", "Produktdesign, FEM, Prototypen &amp; Konstruktion · OCTOS"),
+        "services": ("Product Design, Prototypes &amp; Manufacturing · OCTOS", "Produktdesign, Prototypen &amp; Fertigung · OCTOS"),
         "products": ("Products Designed &amp; Built in Austria · OCTOS", "Produkte, entwickelt &amp; gebaut in Tirol · OCTOS"),
         "octostool": ("OctoStool: Barber Stool on a Swivel Arm · OCTOS", "OctoStool: Barbierhocker mit Schwenkarm · OCTOS"),
-        "about": ("About OCTOS · Engineering Team in Innsbruck", "Über OCTOS · Konstruktionsbüro in Innsbruck"),
+        "about": ("About OCTOS · Product Development in Innsbruck", "Über OCTOS · Produktentwicklung in Innsbruck"),
         "contact": ("Contact · Start Your Product Project · OCTOS", "Kontakt · Ihr Produktprojekt starten · OCTOS"),
         "offer": ("Get an OctoStool Offer · OCTOS", "OctoStool-Angebot anfordern · OCTOS"),
     }
@@ -195,7 +195,7 @@ def build(lang):
   </section>
 """
 
-    FAQ = [('Is the idea check really free?', 'Ist der Ideen-Check wirklich kostenlos?', 'Yes. 30 minutes by video call, free and with no obligation.', 'Ja. 30 Minuten per Videocall, kostenlos und unverbindlich.'), ('What should I prepare for the idea check?', 'Was soll ich für den Ideen-Check vorbereiten?', 'Nothing is required. A sketch, photos, a rough budget or a target date help us give you a better first answer.', 'Nichts davon ist Pflicht. Eine Skizze, Fotos, ein grobes Budget oder ein Wunschtermin helfen uns aber, Ihnen eine bessere erste Antwort zu geben.'), ('I only have an idea, no drawings. Is that enough?', 'Ich habe nur eine Idee, keine Zeichnungen. Reicht das?', 'Yes. A napkin sketch is a fine start. Turning ideas into drawings and 3D models is part of what we do.', 'Ja. Eine Serviettenskizze ist ein guter Anfang. Aus Ideen Zeichnungen und 3D-Modelle zu machen, ist Teil unserer Arbeit.'), ('What does a project cost?', 'Was kostet ein Projekt?', 'Most projects fall into one of three bands: under €5,000, €5,000 to 20,000, or over €20,000. After the idea check you get a written offer with a fixed scope.', 'Die meisten Projekte liegen in einem von drei Rahmen: unter 5.000 €, 5.000 bis 20.000 € oder über 20.000 €. Nach dem Ideen-Check erhalten Sie ein schriftliches Angebot mit festem Umfang.'), ('How long does it take?', 'Wie lange dauert es?', 'A full project from idea to product typically takes 3 to 6 months. Single services often take 1 to 3 weeks.', 'Ein komplettes Projekt von der Idee zum Produkt dauert meist 3 bis 6 Monate. Einzelleistungen oft 1 bis 3 Wochen.'), ('Can I book only one step, like FEA or renderings?', 'Kann ich auch nur einen Schritt buchen, etwa FEM oder Renderings?', 'Yes. There is no minimum project size. Many clients only need the missing step.', 'Ja. Es gibt keine Mindestprojektgröße. Viele Kunden brauchen nur den fehlenden Schritt.'), ('Do you sign an NDA?', 'Unterschreiben Sie eine Geheimhaltungsvereinbarung (NDA)?', 'Yes. On request we send our standard NDA before the first call.', 'Ja. Auf Wunsch senden wir Ihnen vor dem ersten Gespräch unsere Standard-NDA.'), ('Who owns the result?', 'Wem gehört das Ergebnis?', 'We agree this per project and put it in writing in the offer, before any work starts.', 'Das vereinbaren wir pro Projekt und halten es im Angebot schriftlich fest, bevor die Arbeit beginnt.'), ('How do you charge?', 'Wie rechnen Sie ab?', 'A fixed price per phase, agreed before each phase starts. No open-ended hourly billing.', 'Zum Fixpreis pro Phase, vereinbart vor Beginn jeder Phase. Keine offene Stundenabrechnung.'), ('Can you also manufacture the product?', 'Können Sie das Produkt auch fertigen?', 'We build prototypes and small runs in our own workshop and work with manufacturing partners for larger quantities.', 'Prototypen und Kleinserien bauen wir in der eigenen Werkstatt, für größere Stückzahlen arbeiten wir mit Fertigungspartnern.'), ('Can you help with testing and certification, like CE?', 'Helfen Sie bei Prüfung und Zertifizierung, etwa CE?', 'Our team brings more than 20 years of experience in the regulated medical device industry. We test in-house or coordinate tests to the relevant standards with accredited test facilities, and prepare the technical documentation.', 'Unser Team bringt über 20 Jahre Erfahrung aus der regulierten Medizintechnik mit. Wir prüfen im Haus oder koordinieren Prüfungen nach den relevanten Normen mit akkreditierten Prüfstellen und erstellen die technische Dokumentation.'), ('Do you work with clients outside Austria?', 'Arbeiten Sie auch mit Kunden außerhalb Österreichs?', 'Yes. We work remotely, in German or English.', 'Ja. Wir arbeiten remote, auf Deutsch oder Englisch.'), ("What if my idea isn't feasible?", 'Was, wenn meine Idee nicht umsetzbar ist?', "We tell you honestly in the idea check, and if we can, we suggest a different route. You don't pay for finding that out.", 'Das sagen wir Ihnen ehrlich im Ideen-Check und schlagen, wenn möglich, einen anderen Weg vor. Dafür zahlen Sie nichts.'), ('Do you help with patents?', 'Helfen Sie bei Patenten?', "We don't file patents ourselves, but we work alongside your patent attorney and prepare the drawings for the application.", 'Patente melden wir nicht selbst an, aber wir arbeiten mit Ihrem Patentanwalt zusammen und erstellen die Zeichnungen für die Anmeldung.'), ('Do you also do packaging and branding?', 'Machen Sie auch Verpackung und Branding?', 'Yes: packaging development, logo design, brand creation, product photos and video.', 'Ja: Verpackungsentwicklung, Logodesign, Markenaufbau, Produktfotos und Video.'), ('What happens after the idea check?', 'Wie geht es nach dem Ideen-Check weiter?', 'Within 3 working days you get a short written summary and, if you want to go ahead, an offer with scope, timeline and price.', 'Innerhalb von 3 Werktagen erhalten Sie eine kurze schriftliche Zusammenfassung und, wenn Sie weitermachen möchten, ein Angebot mit Umfang, Zeitplan und Preis.')]
+    FAQ = [('Is the idea check really free?', 'Ist der Ideen-Check wirklich kostenlos?', 'Yes. 30 minutes by video call, free and with no obligation.', 'Ja. 30 Minuten per Videocall, kostenlos und unverbindlich.'), ('What should I prepare for the idea check?', 'Was soll ich für den Ideen-Check vorbereiten?', 'Nothing is required. A sketch, photos, a rough budget or a target date help us give you a better first answer.', 'Nichts davon ist Pflicht. Eine Skizze, Fotos, ein grobes Budget oder ein Wunschtermin helfen uns aber, Ihnen eine bessere erste Antwort zu geben.'), ('I only have an idea, no drawings. Is that enough?', 'Ich habe nur eine Idee, keine Zeichnungen. Reicht das?', 'Yes. A napkin sketch is a fine start. Turning ideas into drawings and 3D models is part of what we do.', 'Ja. Eine Serviettenskizze ist ein guter Anfang. Aus Ideen Zeichnungen und 3D-Modelle zu machen, ist Teil unserer Arbeit.'), ('What does a project cost?', 'Was kostet ein Projekt?', 'Most projects fall into one of three bands: under €5,000, €5,000 to 20,000, or over €20,000. After the idea check you get a written offer with a fixed scope.', 'Die meisten Projekte liegen in einem von drei Rahmen: unter 5.000 €, 5.000 bis 20.000 € oder über 20.000 €. Nach dem Ideen-Check erhalten Sie ein schriftliches Angebot mit festem Umfang.'), ('How long does it take?', 'Wie lange dauert es?', 'A full project from idea to product typically takes 3 to 6 months. Single services often take 1 to 3 weeks.', 'Ein komplettes Projekt von der Idee zum Produkt dauert meist 3 bis 6 Monate. Einzelleistungen oft 1 bis 3 Wochen.'), ('Can I book only one step, like renderings or prototypes?', 'Kann ich auch nur einen Schritt buchen, etwa Renderings oder Prototypen?', 'Yes, you can join at any stage, for example with an existing design that needs prototypes and production. There is no minimum project size. Calculations or simulations on their own we arrange through partner engineering offices.', 'Ja, Sie können in jeder Phase einsteigen, etwa mit einem fertigen Design, das Prototypen und Fertigung braucht. Es gibt keine Mindestprojektgröße. Reine Berechnungen oder Simulationen vermitteln wir an Partner-Ingenieurbüros.'), ('Do you sign an NDA?', 'Unterschreiben Sie eine Geheimhaltungsvereinbarung (NDA)?', 'Yes. On request we send our standard NDA before the first call.', 'Ja. Auf Wunsch senden wir Ihnen vor dem ersten Gespräch unsere Standard-NDA.'), ('Who owns the result?', 'Wem gehört das Ergebnis?', 'We agree this per project and put it in writing in the offer, before any work starts.', 'Das vereinbaren wir pro Projekt und halten es im Angebot schriftlich fest, bevor die Arbeit beginnt.'), ('How do you charge?', 'Wie rechnen Sie ab?', 'A fixed price per phase, agreed before each phase starts. No open-ended hourly billing.', 'Zum Fixpreis pro Phase, vereinbart vor Beginn jeder Phase. Keine offene Stundenabrechnung.'), ('Can you also manufacture the product?', 'Können Sie das Produkt auch fertigen?', 'We build prototypes and small runs in our own workshop and work with manufacturing partners for larger quantities.', 'Prototypen und Kleinserien bauen wir in der eigenen Werkstatt, für größere Stückzahlen arbeiten wir mit Fertigungspartnern.'), ('Can you help with testing and certification, like CE?', 'Helfen Sie bei Prüfung und Zertifizierung, etwa CE?', 'Our team brings more than 20 years of experience in the regulated medical device industry. We test in-house or coordinate tests to the relevant standards with accredited test facilities, and prepare the technical documentation.', 'Unser Team bringt über 20 Jahre Erfahrung aus der regulierten Medizintechnik mit. Wir prüfen im Haus oder koordinieren Prüfungen nach den relevanten Normen mit akkreditierten Prüfstellen und erstellen die technische Dokumentation.'), ('Do you work with clients outside Austria?', 'Arbeiten Sie auch mit Kunden außerhalb Österreichs?', 'Yes. We work remotely, in German or English.', 'Ja. Wir arbeiten remote, auf Deutsch oder Englisch.'), ("What if my idea isn't feasible?", 'Was, wenn meine Idee nicht umsetzbar ist?', "We tell you honestly in the idea check, and if we can, we suggest a different route. You don't pay for finding that out.", 'Das sagen wir Ihnen ehrlich im Ideen-Check und schlagen, wenn möglich, einen anderen Weg vor. Dafür zahlen Sie nichts.'), ('Do you help with patents?', 'Helfen Sie bei Patenten?', "We don't file patents ourselves, but we work alongside your patent attorney and prepare the drawings for the application.", 'Patente melden wir nicht selbst an, aber wir arbeiten mit Ihrem Patentanwalt zusammen und erstellen die Zeichnungen für die Anmeldung.'), ('Do you also do packaging and branding?', 'Machen Sie auch Verpackung und Branding?', 'Yes, for the products we develop with you: packaging design, product photos, video and branding.', 'Ja, für die Produkte, die wir mit Ihnen entwickeln: Verpackungsdesign, Produktfotos, Video und Branding.'), ('What happens after the idea check?', 'Wie geht es nach dem Ideen-Check weiter?', 'Within 3 working days you get a short written summary and, if you want to go ahead, an offer with scope, timeline and price.', 'Innerhalb von 3 Werktagen erhalten Sie eine kurze schriftliche Zusammenfassung und, wenn Sie weitermachen möchten, ein Angebot mit Umfang, Zeitplan und Preis.')]
 
     def faq_block():
         items = "".join(f'<details><summary>{t(qe, qd)}</summary><p>{t(ae, ad)}</p></details>' for qe, qd, ae, ad in FAQ)
@@ -255,7 +255,7 @@ def build(lang):
         <li><span>{t("Plan and concept", "Plan und Konzept")}</span></li>
         <li><span>{t("Industrial design and 3D models", "Industriedesign und 3D-Modelle")}</span></li>
         <li><span>{t("Prototypes and testing", "Prototypen und Tests")}</span></li>
-        <li><span>{t("Engineering, FEA and documentation", "Konstruktion, FEM und Dokumentation")}</span></li>
+        <li><span>{t("Construction for production and documentation", "Konstruktion für die Fertigung und Dokumentation")}</span></li>
         <li><span>{t("Production and supply chain", "Produktion und Lieferkette")}</span></li>
         <li><span>{t("Packaging", "Verpackung")}</span></li>
         <li><span>{t("Market-ready product delivered", "Marktreifes Produkt geliefert")}</span></li>
@@ -289,13 +289,13 @@ def build(lang):
 
     # ------------------------------------------------------------------ HOME
     pages["index"] = head("index", t("OCTOS · We Design, We Develop, We Deliver", "OCTOS · We Design, We Develop, We Deliver"),
-                          t("OCTOS in Innsbruck takes your product from idea to market: design, 3D models, prototypes, engineering, production and packaging.",
-                            "OCTOS in Innsbruck bringt Ihr Produkt von der Idee bis zur Marktreife: Design, 3D-Modelle, Prototypen, Konstruktion, Produktion und Verpackung.")) + f"""
+                          t("OCTOS in Innsbruck takes your product from idea to market: design, 3D models, prototypes, metal manufacturing and packaging.",
+                            "OCTOS in Innsbruck bringt Ihr Produkt von der Idee bis zur Marktreife: Design, 3D-Modelle, Prototypen, Metallfertigung und Verpackung.")) + f"""
 <main id="top">
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div>
-        <p class="eyebrow">{t("Industrial design &amp; engineering · Innsbruck, Austria", "Industriedesign &amp; Engineering · Innsbruck, Österreich")}</p>
+        <p class="eyebrow">{t("Industrial design &amp; metal manufacturing · Innsbruck, Austria", "Industriedesign &amp; Metalltechnik · Innsbruck, Österreich")}</p>
         <h1 id="hero-title"><span>We Design,</span><span>We Develop,</span><span>We Deliver</span></h1>
         <p class="offer">{t("From idea to market-ready product.", "Von der Idee zum marktreifen Produkt.")}</p>
         <p>{t("You bring the idea and the budget. We come back with a plan and finish with a product that is designed, prototyped, documented, produced and packaged, ready to sell.",
@@ -336,9 +336,9 @@ def build(lang):
           <div class="pic contain vid"><video src="{R}img/fea.mp4" poster="{R}img/fea-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{t("FEA animation of the OctoStool frame and swivel arm deforming under load", "FEM-Animation: Rahmen und Schwenkarm des OctoStool verformen sich unter Last")}"></video></div>
           <div class="verb"><h3>Develop</h3><span>{t("plan → prototype", "Plan → Prototyp")}</span></div>
           <ul class="svc">
-            <li><strong>{t("FEA / FEM simulation", "FEM-Simulation")}</strong><small>{t("Finite element analysis shows how parts bend and where stress builds up under load, before anything is built.", "Die Finite-Elemente-Methode zeigt, wie sich Teile unter Last verformen und wo Spannungen entstehen, bevor etwas gebaut wird.")}</small></li>
-            <li><strong>{t("3D printing, prototyping &amp; testing", "3D-Druck, Prototypen &amp; Tests")}</strong><small>{t("Printed parts and working prototypes, tested in-house or with accredited test facilities to the relevant standards.", "Gedruckte Teile und funktionsfähige Prototypen, selbst getestet oder normgerecht mit akkreditierten Prüfstellen.")}</small></li>
-            <li><strong>{t("Engineering &amp; technical documentation", "Konstruktion &amp; technische Dokumentation")}</strong><small>{t("Every part engineered to high Austrian standards, then documented: drawings, CAD data, calculations, manuals.", "Jedes Teil nach hohen österreichischen Standards konstruiert und dokumentiert: Zeichnungen, CAD-Daten, Berechnungen, Anleitungen.")}</small></li>
+            <li><strong>{t("Load check in development", "Belastungscheck in der Entwicklung")}</strong><small>{t("During development we run FEA on critical parts to see how they bend and where stress builds up, before we build the prototype.", "In der Entwicklung prüfen wir kritische Teile per FEM-Simulation, wie sie sich verformen und wo Spannungen entstehen, bevor wir den Prototyp bauen.")}</small></li>
+            <li><strong>{t("Prototypes &amp; testing", "Prototypen &amp; Tests")}</strong><small>{t("Printed and working prototypes, tested in our workshop or, where a standard requires it, by accredited test labs.", "Gedruckte und funktionsfähige Prototypen, in der eigenen Werkstatt getestet oder, wo eine Norm es verlangt, von akkreditierten Prüfstellen.")}</small></li>
+            <li><strong>{t("Construction &amp; documentation", "Konstruktion &amp; Dokumentation")}</strong><small>{t("Parts constructed for our workshop or manufacturing partners. Your product comes with drawings, CAD data, manuals and the technical file.", "Teile konstruiert für unsere Werkstatt oder Fertigungspartner. Zum Produkt gehören Zeichnungen, CAD-Daten, Anleitungen und die technische Dokumentation.")}</small></li>
           </ul>
         </article>
         <article class="pillar">
@@ -426,8 +426,8 @@ def build(lang):
         </article>
         <article>
           <h3>{t("Established companies", "Etablierte Unternehmen")}</h3>
-          <p>{t("Your team is at capacity or lacks a specific skill. We take on a full product or the one step you are missing.", "Ihr Team ist ausgelastet oder es fehlt eine bestimmte Kompetenz. Wir übernehmen ein ganzes Produkt oder genau den Schritt, der fehlt.")}</p>
-          <ul><li>{t("Engineering and documentation capacity on demand", "Konstruktions- und Dokumentationskapazität nach Bedarf")}</li><li>{t("Prototyping before you commit to tooling", "Prototypen, bevor Sie in Werkzeuge investieren")}</li><li>{t("Production and supply chain set up for you", "Produktion und Lieferkette für Sie aufgebaut")}</li></ul>
+          <p>{t("Your team is at capacity or lacks a specific skill. We take on a full product, or join at the stage you are at, from design to prototypes and production.", "Ihr Team ist ausgelastet oder es fehlt eine bestimmte Kompetenz. Wir übernehmen ein ganzes Produkt oder steigen in Ihrer Phase ein, vom Design über Prototypen bis zur Fertigung.")}</p>
+          <ul><li>{t("Design and development of products we build for you", "Design und Entwicklung von Produkten, die wir für Sie bauen")}</li><li>{t("Prototyping before you commit to tooling", "Prototypen, bevor Sie in Werkzeuge investieren")}</li><li>{t("Production and supply chain set up for you", "Produktion und Lieferkette für Sie aufgebaut")}</li></ul>
         </article>
       </div>
       <p style="margin-top:32px"><a class="btn btn-line on-light" href="about.html">{t("About OCTOS", "Über OCTOS")} <span class="arrow">→</span></a></p>
@@ -443,8 +443,8 @@ def build(lang):
             <li data-n="{n:02d}"><h3>{t(en_name, de_name)}</h3><p class="hl">{t(en_hl, de_hl)}</p><p>{t(en_desc, de_desc)}</p><p class="for"><b>{t("For", "Für")}:</b> {t(en_for, de_for)}</p></li>"""
 
     pages["services"] = head("services", t("Services · OCTOS", "Leistungen · OCTOS"),
-                             t("Concept and product design, 3D models and renderings, FEA, prototypes, engineering, production, packaging and delivery from one partner in Innsbruck.",
-                               "Konzept und Produktdesign, 3D-Modelle und Renderings, FEM, Prototypen, Konstruktion, Produktion, Verpackung und Lieferung aus einer Hand in Innsbruck.")) + f"""
+                             t("Concept and product design, 3D models and renderings, prototypes, metal manufacturing, packaging and delivery from one partner in Innsbruck.",
+                               "Konzept und Produktdesign, 3D-Modelle und Renderings, Prototypen, Metallfertigung, Verpackung und Lieferung aus einer Hand in Innsbruck.")) + f"""
 <main id="top">
   <section class="phead" aria-labelledby="pg-title">
     <div class="wrap">
@@ -490,19 +490,19 @@ def build(lang):
           <p class="verb">Develop<span>{t("plan → prototype", "Plan → Prototyp")}</span></p>
           <div class="pic contain vid"><video src="{R}img/fea.mp4" poster="{R}img/fea-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{t("FEA animation of the OctoStool frame and swivel arm deforming under load", "FEM-Animation: Rahmen und Schwenkarm des OctoStool verformen sich unter Last")}"></video></div>
         </div>
-        <ul class="svc-list">{svc(4, "FEA / FEM simulation", "FEM-Simulation",
-            "Know it holds before it is built.", "Wissen, dass es hält, bevor es gebaut wird.",
-            "Finite element analysis shows how parts bend and where stress builds up under load. We use it to size material correctly, so parts are safe without being heavier or more expensive than they need to be.",
-            "Die Finite-Elemente-Methode zeigt, wie sich Teile unter Last verformen und wo Spannungen entstehen. So dimensionieren wir Material richtig: sicher, ohne schwerer oder teurer als nötig.",
-            "load-bearing parts, frames, mounts and moving mechanisms", "tragende Teile, Rahmen, Halterungen und bewegliche Mechanik")}{svc(5, "3D printing, prototyping &amp; testing", "3D-Druck, Prototypen &amp; Tests",
+        <ul class="svc-list">{svc(4, "Load check in development", "Belastungscheck in der Entwicklung",
+            "Know it holds before we build it.", "Wissen, dass es hält, bevor wir es bauen.",
+            "During development we run FEA on critical parts of your product to see how they bend and where stress builds up. It helps us choose material and wall thickness before we build the prototype, so parts are safe without being heavier or more expensive than they need to be.",
+            "In der Entwicklung prüfen wir kritische Teile Ihres Produkts per FEM-Simulation: Wie verformen sie sich, wo entstehen Spannungen? So wählen wir Material und Wandstärke, bevor wir den Prototyp bauen: sicher, ohne schwerer oder teurer als nötig.",
+            "load-bearing parts, frames, mounts and moving mechanisms", "tragende Teile, Rahmen, Halterungen und bewegliche Mechanik")}{svc(5, "Prototypes &amp; testing", "Prototypen &amp; Tests",
             "Hold it, test it, improve it.", "In die Hand nehmen, testen, verbessern.",
-            "We 3D print parts and build working prototypes so you can test fit, function and feel early. We test them ourselves, or coordinate testing to the relevant standards with accredited test facilities. Each round brings the product closer to production.",
-            "Wir drucken Teile im 3D-Drucker und bauen funktionsfähige Prototypen, damit Sie Passform, Funktion und Haptik früh testen können. Wir testen selbst oder koordinieren normgerechte Prüfungen mit akkreditierten Prüfstellen. Jede Runde bringt das Produkt näher an die Serie.",
-            "anyone who needs to prove a product before investing in production", "alle, die ein Produkt erproben wollen, bevor sie in die Produktion investieren")}{svc(6, "Engineering &amp; technical documentation", "Konstruktion &amp; technische Dokumentation",
-            "Engineered to high Austrian standards.", "Konstruiert nach hohen österreichischen Standards.",
-            "We engineer every part for strength, safety and manufacturing. Then we document it: drawings, CAD data, calculations and manuals, ready for suppliers, certification and your customers.",
-            "Wir konstruieren jedes Teil auf Festigkeit, Sicherheit und Fertigung. Dann dokumentieren wir es: Zeichnungen, CAD-Daten, Berechnungen und Anleitungen, bereit für Lieferanten, Zertifizierung und Ihre Kunden.",
-            "companies without in-house engineering capacity", "Unternehmen ohne eigene Konstruktionskapazität")}
+            "We build printed and working prototypes in rounds, so you can test fit, function and feel early. We test them in our workshop. Where a standard requires it, accredited test labs carry out the tests. Each round brings the product closer to production.",
+            "Wir bauen gedruckte und funktionsfähige Prototypen in Runden, damit Sie Passform, Funktion und Haptik früh testen können. Wir testen in der eigenen Werkstatt. Wo eine Norm es verlangt, beauftragen wir akkreditierte Prüfstellen. Jede Runde bringt das Produkt näher an die Serie.",
+            "anyone who needs to prove a product before investing in production", "alle, die ein Produkt erproben wollen, bevor sie in die Produktion investieren")}{svc(6, "Construction &amp; documentation", "Konstruktion &amp; Dokumentation",
+            "Built for production, documented for your customers.", "Konstruiert für die Fertigung, dokumentiert für Ihre Kunden.",
+            "We turn the design into parts that can be built in our workshop or by our manufacturing partners: CAD models, drawings and tolerances. The product we build for you comes with drawings, CAD data, assembly and user manuals, and the technical file.",
+            "Wir machen aus dem Design fertigbare Teile für unsere Werkstatt oder unsere Fertigungspartner: CAD-Modelle, Zeichnungen, Toleranzen. Zum Produkt, das wir für Sie bauen, gehören Zeichnungen, CAD-Daten, Montage- und Bedienungsanleitung sowie die technische Dokumentation.",
+            "products we develop and build for you", "Produkte, die wir für Sie entwickeln und bauen")}
         </ul>
       </div>
 
@@ -541,7 +541,7 @@ def build(lang):
         <li><span class="n">02</span><h3>{t("Plan and concept", "Plan und Konzept")}</h3><p>{t("We return a concept, a project plan and a budget. You decide whether to go ahead.", "Wir liefern Konzept, Projektplan und Budget. Sie entscheiden, ob es weitergeht.")}</p></li>
         <li><span class="n">03</span><h3>{t("Design and 3D models", "Design und 3D-Modelle")}</h3><p>{t("Form and function take shape as 3D models and renderings you can review.", "Form und Funktion entstehen als 3D-Modelle und Renderings, die Sie prüfen können.")}</p></li>
         <li><span class="n">04</span><h3>{t("Prototypes and testing", "Prototypen und Tests")}</h3><p>{t("Printed parts and working prototypes, improved in rounds. We test in-house, or coordinate tests to the relevant standards with accredited test facilities.", "Gedruckte Teile und funktionsfähige Prototypen, in Runden verbessert. Wir testen selbst oder koordinieren normgerechte Prüfungen mit akkreditierten Prüfstellen.")}</p></li>
-        <li><span class="n">05</span><h3>{t("Engineering, FEA and documentation", "Konstruktion, FEM und Dokumentation")}</h3><p>{t("Parts are engineered, simulated and documented for production.", "Teile werden konstruiert, simuliert und für die Fertigung dokumentiert.")}</p></li>
+        <li><span class="n">05</span><h3>{t("Construction, load check and documentation", "Konstruktion, Belastungscheck und Dokumentation")}</h3><p>{t("We construct the parts for our workshop or manufacturing partners, check critical parts with FEA and document the product.", "Wir konstruieren die Teile für unsere Werkstatt oder Fertigungspartner, prüfen kritische Teile per FEM und dokumentieren das Produkt.")}</p></li>
         <li><span class="n">06</span><h3>{t("Production and supply chain", "Produktion und Lieferkette")}</h3><p>{t("We build in our workshop or with suppliers, and manage the chain.", "Wir fertigen in unserer Werkstatt oder bei Lieferanten und steuern die Kette.")}</p></li>
         <li><span class="n">07</span><h3>{t("Packaging", "Verpackung")}</h3><p>{t("Packaging designed to protect, ship and sell.", "Verpackung, die schützt, sich versenden lässt und verkauft.")}</p></li>
         <li><span class="n">08</span><h3>{t("Delivered", "Geliefert")}</h3><p>{t("A market-ready product, delivered to you or straight to your customers.", "Ein marktreifes Produkt, geliefert an Sie oder direkt an Ihre Kunden.")}</p></li>
@@ -554,7 +554,7 @@ def build(lang):
     <div class="wrap">
       <div class="block-head">
         <p class="eyebrow">{t("Who we work with", "Für wen wir arbeiten")}</p>
-        <h2 id="who-title">{t("The whole chain, or the missing step.", "Die ganze Kette oder der fehlende Schritt.")}</h2>
+        <h2 id="who-title">{t("The whole chain, or the stage you join at.", "Die ganze Kette oder ab der Phase, in der Sie stehen.")}</h2>
       </div>
       <div class="who-grid">
         <article>
@@ -564,8 +564,8 @@ def build(lang):
         </article>
         <article>
           <h3>{t("Established companies", "Etablierte Unternehmen")}</h3>
-          <p>{t("Your team is at capacity or lacks a specific skill. We take on a full product or the one step you are missing.", "Ihr Team ist ausgelastet oder es fehlt eine bestimmte Kompetenz. Wir übernehmen ein ganzes Produkt oder genau den Schritt, der fehlt.")}</p>
-          <ul><li>{t("Engineering and documentation capacity on demand", "Konstruktions- und Dokumentationskapazität nach Bedarf")}</li><li>{t("Prototyping before you commit to tooling", "Prototypen, bevor Sie in Werkzeuge investieren")}</li><li>{t("Production and supply chain set up for you", "Produktion und Lieferkette für Sie aufgebaut")}</li></ul>
+          <p>{t("Your team is at capacity or lacks a specific skill. We take on a full product, or join at the stage you are at, from design to prototypes and production.", "Ihr Team ist ausgelastet oder es fehlt eine bestimmte Kompetenz. Wir übernehmen ein ganzes Produkt oder steigen in Ihrer Phase ein, vom Design über Prototypen bis zur Fertigung.")}</p>
+          <ul><li>{t("Design and development of products we build for you", "Design und Entwicklung von Produkten, die wir für Sie bauen")}</li><li>{t("Prototyping before you commit to tooling", "Prototypen, bevor Sie in Werkzeuge investieren")}</li><li>{t("Production and supply chain set up for you", "Produktion und Lieferkette für Sie aufgebaut")}</li></ul>
         </article>
       </div>
     </div>
@@ -852,13 +852,13 @@ def build(lang):
       <div class="prose">
         <p class="eyebrow">{t("Who we work with", "Für wen wir arbeiten")}</p>
         <h2 id="clients-title">{t("Entrepreneurs with an idea. Companies that need a hand.", "Gründer mit einer Idee. Unternehmen, die Unterstützung brauchen.")}</h2>
-        <p>{t("We work with entrepreneurs on custom-made products, from the first sketch to a product they can sell. And we give companies engineering support where their own team is short on time or a specific skill: design, materials, prototypes, testing, documentation or production.",
-              "Wir arbeiten mit Gründerinnen und Gründern an maßgefertigten Produkten, von der ersten Skizze bis zum verkaufsfertigen Produkt. Und wir unterstützen Unternehmen mit Engineering, wo dem eigenen Team Zeit oder eine bestimmte Kompetenz fehlt: Design, Werkstoffe, Prototypen, Prüfungen, Dokumentation oder Produktion.")}</p>
+        <p>{t("We work with entrepreneurs on custom-made products, from the first sketch to a product they can sell. And we support companies where their own team is short on time or a specific skill: design, materials, prototypes, testing, documentation or production of the products we build for them.",
+              "Wir arbeiten mit Gründerinnen und Gründern an maßgefertigten Produkten, von der ersten Skizze bis zum verkaufsfertigen Produkt. Und wir unterstützen Unternehmen, wo dem eigenen Team Zeit oder eine bestimmte Kompetenz fehlt: Design, Werkstoffe, Prototypen, Prüfungen, Dokumentation oder Fertigung der Produkte, die wir für sie bauen.")}</p>
         <p>{t("Client projects stay confidential. We show them here only with permission.", "Kundenprojekte bleiben vertraulich. Wir zeigen sie hier nur mit Freigabe.")}</p>
       </div>
       <ul class="kit kit-1">
         <li><b>{t("Custom-made products", "Maßgefertigte Produkte")}</b><small>{t("For entrepreneurs, from idea to market", "Für Gründer, von der Idee bis zum Markt")}</small></li>
-        <li><b>{t("Engineering support", "Engineering-Unterstützung")}</b><small>{t("For companies, one step or the whole chain", "Für Unternehmen, ein Schritt oder die ganze Kette")}</small></li>
+        <li><b>{t("Product development support", "Unterstützung in der Produktentwicklung")}</b><small>{t("For companies, from the stage you are at or the whole chain", "Für Unternehmen, ab Ihrer Phase oder die ganze Kette")}</small></li>
         <li><b>{t("Materials &amp; testing", "Werkstoffe &amp; Prüfungen")}</b><small>{t("Material selection and tests to standards", "Werkstoffauswahl und normgerechte Prüfungen")}</small></li>
       </ul>
     </div>
@@ -878,8 +878,8 @@ def build(lang):
       </div>
       <dl class="specs" style="margin-top:48px">
         <dt>{t("Company", "Unternehmen")}</dt><dd>OCTOS e.U., Innsbruck</dd>
-        <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol, Landesinnung Metalltechniker</dd>
-        <dt>{t("Trade", "Gewerbe")}</dt><dd>{t("Metal technician, trading business", "Metalltechniker, Handelsbetrieb")}</dd>
+        <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
+        <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe)")}</dd>
       </dl>
     </div>
   </section>
@@ -1038,10 +1038,10 @@ def build(lang):
           <dt>{t("Company register no.", "Firmenbuchnummer")}</dt><dd>FN 676155 x</dd>
           <dt>{t("Register court", "Firmenbuchgericht")}</dt><dd>Landesgericht Innsbruck</dd>
           <dt>{t("VAT ID (UID)", "UID-Nummer")}</dt><dd>ATU83179524</dd>
-          <dt>{t("Business purpose", "Unternehmensgegenstand")}</dt><dd>{t("Metal technician, trading business", "Metalltechniker, Handelsbetrieb")}</dd>
+          <dt>{t("Trade licences", "Gewerbeberechtigungen")}</dt><dd>{t("Metalltechnik für Metall- und Maschinenbau (craft, § 94 Z 59 GewO); Design/Industrial Design (free trade)", "Metalltechnik für Metall- und Maschinenbau (Handwerk, § 94 Z 59 GewO); Design/Industrial Design (freies Gewerbe)")}</dd>
           <dt>{t("Supervisory authority", "Aufsichtsbehörde")}</dt><dd>Bezirkshauptmannschaft Innsbruck</dd>
           <dt>{t("Applicable regulations", "Anwendbare Rechtsvorschriften")}</dt><dd>{t("Trade law", "Berufsrecht")}: Gewerbeordnung, <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">www.ris.bka.gv.at</a></dd>
-          <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol, Landesinnung Metalltechniker</dd>
+          <dt>{t("Memberships", "Mitgliedschaften")}</dt><dd>Wirtschaftskammer Tirol: Landesinnung Metalltechniker, Fachgruppe Gewerbliche Dienstleister</dd>
           <dt>E-Mail</dt><dd><a href="mailto:{MAIL}">{MAIL}</a></dd>
           <dt>{t("Phone", "Telefon")}</dt><dd><a href="tel:{PHONE_TEL}">{PHONE}</a></dd>
         </dl>
